@@ -1,4 +1,9 @@
 ### Hi there 👋
+<br>
+<a href="https://www.linkedin.com/in/sebastian-cornejo-baeza/">
+  <img align="left" alt="Linkedin" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />
+</a>
+</br>
 
 <!--
 **scornejob/scornejob** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
