@@ -17,3 +17,4 @@ Also, I've contributed with {{ PULL_REQUESTS }} pull requests.
 In terms of  commits, there are {{ COMMITS }} commits.
 
 These contributions are distributed amongst {{ REPOSITORIES_CONTRIBUTED_TO }} repos.
+
