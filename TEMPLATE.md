@@ -1,7 +1,11 @@
+<h3> Hi there.  I'm Seba Cornejo Baeza.</h3>
+<h3> 👨🏻‍💻 About Me </h3>
 
-{{ ACCOUNT_AGE }}
+![My profile on LinkedIn](https://img.shields.io/badge/Seba%20Cornejo%20-LinkedIn-informational?style=appveyor)
 
-Account age in years.
+![I've been in github since](https://img.shields.io/badge/{{ ACCOUNT_AGE }}-years-informational)
+ 
+
 {{ ISSUES }}
 
 Total number of opened issues across all repositories.
