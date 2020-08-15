@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - paths: 'TEMPLATE.md'
 jobs:
   publish:
     runs-on: ubuntu-latest
