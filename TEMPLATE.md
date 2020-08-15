@@ -10,7 +10,7 @@ to work on supporting astronomers to build a ranking of projects to observe usin
 software, and lead a team of talented developers to maintain the control framework for the telescope.
 Currently, I'm working at the Data Observatory, democratizing data and compute power.
 
-I've opened {{ ISSUES }} throughout this time.
+I've opened {{ ISSUES }} issues throughout this time.
 
 Also, I've contributed with {{ PULL_REQUESTS }} pull requests.
 
