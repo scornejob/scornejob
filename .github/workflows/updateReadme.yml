@@ -2,9 +2,8 @@ on:
   schedule:
     - cron: '0 */12 * * *' # every 12 hours
   push:
-    branches:
-      - master
-      - paths: 'TEMPLATE.md'
+    branches: master
+    paths: 'TEMPLATE.md'
 jobs:
   publish:
     runs-on: ubuntu-latest
