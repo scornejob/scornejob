@@ -1,14 +1,18 @@
+<h3> Hi there.  I'm Seba Cornejo Baeza.</h3>
+<h3> 👨🏻‍💻 About Me </h3>
 
-4
+![My profile on LinkedIn](https://img.shields.io/badge/Seba%20Cornejo%20-LinkedIn-informational?style=appveyor)
 
-Account age in years.
+![I've been in github since](https://img.shields.io/badge/4-years-informational)
+ 
+
 31
 
 Total number of opened issues across all repositories.
 139
 
 Total number of opened pull requests across all repositories.
-1619
+1621
 
 Total number of commits across all repositories. Includes commits in private repositories only if you allowed github to show your private contributions on your profile (check out this link for more info).
 0
