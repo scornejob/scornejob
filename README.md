@@ -1,9 +1,9 @@
 <h3> Hi there.  I'm Seba Cornejo Baeza.</h3>
 <h3> 👨🏻‍💻 About Me </h3>
 
-![My profile on LinkedIn](https://img.shields.io/badge/Seba%20Cornejo%20-LinkedIn-informational?style=appveyor)
+![My profile on LinkedIn](https://img.shields.io/badge/Seba%20Cornejo%20-LinkedIn-informational?style=appveyor?link=http://linkedin.com/in/sebastian-cornejo-baeza)
 
-![I've been in github since](https://img.shields.io/badge/4-years-informational)
+I'm a former Sound Engineer, then Software Engineer, and last but not least, a MEng in Industrial Engineering.
  
 
 31
@@ -12,7 +12,7 @@ Total number of opened issues across all repositories.
 139
 
 Total number of opened pull requests across all repositories.
-1621
+1622
 
 Total number of commits across all repositories. Includes commits in private repositories only if you allowed github to show your private contributions on your profile (check out this link for more info).
 0
