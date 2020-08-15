@@ -1,9 +1,9 @@
 <h3> Hi there.  I'm Seba Cornejo Baeza.</h3>
 <h3> 👨🏻‍💻 About Me </h3>
 
-![My profile on LinkedIn](https://img.shields.io/badge/Seba%20Cornejo%20-LinkedIn-informational?style=appveyor)
+![My profile on LinkedIn](https://img.shields.io/badge/Seba%20Cornejo%20-LinkedIn-informational?style=appveyor?link=http://linkedin.com/in/sebastian-cornejo-baeza)
 
-![I've been in github since](https://img.shields.io/badge/{{ ACCOUNT_AGE }}-years-informational)
+I'm a former Sound Engineer, then Software Engineer, and last but not least, a MEng in Industrial Engineering.
  
 
 {{ ISSUES }}
