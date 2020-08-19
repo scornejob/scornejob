@@ -10,11 +10,13 @@ media asset manager, then moved on to work on supporting astronomers to build a 
 ALMA telescope. Later, jumped to test software, and lead a team of talented developers to maintain the control 
 framework for the telescope. Currently, I'm working at the Data Observatory, democratizing data and compute power.
 
+<h2> My life in Github </h2>
+
 I've opened 31 issues throughout this time.
 
 Also, I've contributed with 143 pull requests.
 
-I've made1726 commits.
+I've made 1736 commits.
 
 These contributions are distributed amongst 12 repos.
 
