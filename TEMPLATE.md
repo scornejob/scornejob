@@ -10,11 +10,13 @@ media asset manager, then moved on to work on supporting astronomers to build a 
 ALMA telescope. Later, jumped to test software, and lead a team of talented developers to maintain the control 
 framework for the telescope. Currently, I'm working at the Data Observatory, democratizing data and compute power.
 
+<h2> My life in Github </h2>
+
 I've opened {{ ISSUES }} issues throughout this time.
 
 Also, I've contributed with {{ PULL_REQUESTS }} pull requests.
 
-In terms of  commits, there are {{ COMMITS }} commits.
+I've made {{ COMMITS }} commits.
 
 These contributions are distributed amongst {{ REPOSITORIES_CONTRIBUTED_TO }} repos.
 
