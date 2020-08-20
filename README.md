@@ -12,7 +12,7 @@ framework for the telescope. Currently, I'm working at the Data Observatory, dem
 
 <h2> My life in Github </h2>
 
-I've opened 31 issues throughout this time.
+I've opened 32 issues throughout this time.
 
 Also, I've contributed with 143 pull requests.
 
