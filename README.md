@@ -8,7 +8,7 @@ I'm a former Sound Engineer, then Software Engineer, and last but not least, a M
 I enjoy helping people build solutions: I've worked implementing open source solutions at Canal 13 in Chile and its 
 media asset manager, then moved on to work on supporting astronomers to build a ranking of projects to observe using the
 ALMA telescope. Later, jumped to test software, and lead a team of talented developers to maintain the control 
-framework for the telescope. Currently, I'm working at the Data Observatory, democratizing data and compute power.
+framework for the telescope. Currently, I'm working at the Data Observatory, democratizing data access and compute power.
 
 <h2> My life in Github </h2>
 
@@ -16,7 +16,7 @@ I've opened 32 issues throughout this time.
 
 Also, I've contributed with 149 pull requests.
 
-I've made 2607 commits.
+I've made 2610 commits.
 
 These contributions are distributed amongst 12 repos.
 
