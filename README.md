@@ -16,7 +16,7 @@ I've opened 32 issues throughout this time.
 
 Also, I've contributed with 151 pull requests.
 
-I've made 1982 commits.
+I've made 1986 commits.
 
 These contributions are distributed amongst 6 repos.
 
