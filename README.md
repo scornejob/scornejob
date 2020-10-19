@@ -14,7 +14,7 @@ framework for the telescope. Currently, I'm working at the Data Observatory, dem
 
 I've opened 33 issues throughout this time.
 
-Also, I've contributed with 152 pull requests.
+Also, I've contributed with 153 pull requests.
 
 I've made 1990 commits.
 
