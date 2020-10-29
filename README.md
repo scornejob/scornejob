@@ -16,7 +16,7 @@ I've opened 33 issues throughout this time.
 
 Also, I've contributed with 154 pull requests.
 
-I've made 2020 commits.
+I've made 2021 commits.
 
 These contributions are distributed amongst 6 repos.
 
