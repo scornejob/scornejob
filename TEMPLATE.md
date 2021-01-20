@@ -8,7 +8,9 @@ I'm a former Sound Engineer, then Software Engineer, and last but not least, a M
 I enjoy helping people build solutions: I've worked implementing open source solutions at Canal 13 in Chile and its 
 media asset manager, then moved on to work on supporting astronomers to build a ranking of projects to observe using the
 ALMA telescope. Later, jumped to test software, and lead a team of talented developers to maintain the control 
-framework for the telescope. Currently, I'm working at the Data Observatory, democratizing data access and compute power.
+framework for the telescope. Afterwards, I worked at the Data Observatory, democratizing data access and compute power, where 
+we designed Minstry of Science's open platform to publis COVID-19 data, and then I devoted some time as volunteer to maintain it.
+Then, I was lucky enough to land a work with an amazing team at ComScore, where I developed myself as a Senior DevOps Engineer.
 
 <h2> My life in Github </h2>
 
