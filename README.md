@@ -14,11 +14,11 @@ Then, I was lucky enough to land a work with an amazing team at ComScore, where 
 
 <h2> My life in Github </h2>
 
-I've opened 33 issues throughout this time.
+I've opened 27 issues throughout this time.
 
-Also, I've contributed with 158 pull requests.
+Also, I've contributed with 98 pull requests.
 
-I've made 2083 commits.
+I've made 1332 commits.
 
-These contributions are distributed amongst 7 repos.
+These contributions are distributed amongst 3 repos.
 
