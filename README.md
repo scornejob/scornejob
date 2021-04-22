@@ -11,6 +11,9 @@ ALMA telescope. Later, jumped to test software, and lead a team of talented deve
 framework for the telescope. Afterwards, I worked at the Data Observatory, democratizing data access and compute power, where 
 we designed Minstry of Science's open platform to publis COVID-19 data, and then I devoted some time as volunteer to maintain it.
 Then, I was lucky enough to land a work with an amazing team at ComScore, where I developed myself as a Senior DevOps Engineer.
+And currently, I work as a Principal DevOps engineer at Sovos, as a member of a team closing gaps between developers and operations teams, providing reliability to our systems.
+
+And I'm also a software ninja for Perk, a chilean Startup, working to democratize access to insurance.
 
 <h2> My life in Github </h2>
 
@@ -18,7 +21,7 @@ I've opened 27 issues throughout this time.
 
 Also, I've contributed with 101 pull requests.
 
-I've made 1336 commits.
+I've made 1337 commits.
 
 These contributions are distributed amongst 4 repos.
 
