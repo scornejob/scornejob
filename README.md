@@ -11,7 +11,8 @@ ALMA telescope. Later, jumped to test software, and lead a team of talented deve
 framework for the telescope. Afterwards, I worked at the Data Observatory, democratizing data access and compute power, where 
 we designed Minstry of Science's open platform to publis COVID-19 data, and then I devoted some time as volunteer to maintain it.
 Then, I was lucky enough to land a work with an amazing team at ComScore, where I developed myself as a Senior DevOps Engineer.
-And currently, I work as a Principal DevOps engineer at Sovos, as a member of a team closing gaps between developers and operations teams, providing reliability to our systems.
+Afterwards, I worked as a Principal DevOps engineer at Sovos, leading a team closing gaps between developers and operations teams, providing reliability to our systems.
+Right now I'm working in cybersecurity, as a Senior DevOps engineer paving a way to DevSecOps.
 
 And I'm also a software ninja for Perk, a chilean Startup, working to democratize access to insurance.
 
@@ -19,9 +20,9 @@ And I'm also a software ninja for Perk, a chilean Startup, working to democratiz
 
 I've opened 27 issues throughout this time.
 
-Also, I've contributed with 101 pull requests.
+Also, I've contributed with 113 pull requests.
 
-I've made 13029 commits.
+I've made 1384 commits.
 
-These contributions are distributed amongst 3 repos.
+These contributions are distributed amongst 7 repos.
 
