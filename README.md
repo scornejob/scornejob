@@ -20,9 +20,9 @@ And I'm also a software ninja for Perk, a chilean Startup, working to democratiz
 
 I've opened 27 issues throughout this time.
 
-Also, I've contributed with 130 pull requests.
+Also, I've contributed with 134 pull requests.
 
-I've made 1391 commits.
+I've made 1392 commits.
 
-These contributions are distributed amongst 18 repos.
+These contributions are distributed amongst 22 repos.
 
