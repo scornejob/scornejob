@@ -11,7 +11,7 @@ ALMA telescope. Later, jumped to test software, and lead a team of talented deve
 framework for the telescope: I was in charge of the team delivering the first software version used to make ALMA a part of the 
 Event Horizon Telescope, and observe for the first time a black hole's event horizon.
 Afterwards, I worked at the Data Observatory, democratizing data access and compute power for Chile, where 
-we designed Minstry of Science's open platform to publish COVID-19 data, and then I devoted some time as volunteer to maintain it.
+we designed Ministry of Science's open platform to publish COVID-19 data, and then I devoted some time as volunteer to maintain it.
 Then, I was lucky enough to land a work with an amazing team at ComScore, where I developed myself as a Senior DevOps Engineer.
 Afterwards, I worked as a Principal DevOps engineer at Sovos, leading a team closing gaps between developers and operators, providing
 reliability, repeatability and reproducibility to the processes.
