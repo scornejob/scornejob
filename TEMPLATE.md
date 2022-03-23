@@ -1,4 +1,5 @@
-<h3> Hi there.  I'm Sebas Cornejo Baeza.</h3>
+<h2> Hi there.  I'm Sebas Cornejo Baeza.</h2>
+<h4> Not your average software engineer</h4>
 <h3> 👨🏻‍💻 About Me </h3>
 <a href="http://linkedin.com/in/sebastian-cornejo-baeza/"><img alt="LinkedIn" src="https://img.shields.io/badge/Sebas%20Cornejo%20-informational?style=appveyor&logo=linkedin"></a>
 
