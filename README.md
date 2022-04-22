@@ -28,5 +28,5 @@ Also, I've contributed with 180 pull requests.
 
 I've made 1453 commits.
 
-These contributions are distributed amongst 41 repos.
+These contributions are distributed amongst 40 repos.
 
