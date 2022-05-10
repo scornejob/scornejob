@@ -26,10 +26,10 @@ I've opened 27 issues throughout this time.
 
 Also, I've contributed with 189 pull requests.
 
-I've made 1486 commits.
+I've made 1488 commits.
 
 These contributions are distributed amongst 41 repos.
 
-<h2>... and some detailed dev stats <h2>
+<h2>... and some detailed dev stats<h2>
 <!--START_SECTION:waka-->
 <!--END_SECTION:waka-->
