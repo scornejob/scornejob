@@ -1,6 +1,6 @@
 on:
   workflow_run:
-    workflows: ["Generate README.md"]
+    workflows: ["Update README.md"]
     types:
         - completed
 jobs:
