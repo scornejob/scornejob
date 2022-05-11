@@ -32,5 +32,75 @@ These contributions are distributed amongst 41 repos.
 
 <h2>... and some detailed dev stats<h2>
 <!--START_SECTION:waka-->
+![Code Time](http://img.shields.io/badge/Code%20Time-3%20hrs%2037%20mins-blue)
 
+![Profile Views](http://img.shields.io/badge/Profile%20Views-84-blue)
+
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-603%20Thousand%20lines%20of%20code-blue)
+
+**🐱 My GitHub Data** 
+
+> 🏆 241 Contributions in the Year 2022
+ > 
+> 📦 56.9 kB Used in GitHub's Storage 
+ > 
+> 🚫 Not Opted to Hire
+ > 
+> 📜 13 Public Repositories 
+ > 
+> 🔑 11 Private Repositories  
+ > 
+**I'm an Early 🐤** 
+
+```text
+🌞 Morning    59 commits     ████████░░░░░░░░░░░░░░░░░   33.15% 
+🌆 Daytime    95 commits     █████████████░░░░░░░░░░░░   53.37% 
+🌃 Evening    24 commits     ███░░░░░░░░░░░░░░░░░░░░░░   13.48% 
+🌙 Night      0 commits      ░░░░░░░░░░░░░░░░░░░░░░░░░   0.0%
+
+```
+📅 **I'm Most Productive on Monday** 
+
+```text
+Monday       48 commits     ██████░░░░░░░░░░░░░░░░░░░   26.97% 
+Tuesday      45 commits     ██████░░░░░░░░░░░░░░░░░░░   25.28% 
+Wednesday    29 commits     ████░░░░░░░░░░░░░░░░░░░░░   16.29% 
+Thursday     20 commits     ██░░░░░░░░░░░░░░░░░░░░░░░   11.24% 
+Friday       36 commits     █████░░░░░░░░░░░░░░░░░░░░   20.22% 
+Saturday     0 commits      ░░░░░░░░░░░░░░░░░░░░░░░░░   0.0% 
+Sunday       0 commits      ░░░░░░░░░░░░░░░░░░░░░░░░░   0.0%
+
+```
+
+
+📊 **This Week I Spent My Time On** 
+
+```text
+⌚︎ Time Zone: America/Santiago
+
+💬 Programming Languages: 
+No Activity Tracked This Week
+
+🔥 Editors: 
+No Activity Tracked This Week
+
+💻 Operating System: 
+No Activity Tracked This Week
+
+```
+
+**I Mostly Code in HCL** 
+
+```text
+HCL                      5 repos             ███████░░░░░░░░░░░░░░░░░░   29.41% 
+Shell                    3 repos             ████░░░░░░░░░░░░░░░░░░░░░   17.65% 
+Python                   3 repos             ████░░░░░░░░░░░░░░░░░░░░░   17.65% 
+Jupyter Notebook         2 repos             ███░░░░░░░░░░░░░░░░░░░░░░   11.76% 
+C++                      1 repo              █░░░░░░░░░░░░░░░░░░░░░░░░   5.88%
+
+```
+
+
+
+ Last Updated on 11/05/2022 00:53:59 UTC
 <!--END_SECTION:waka-->
