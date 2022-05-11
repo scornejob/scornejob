@@ -13,17 +13,17 @@ a lot. So much, that I decided to study again, this time, Computer Engineering.
 When I was about to finish my second career, I moved to the ALMA telescope. There, I became a member of the team
 in charge of organizing the proposal review process -fancy name to select which projects to observe each year-. 
 I was eager to learn, so I moved from the science department to the computing department, and started to work as 
-a testing engineer. Once again, circumstances, luck and talent took me to lead a team of talented software engineers 
+a testing engineer. Once again, circumstances, luck and talent took me to lead a team of good software engineers 
 responsible for delivering the control framework for the telescope. I had the fortune of delivering the software
 version used to couple ALMA to the Event Horizon Telescope and observe a black hole for the first time.
 By this time, I obtained my Master's degree in Industrial Engineering.
 I was also lead of another great team, pushing to adopt the DevOps culture internally: we implemented containerization, observability, and automated a bunch of manual processes.
 
-Then, I moved to the Data Observatory, a really cool project, who intended to democratize access to computing power
+Then, I moved to the Data Observatory, where we intended to democratize access to computing power
 and data for Chile. We ported the ALMA regional center to the cloud, but most importantly, we designed, implemented
 and maintained the Covid 19 date repository for the Chilean Ministry of Science, Technology and Knowledge.
 
-Later, I moved to Comscore, where I worked with an amazing team and grew as DevOps Engineer.
+Later, I moved to Comscore, where I worked with an amazing team and grew as DevOps Engineer, helping migrating workloads to the cloud.
 
 Afterwards, I joined Sovos, where I lead a team responsible for closing gaps between Developers and Operations, shortening time to market for commits.
 
