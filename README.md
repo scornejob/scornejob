@@ -4,20 +4,32 @@
 <a href="http://linkedin.com/in/sebastian-cornejo-baeza/"><img alt="LinkedIn" src="https://img.shields.io/badge/Sebas%20Cornejo%20-informational?style=appveyor&logo=linkedin"></a>
 
 
-I'm a former Sound Engineer, then Software Engineer, and last but not least, a MEng in Industrial Engineering.
- 
-I enjoy helping people build solutions: I've worked implementing open source solutions at Canal 13 in Chile and its 
-media asset manager, then moved on to work on supporting astronomers to build a ranking of projects to observe using the
-ALMA telescope. Later, jumped to test software, and lead a team of talented developers to maintain the control 
-framework for the telescope: I was in charge of the team delivering the first software version used to make ALMA a part of the 
-Event Horizon Telescope, and observe for the first time a black hole's event horizon.
-Afterwards, I worked at the Data Observatory, democratizing data access and compute power for Chile, where 
-we designed Ministry of Science's open platform to publish COVID-19 data, and then I devoted some time as volunteer to maintain it.
-Then, I was lucky enough to land a work with an amazing team at ComScore, where I developed myself as a Senior DevOps Engineer.
-Afterwards, I worked as a Principal DevOps engineer at Sovos, leading a team closing gaps between developers and operators, providing
-reliability, repeatability and reproducibility to the processes.
-Right now I'm working in cybersecurity, as a Senior DevOps engineer paving a way to DevSecOps.
+I define myself as a curious and eclectic Engineer.
 
+I'm a Sound Engineer, and as such, I started working on maintenance for audio equipment at Canal 13 in Chile.
+By circumstances, I moved internally, and stated playing with network equipment and open source (mostly on linux) 
+a lot. So much, that I decided to study again Computer Engineering.
+
+When I was about to finish my second career, I moved to the ALMA telescope. There, I became a member of the team
+in charge of organizing the proposal review process -fancy name to select which projects to observe each year-. 
+I was eager to learn, so I moved from the science department to the computing department, and started to work as 
+a testing engineer. Once again, circumstances, luck and talent took me to lead a team of talented software engineers 
+responsible for delivering the control framework for the telescope. I had the fortune of delivering the software
+version used to couple ALMA to the Event Horizon Telescope and observe a black hole for the first time.
+By this time, I obtained my Master's degree in Industrial Engineering.
+I was also lead of another great team, pushing to adopt the DevOps culture internally: we implemented containerization, observability, and automated a bunch of manual processes.
+
+Then, I moved to the Data Observatory, a really cool project, who intended to democratize access to computing power
+and data for Chile. We ported the ALMA regional center to the cloud, but most importantly, we designed, implemented
+and maintained the Covid 19 date repository for the Chilean Ministry of Science, Technology and Knowledge.
+
+Later, I moved to Comscore, where I worked with an amazing team and grew as DevOps Engineer.
+
+Afterwards, I joined Sovos, where I lead a team responsible for closing gaps between Developers and Operations, shortening time to market for commits.
+
+And currently I'm a member of the Zerofox, a company with the greatest culture I've experienced. Here I'm a DevOps
+engineer, and also a Scrum master (in training, by the best scrum masters I've met).
+ 
 And I'm also the CTO and software ninja for EmbedX (former Perk.cl), a chilean startup, working to simplify and democratize access to insurance.
 
 <h2> My life in Github </h2>
@@ -26,82 +38,12 @@ I've opened 27 issues throughout this time.
 
 Also, I've contributed with 189 pull requests.
 
-I've made 1494 commits.
+I've made 1496 commits.
 
 These contributions are distributed amongst 41 repos.
 
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-3%20hrs%2037%20mins-blue)
 
-![Profile Views](http://img.shields.io/badge/Profile%20Views-84-blue)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-603%20Thousand%20lines%20of%20code-blue)
-
-**🐱 My GitHub Data** 
-
-> 🏆 241 Contributions in the Year 2022
- > 
-> 📦 56.9 kB Used in GitHub's Storage 
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 13 Public Repositories 
- > 
-> 🔑 11 Private Repositories  
- > 
-**I'm an Early 🐤** 
-
-```text
-🌞 Morning    59 commits     ████████░░░░░░░░░░░░░░░░░   32.96% 
-🌆 Daytime    95 commits     █████████████░░░░░░░░░░░░   53.07% 
-🌃 Evening    25 commits     ███░░░░░░░░░░░░░░░░░░░░░░   13.97% 
-🌙 Night      0 commits      ░░░░░░░░░░░░░░░░░░░░░░░░░   0.0%
-
-```
-📅 **I'm Most Productive on Monday** 
-
-```text
-Monday       48 commits     ██████░░░░░░░░░░░░░░░░░░░   26.82% 
-Tuesday      46 commits     ██████░░░░░░░░░░░░░░░░░░░   25.7% 
-Wednesday    29 commits     ████░░░░░░░░░░░░░░░░░░░░░   16.2% 
-Thursday     20 commits     ██░░░░░░░░░░░░░░░░░░░░░░░   11.17% 
-Friday       36 commits     █████░░░░░░░░░░░░░░░░░░░░   20.11% 
-Saturday     0 commits      ░░░░░░░░░░░░░░░░░░░░░░░░░   0.0% 
-Sunday       0 commits      ░░░░░░░░░░░░░░░░░░░░░░░░░   0.0%
-
-```
-
-
-📊 **This Week I Spent My Time On** 
-
-```text
-⌚︎ Time Zone: America/Santiago
-
-💬 Programming Languages: 
-No Activity Tracked This Week
-
-🔥 Editors: 
-No Activity Tracked This Week
-
-💻 Operating System: 
-No Activity Tracked This Week
-
-```
-
-**I Mostly Code in HCL** 
-
-```text
-HCL                      5 repos             ███████░░░░░░░░░░░░░░░░░░   29.41% 
-Shell                    3 repos             ████░░░░░░░░░░░░░░░░░░░░░   17.65% 
-Python                   3 repos             ████░░░░░░░░░░░░░░░░░░░░░   17.65% 
-Jupyter Notebook         2 repos             ███░░░░░░░░░░░░░░░░░░░░░░   11.76% 
-C++                      1 repo              █░░░░░░░░░░░░░░░░░░░░░░░░   5.88%
-
-```
-
-
-
- Last Updated on 11/05/2022 00:58:36 UTC
 <!--END_SECTION:waka-->
