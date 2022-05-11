@@ -8,7 +8,7 @@ I define myself as a curious and eclectic Engineer.
 
 I'm a Sound Engineer, and as such, I started working on maintenance for audio equipment at Canal 13 in Chile.
 By circumstances, I moved internally, and stated playing with network equipment and open source (mostly on linux) 
-a lot. So much, that I decided to study again Computer Engineering.
+a lot. So much, that I decided to study again, this time, Computer Engineering.
 
 When I was about to finish my second career, I moved to the ALMA telescope. There, I became a member of the team
 in charge of organizing the proposal review process -fancy name to select which projects to observe each year-. 
