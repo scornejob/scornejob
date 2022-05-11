@@ -8,7 +8,7 @@ I define myself as a curious and eclectic Engineer.
 
 I'm a Sound Engineer, and as such, I started working on maintenance for audio equipment at Canal 13 in Chile.
 By circumstances, I moved internally, and stated playing with network equipment and open source (mostly on linux) 
-a lot. So much, that I decided to study again Computer Engineering.
+a lot. So much, that I decided to study again, this time, Computer Engineering.
 
 When I was about to finish my second career, I moved to the ALMA telescope. There, I became a member of the team
 in charge of organizing the proposal review process -fancy name to select which projects to observe each year-. 
@@ -38,82 +38,12 @@ I've opened 27 issues throughout this time.
 
 Also, I've contributed with 189 pull requests.
 
-I've made 1496 commits.
+I've made 1497 commits.
 
 These contributions are distributed amongst 41 repos.
 
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-4%20hrs%2012%20mins-blue)
 
-![Profile Views](http://img.shields.io/badge/Profile%20Views-84-blue)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-603%20Thousand%20lines%20of%20code-blue)
-
-**🐱 My GitHub Data** 
-
-> 🏆 241 Contributions in the Year 2022
- > 
-> 📦 56.9 kB Used in GitHub's Storage 
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 13 Public Repositories 
- > 
-> 🔑 11 Private Repositories  
- > 
-**I'm an Early 🐤** 
-
-```text
-🌞 Morning    59 commits     ████████░░░░░░░░░░░░░░░░░   32.6% 
-🌆 Daytime    95 commits     █████████████░░░░░░░░░░░░   52.49% 
-🌃 Evening    27 commits     ███░░░░░░░░░░░░░░░░░░░░░░   14.92% 
-🌙 Night      0 commits      ░░░░░░░░░░░░░░░░░░░░░░░░░   0.0%
-
-```
-📅 **I'm Most Productive on Monday** 
-
-```text
-Monday       48 commits     ██████░░░░░░░░░░░░░░░░░░░   26.52% 
-Tuesday      48 commits     ██████░░░░░░░░░░░░░░░░░░░   26.52% 
-Wednesday    29 commits     ████░░░░░░░░░░░░░░░░░░░░░   16.02% 
-Thursday     20 commits     ██░░░░░░░░░░░░░░░░░░░░░░░   11.05% 
-Friday       36 commits     █████░░░░░░░░░░░░░░░░░░░░   19.89% 
-Saturday     0 commits      ░░░░░░░░░░░░░░░░░░░░░░░░░   0.0% 
-Sunday       0 commits      ░░░░░░░░░░░░░░░░░░░░░░░░░   0.0%
-
-```
-
-
-📊 **This Week I Spent My Time On** 
-
-```text
-⌚︎ Time Zone: America/Santiago
-
-💬 Programming Languages: 
-No Activity Tracked This Week
-
-🔥 Editors: 
-No Activity Tracked This Week
-
-💻 Operating System: 
-No Activity Tracked This Week
-
-```
-
-**I Mostly Code in HCL** 
-
-```text
-HCL                      5 repos             ███████░░░░░░░░░░░░░░░░░░   29.41% 
-Shell                    3 repos             ████░░░░░░░░░░░░░░░░░░░░░   17.65% 
-Python                   3 repos             ████░░░░░░░░░░░░░░░░░░░░░   17.65% 
-Jupyter Notebook         2 repos             ███░░░░░░░░░░░░░░░░░░░░░░   11.76% 
-C++                      1 repo              █░░░░░░░░░░░░░░░░░░░░░░░░   5.88%
-
-```
-
-
-
- Last Updated on 11/05/2022 01:28:11 UTC
 <!--END_SECTION:waka-->
