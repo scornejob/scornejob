@@ -13,17 +13,17 @@ a lot. So much, that I decided to study again, this time, Computer Engineering.
 When I was about to finish my second career, I moved to the ALMA telescope. There, I became a member of the team
 in charge of organizing the proposal review process -fancy name to select which projects to observe each year-. 
 I was eager to learn, so I moved from the science department to the computing department, and started to work as 
-a testing engineer. Once again, circumstances, luck and talent took me to lead a team of talented software engineers 
+a testing engineer. Once again, circumstances, luck and talent took me to lead a team of good software engineers 
 responsible for delivering the control framework for the telescope. I had the fortune of delivering the software
 version used to couple ALMA to the Event Horizon Telescope and observe a black hole for the first time.
 By this time, I obtained my Master's degree in Industrial Engineering.
 I was also lead of another great team, pushing to adopt the DevOps culture internally: we implemented containerization, observability, and automated a bunch of manual processes.
 
-Then, I moved to the Data Observatory, a really cool project, who intended to democratize access to computing power
+Then, I moved to the Data Observatory, where we intended to democratize access to computing power
 and data for Chile. We ported the ALMA regional center to the cloud, but most importantly, we designed, implemented
 and maintained the Covid 19 date repository for the Chilean Ministry of Science, Technology and Knowledge.
 
-Later, I moved to Comscore, where I worked with an amazing team and grew as DevOps Engineer.
+Later, I moved to Comscore, where I worked with an amazing team and grew as DevOps Engineer, helping migrating workloads to the cloud.
 
 Afterwards, I joined Sovos, where I lead a team responsible for closing gaps between Developers and Operations, shortening time to market for commits.
 
@@ -38,82 +38,12 @@ I've opened 27 issues throughout this time.
 
 Also, I've contributed with 189 pull requests.
 
-I've made 1497 commits.
+I've made 1498 commits.
 
 These contributions are distributed amongst 41 repos.
 
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-4%20hrs%2024%20mins-blue)
 
-![Profile Views](http://img.shields.io/badge/Profile%20Views-84-blue)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-603%20Thousand%20lines%20of%20code-blue)
-
-**🐱 My GitHub Data** 
-
-> 🏆 239 Contributions in the Year 2022
- > 
-> 📦 56.9 kB Used in GitHub's Storage 
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 13 Public Repositories 
- > 
-> 🔑 11 Private Repositories  
- > 
-**I'm an Early 🐤** 
-
-```text
-🌞 Morning    59 commits     ████████░░░░░░░░░░░░░░░░░   32.42% 
-🌆 Daytime    95 commits     █████████████░░░░░░░░░░░░   52.2% 
-🌃 Evening    28 commits     ███░░░░░░░░░░░░░░░░░░░░░░   15.38% 
-🌙 Night      0 commits      ░░░░░░░░░░░░░░░░░░░░░░░░░   0.0%
-
-```
-📅 **I'm Most Productive on Tuesday** 
-
-```text
-Monday       48 commits     ██████░░░░░░░░░░░░░░░░░░░   26.37% 
-Tuesday      49 commits     ██████░░░░░░░░░░░░░░░░░░░   26.92% 
-Wednesday    29 commits     ████░░░░░░░░░░░░░░░░░░░░░   15.93% 
-Thursday     20 commits     ██░░░░░░░░░░░░░░░░░░░░░░░   10.99% 
-Friday       36 commits     █████░░░░░░░░░░░░░░░░░░░░   19.78% 
-Saturday     0 commits      ░░░░░░░░░░░░░░░░░░░░░░░░░   0.0% 
-Sunday       0 commits      ░░░░░░░░░░░░░░░░░░░░░░░░░   0.0%
-
-```
-
-
-📊 **This Week I Spent My Time On** 
-
-```text
-⌚︎ Time Zone: America/Santiago
-
-💬 Programming Languages: 
-No Activity Tracked This Week
-
-🔥 Editors: 
-No Activity Tracked This Week
-
-💻 Operating System: 
-No Activity Tracked This Week
-
-```
-
-**I Mostly Code in HCL** 
-
-```text
-HCL                      5 repos             ███████░░░░░░░░░░░░░░░░░░   29.41% 
-Shell                    3 repos             ████░░░░░░░░░░░░░░░░░░░░░   17.65% 
-Python                   3 repos             ████░░░░░░░░░░░░░░░░░░░░░   17.65% 
-Jupyter Notebook         2 repos             ███░░░░░░░░░░░░░░░░░░░░░░   11.76% 
-C++                      1 repo              █░░░░░░░░░░░░░░░░░░░░░░░░   5.88%
-
-```
-
-
-
- Last Updated on 11/05/2022 01:38:02 UTC
 <!--END_SECTION:waka-->
