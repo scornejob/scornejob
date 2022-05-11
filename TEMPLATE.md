@@ -32,4 +32,5 @@ These contributions are distributed amongst {{ REPOSITORIES_CONTRIBUTED_TO }} re
 
 <h2>... and some detailed dev stats<h2>
 <!--START_SECTION:waka-->
+
 <!--END_SECTION:waka-->
