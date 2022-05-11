@@ -30,6 +30,6 @@ I've made {{ COMMITS }} commits.
 
 These contributions are distributed amongst {{ REPOSITORIES_CONTRIBUTED_TO }} repos.
 
-<h2>... and some detailed dev stats <h2>
+<h2>... and some detailed dev stats<h2>
 <!--START_SECTION:waka-->
 <!--END_SECTION:waka-->
