@@ -45,5 +45,36 @@ These contributions are distributed amongst 56 repos.
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
+![Code Time](http://img.shields.io/badge/Code%20Time-0%20secs-blue)
 
+![Profile Views](http://img.shields.io/badge/Profile%20Views-1-blue)
+
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-541%20Thousand%20lines%20of%20code-blue)
+
+**🐱 My GitHub Data** 
+
+> 🏆 540 Contributions in the Year 2022
+ > 
+> 📦 57.6 kB Used in GitHub's Storage 
+ > 
+> 🚫 Not Opted to Hire
+ > 
+> 📜 14 Public Repositories 
+ > 
+> 🔑 17 Private Repositories  
+ > 
+**I Mostly Code in HCL** 
+
+```text
+HCL                      10 repos            ██████████░░░░░░░░░░░░░░░   40.0% 
+Shell                    4 repos             ████░░░░░░░░░░░░░░░░░░░░░   16.0% 
+Python                   4 repos             ████░░░░░░░░░░░░░░░░░░░░░   16.0% 
+TypeScript               2 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   8.0% 
+C++                      1 repo              █░░░░░░░░░░░░░░░░░░░░░░░░   4.0%
+
+```
+
+
+
+ Last Updated on 04/09/2022 12:19:24 UTC
 <!--END_SECTION:waka-->
