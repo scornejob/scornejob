@@ -36,88 +36,14 @@ And I'm also the CTO and software ninja for EmbedX (former Perk.cl), a chilean s
 
 I've opened 29 issues throughout this time.
 
-Also, I've contributed with 318 pull requests.
+Also, I've contributed with 319 pull requests.
 
-I've made 1862 commits.
+I've made 1864 commits.
 
 These contributions are distributed amongst 67 repos.
 
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-220%20hrs%2042%20mins-blue)
 
-![Profile Views](http://img.shields.io/badge/Profile%20Views-1-blue)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-542%20Thousand%20lines%20of%20code-blue)
-
-**🐱 My GitHub Data** 
-
-> 🏆 819 Contributions in the Year 2022
- > 
-> 📦 57.7 kB Used in GitHub's Storage 
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 14 Public Repositories 
- > 
-> 🔑 20 Private Repositories  
- > 
-**I'm an Early 🐤** 
-
-```text
-🌞 Morning    165 commits    ████████░░░░░░░░░░░░░░░░░   32.54% 
-🌆 Daytime    247 commits    ████████████░░░░░░░░░░░░░   48.72% 
-🌃 Evening    89 commits     ████░░░░░░░░░░░░░░░░░░░░░   17.55% 
-🌙 Night      6 commits      ░░░░░░░░░░░░░░░░░░░░░░░░░   1.18%
-
-```
-📅 **I'm Most Productive on Wednesday** 
-
-```text
-Monday       97 commits     ████░░░░░░░░░░░░░░░░░░░░░   19.13% 
-Tuesday      113 commits    █████░░░░░░░░░░░░░░░░░░░░   22.29% 
-Wednesday    119 commits    █████░░░░░░░░░░░░░░░░░░░░   23.47% 
-Thursday     85 commits     ████░░░░░░░░░░░░░░░░░░░░░   16.77% 
-Friday       80 commits     ████░░░░░░░░░░░░░░░░░░░░░   15.78% 
-Saturday     8 commits      ░░░░░░░░░░░░░░░░░░░░░░░░░   1.58% 
-Sunday       5 commits      ░░░░░░░░░░░░░░░░░░░░░░░░░   0.99%
-
-```
-
-
-📊 **This Week I Spent My Time On** 
-
-```text
-⌚︎ Time Zone: America/Santiago
-
-💬 Programming Languages: 
-Bash                     1 hr 6 mins         █████████████████░░░░░░░░   70.14% 
-JSON                     20 mins             █████░░░░░░░░░░░░░░░░░░░░   21.02% 
-Other                    5 mins              █░░░░░░░░░░░░░░░░░░░░░░░░   5.51% 
-YAML                     1 min               ░░░░░░░░░░░░░░░░░░░░░░░░░   1.81% 
-Terraform                1 min               ░░░░░░░░░░░░░░░░░░░░░░░░░   1.08%
-
-🔥 Editors: 
-Vim                      1 hr 35 mins        █████████████████████████   100.0%
-
-💻 Operating System: 
-Mac                      1 hr 35 mins        █████████████████████████   100.0%
-
-```
-
-**I Mostly Code in HCL** 
-
-```text
-HCL                      10 repos            █████████░░░░░░░░░░░░░░░░   38.46% 
-Python                   5 repos             ████░░░░░░░░░░░░░░░░░░░░░   19.23% 
-Shell                    4 repos             ███░░░░░░░░░░░░░░░░░░░░░░   15.38% 
-TypeScript               2 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   7.69% 
-C++                      1 repo              █░░░░░░░░░░░░░░░░░░░░░░░░   3.85%
-
-```
-
-
-
- Last Updated on 28/12/2022 12:16:44 UTC
 <!--END_SECTION:waka-->
