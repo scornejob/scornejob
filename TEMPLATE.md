@@ -27,8 +27,9 @@ Later, I moved to Comscore, where I worked with an amazing team and grew as DevO
 
 Afterwards, I joined Sovos, where I lead a team responsible for closing gaps between Developers and Operations, shortening time to market for commits.
 
-And currently I'm a member of the Zerofox, a company with the greatest culture I've experienced. Here I'm a DevOps
-engineer, and also a Scrum master (in training, by the best scrum masters I've met).
+Then, I was a DevOps engineer at Zerofox, a company with the greatest culture I've experienced. I played the role of a Scrum master for the DevSecOps team.
+
+And now, I'm an Infrastructure Engineer at Vimcar, where culture is as good as it can get :). But the biggest change was weather and language!
  
 And I'm also the CTO and software ninja for EmbedX (former Perk.cl), a chilean startup, working to simplify and democratize access to insurance.
 
