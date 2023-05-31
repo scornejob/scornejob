@@ -15,7 +15,7 @@ When I was about to finish my second career, I moved to the ALMA telescope. Ther
 I was eager to learn, so I moved from the science department to the computing department, and started to work as 
 a testing engineer. Once again, circumstances, luck and talent took me to lead a team of good software engineers 
 responsible for delivering the control framework for the telescope. I had the opportunity to transition the control framework from
-Europe to Chile, and the fortune of leading the tema when we delivered the software
+Europe to Chile, and the fortune of leading the team while we developed and then delivered the software
 version used to couple ALMA to the Event Horizon Telescope and observe a black hole for the first time.
 By this time, I obtained my Master's degree in Industrial Engineering.
 I was also lead of another great team, pushing to adopt the DevOps culture internally: we implemented containerization, observability, and automated a bunch of manual processes.
