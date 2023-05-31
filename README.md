@@ -15,7 +15,7 @@ When I was about to finish my second career, I moved to the ALMA telescope. Ther
 I was eager to learn, so I moved from the science department to the computing department, and started to work as 
 a testing engineer. Once again, circumstances, luck and talent took me to lead a team of good software engineers 
 responsible for delivering the control framework for the telescope. I had the opportunity to transition the control framework from
-Europe to Chile, and the fortune of leading the tema when we delivered the software
+Europe to Chile, and the fortune of leading the team while we developed and then delivered the software
 version used to couple ALMA to the Event Horizon Telescope and observe a black hole for the first time.
 By this time, I obtained my Master's degree in Industrial Engineering.
 I was also lead of another great team, pushing to adopt the DevOps culture internally: we implemented containerization, observability, and automated a bunch of manual processes.
@@ -43,85 +43,12 @@ I've opened 29 issues throughout this time.
 
 Also, I've contributed with 177 pull requests.
 
-I've made 1581 commits.
+I've made 1582 commits.
 
 These contributions are distributed amongst 43 repos.
 
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-355%20hrs%2047%20mins-blue)
 
-![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-653.0%20thousand%20lines%20of%20code-blue)
-
-**🐱 My GitHub Data** 
-
-> 📦 58.2 kB Used in GitHub's Storage 
- > 
-> 🏆 316 Contributions in the Year 2023
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 16 Public Repositories 
- > 
-> 🔑 22 Private Repositories 
- > 
-**I'm an Early 🐤** 
-
-```text
-🌞 Morning                205 commits         █████░░░░░░░░░░░░░░░░░░░░   21.72 % 
-🌆 Daytime                533 commits         ██████████████░░░░░░░░░░░   56.46 % 
-🌃 Evening                55 commits          █░░░░░░░░░░░░░░░░░░░░░░░░   05.83 % 
-🌙 Night                  151 commits         ████░░░░░░░░░░░░░░░░░░░░░   16.00 % 
-```
-📅 **I'm Most Productive on Tuesday** 
-
-```text
-Monday                   105 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.12 % 
-Tuesday                  271 commits         ███████░░░░░░░░░░░░░░░░░░   28.71 % 
-Wednesday                217 commits         ██████░░░░░░░░░░░░░░░░░░░   22.99 % 
-Thursday                 113 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.97 % 
-Friday                   153 commits         ████░░░░░░░░░░░░░░░░░░░░░   16.21 % 
-Saturday                 42 commits          █░░░░░░░░░░░░░░░░░░░░░░░░   04.45 % 
-Sunday                   43 commits          █░░░░░░░░░░░░░░░░░░░░░░░░   04.56 % 
-```
-
-
-📊 **This Week I Spent My Time On** 
-
-```text
-🕑︎ Time Zone: Europe/Berlin
-
-💬 Programming Languages: 
-TypeScript               1 hr 56 mins        █████████░░░░░░░░░░░░░░░░   34.49 % 
-Python                   1 hr 29 mins        ███████░░░░░░░░░░░░░░░░░░   26.61 % 
-Other                    1 hr 16 mins        ██████░░░░░░░░░░░░░░░░░░░   22.50 % 
-YAML                     30 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   09.04 % 
-Bash                     6 mins              ░░░░░░░░░░░░░░░░░░░░░░░░░   01.93 % 
-
-🔥 Editors: 
-VS Code                  2 hrs 55 mins       █████████████░░░░░░░░░░░░   51.90 % 
-Vim                      2 hrs 42 mins       ████████████░░░░░░░░░░░░░   48.10 % 
-
-💻 Operating System: 
-Mac                      3 hrs 51 mins       █████████████████░░░░░░░░   68.46 % 
-Linux                    1 hr 46 mins        ████████░░░░░░░░░░░░░░░░░   31.54 % 
-```
-
-**I Mostly Code in Java** 
-
-```text
-Python                   17 repos            ██████░░░░░░░░░░░░░░░░░░░   25.76 % 
-HCL                      9 repos             ███░░░░░░░░░░░░░░░░░░░░░░   13.64 % 
-TypeScript               6 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   09.09 % 
-Dockerfile               1 repo              ░░░░░░░░░░░░░░░░░░░░░░░░░   01.52 % 
-Go                       1 repo              ░░░░░░░░░░░░░░░░░░░░░░░░░   01.52 % 
-```
-
-
-
-
- Last Updated on 31/05/2023 10:18:44 UTC
 <!--END_SECTION:waka-->
