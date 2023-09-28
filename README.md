@@ -41,86 +41,14 @@ And since 2019, I'm also the CTO and software ninja for EmbedX (former Perk.cl),
 
 I've opened 29 issues throughout this time.
 
-Also, I've contributed with 238 pull requests.
+Also, I've contributed with 240 pull requests.
 
-I've made 1730 commits.
+I've made 1733 commits.
 
 These contributions are distributed amongst 48 repos.
 
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-501%20hrs%2042%20mins-blue)
 
-![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-791.8%20thousand%20lines%20of%20code-blue)
-
-**🐱 My GitHub Data** 
-
-> 📦 381.6 kB Used in GitHub's Storage 
- > 
-> 🏆 591 Contributions in the Year 2023
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 16 Public Repositories 
- > 
-> 🔑 25 Private Repositories 
- > 
-**I'm an Early 🐤** 
-
-```text
-🌞 Morning                304 commits         ██████░░░░░░░░░░░░░░░░░░░   25.78 % 
-🌆 Daytime                688 commits         ███████████████░░░░░░░░░░   58.35 % 
-🌃 Evening                49 commits          █░░░░░░░░░░░░░░░░░░░░░░░░   04.16 % 
-🌙 Night                  138 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.70 % 
-```
-📅 **I'm Most Productive on Tuesday** 
-
-```text
-Monday                   137 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.62 % 
-Tuesday                  321 commits         ███████░░░░░░░░░░░░░░░░░░   27.23 % 
-Wednesday                284 commits         ██████░░░░░░░░░░░░░░░░░░░   24.09 % 
-Thursday                 161 commits         ███░░░░░░░░░░░░░░░░░░░░░░   13.66 % 
-Friday                   191 commits         ████░░░░░░░░░░░░░░░░░░░░░   16.20 % 
-Saturday                 42 commits          █░░░░░░░░░░░░░░░░░░░░░░░░   03.56 % 
-Sunday                   43 commits          █░░░░░░░░░░░░░░░░░░░░░░░░   03.65 % 
-```
-
-
-📊 **This Week I Spent My Time On** 
-
-```text
-🕑︎ Time Zone: Europe/Berlin
-
-💬 Programming Languages: 
-JSON                     2 hrs 16 mins       ███████░░░░░░░░░░░░░░░░░░   29.16 % 
-ActionScript             1 hr 20 mins        ████░░░░░░░░░░░░░░░░░░░░░   17.25 % 
-TypeScript               1 hr 17 mins        ████░░░░░░░░░░░░░░░░░░░░░   16.50 % 
-TSQL                     1 hr 8 mins         ████░░░░░░░░░░░░░░░░░░░░░   14.53 % 
-Ezhil                    18 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   03.99 % 
-
-🔥 Editors: 
-VS Code                  6 hrs 32 mins       █████████████████████░░░░   84.15 % 
-Vim                      1 hr 13 mins        ████░░░░░░░░░░░░░░░░░░░░░   15.85 % 
-
-💻 Operating System: 
-Mac                      7 hrs 46 mins       █████████████████████████   100.00 % 
-```
-
-**I Mostly Code in Java** 
-
-```text
-Python                   17 repos            ██████░░░░░░░░░░░░░░░░░░░   22.67 % 
-TypeScript               9 repos             ███░░░░░░░░░░░░░░░░░░░░░░   12.00 % 
-Shell                    6 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   08.00 % 
-Dockerfile               1 repo              ░░░░░░░░░░░░░░░░░░░░░░░░░   01.33 % 
-Go                       1 repo              ░░░░░░░░░░░░░░░░░░░░░░░░░   01.33 % 
-```
-
-
-
-
- Last Updated on 27/09/2023 12:22:56 UTC
 <!--END_SECTION:waka-->
