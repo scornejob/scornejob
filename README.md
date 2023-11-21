@@ -51,4 +51,8 @@ These contributions are distributed amongst 206 repos.
 
 <!--START_SECTION:waka-->
 
+```txt
+No activity tracked
+```
+
 <!--END_SECTION:waka-->
