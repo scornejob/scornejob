@@ -4,16 +4,15 @@ on:
     - cron: '0 */12 * * *' # every 12 hours
   push:
     branches: master
-    paths: 'TEMPLATE.md'
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         fetch-depth: 0
     - name: Generate README.md
-      uses: teoxoy/profile-readme-stats@v1
+      uses: teoxoy/profile-readme-stats@v2
       with:
         token: ${{ secrets.USER_TOKEN }}
     - name: Update README.md
