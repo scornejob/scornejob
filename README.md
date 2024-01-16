@@ -50,5 +50,72 @@ These contributions are distributed amongst 208 repos.
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
+![Code Time](http://img.shields.io/badge/Code%20Time-639%20hrs%2020%20mins-blue)
 
+![Profile Views](http://img.shields.io/badge/Profile%20Views-1-blue)
+
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-1.2%20million%20lines%20of%20code-blue)
+
+**🐱 My GitHub Data** 
+
+> 📦 381.8 kB Used in GitHub's Storage 
+ > 
+> 🏆 0 Contributions in the Year 2024
+ > 
+> 🚫 Not Opted to Hire
+ > 
+> 📜 18 Public Repositories 
+ > 
+> 🔑 26 Private Repositories 
+ > 
+**I'm an Early 🐤** 
+
+```text
+🌞 Morning                671 commits         ███████░░░░░░░░░░░░░░░░░░   26.61 % 
+🌆 Daytime                1684 commits        █████████████████░░░░░░░░   66.77 % 
+🌃 Evening                34 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   01.35 % 
+🌙 Night                  133 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   05.27 % 
+```
+📅 **I'm Most Productive on Tuesday** 
+
+```text
+Monday                   491 commits         █████░░░░░░░░░░░░░░░░░░░░   19.47 % 
+Tuesday                  629 commits         ██████░░░░░░░░░░░░░░░░░░░   24.94 % 
+Wednesday                513 commits         █████░░░░░░░░░░░░░░░░░░░░   20.34 % 
+Thursday                 372 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.75 % 
+Friday                   436 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.29 % 
+Saturday                 42 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   01.67 % 
+Sunday                   39 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   01.55 % 
+```
+
+
+📊 **This Week I Spent My Time On** 
+
+```text
+🕑︎ Time Zone: Europe/Berlin
+
+💬 Programming Languages: 
+No Activity Tracked This Week
+
+🔥 Editors: 
+No Activity Tracked This Week
+
+💻 Operating System: 
+No Activity Tracked This Week
+```
+
+**I Mostly Code in Python** 
+
+```text
+Python                   78 repos            █████████░░░░░░░░░░░░░░░░   34.36 % 
+TypeScript               31 repos            ███░░░░░░░░░░░░░░░░░░░░░░   13.66 % 
+Shell                    12 repos            █░░░░░░░░░░░░░░░░░░░░░░░░   05.29 % 
+Dockerfile               8 repos             █░░░░░░░░░░░░░░░░░░░░░░░░   03.52 % 
+Go                       2 repos             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.88 % 
+```
+
+
+
+
+ Last Updated on 16/01/2024 00:52:53 UTC
 <!--END_SECTION:waka-->
