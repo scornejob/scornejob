@@ -4,7 +4,7 @@ on:
     types:
         - completed
 jobs:
-  publish:
+  add_stats:
     runs-on: ubuntu-latest
     steps:
     - uses: anmol098/waka-readme-stats@master #PLEASE USE MASTER BRANCH
