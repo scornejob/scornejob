@@ -41,7 +41,7 @@ And since 2019, I'm also the CTO and software ninja for EmbedX (former Perk.cl),
 
 I've opened 4 issues throughout this time.
 
-Also, I've contributed with 194 pull requests.
+Also, I've contributed with 195 pull requests.
 
 I've made 796 commits.
 
@@ -50,36 +50,5 @@ These contributions are distributed amongst 208 repos.
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-646%20hrs%2011%20mins-blue)
 
-![Profile Views](http://img.shields.io/badge/Profile%20Views-73-blue)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-1.2%20million%20lines%20of%20code-blue)
-
-**🐱 My GitHub Data** 
-
-> 📦 381.9 kB Used in GitHub's Storage 
- > 
-> 🏆 16 Contributions in the Year 2024
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 18 Public Repositories 
- > 
-> 🔑 26 Private Repositories 
- > 
-**I Mostly Code in Python** 
-
-```text
-Python                   78 repos            █████████░░░░░░░░░░░░░░░░   34.36 % 
-TypeScript               32 repos            ████░░░░░░░░░░░░░░░░░░░░░   14.10 % 
-Shell                    12 repos            █░░░░░░░░░░░░░░░░░░░░░░░░   05.29 % 
-Dockerfile               8 repos             █░░░░░░░░░░░░░░░░░░░░░░░░   03.52 % 
-Go                       2 repos             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.88 % 
-```
-
-
-
-
- Last Updated on 30/01/2024 00:51:55 UTC
 <!--END_SECTION:waka-->
