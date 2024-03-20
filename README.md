@@ -33,7 +33,7 @@ also pushing kubernetes and cloud adoption.
 Then, I was a DevOps engineer at Zerofox, a company with the greatest culture I've experienced. I played the role of a Scrum master for the DevSecOps team,
 implementing features aiming to tackle security concerns.
 
-And now, I'm an Infrastructure Engineer at Vimcar, where culture is as good as it can get :). But the biggest change was weather and language!
+And now, I'm an Infrastructure Engineer at Shiftmove, where culture is as good as it can get :). But the biggest change was weather and language!
  
 And since 2019, I'm also the CTO and software ninja for EmbedX (former Perk.cl), a chilean startup, working to simplify and democratize access to insurance.
 
@@ -43,84 +43,12 @@ I've opened 4 issues throughout this time.
 
 Also, I've contributed with 255 pull requests.
 
-I've made 886 commits.
+I've made 887 commits.
 
 These contributions are distributed amongst 206 repos.
 
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-695%20hrs%2029%20mins-blue)
 
-![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-1.2%20million%20lines%20of%20code-blue)
-
-**🐱 My GitHub Data** 
-
-> 📦 382.0 kB Used in GitHub's Storage 
- > 
-> 🏆 184 Contributions in the Year 2024
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 17 Public Repositories 
- > 
-> 🔑 26 Private Repositories 
- > 
-**I'm an Early 🐤** 
-
-```text
-🌞 Morning                749 commits         ██████░░░░░░░░░░░░░░░░░░░   24.62 % 
-🌆 Daytime                2126 commits        █████████████████░░░░░░░░   69.89 % 
-🌃 Evening                34 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   01.12 % 
-🌙 Night                  133 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   04.37 % 
-```
-📅 **I'm Most Productive on Tuesday** 
-
-```text
-Monday                   623 commits         █████░░░░░░░░░░░░░░░░░░░░   20.48 % 
-Tuesday                  799 commits         ███████░░░░░░░░░░░░░░░░░░   26.27 % 
-Wednesday                550 commits         █████░░░░░░░░░░░░░░░░░░░░   18.08 % 
-Thursday                 446 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.66 % 
-Friday                   543 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.85 % 
-Saturday                 42 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   01.38 % 
-Sunday                   39 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   01.28 % 
-```
-
-
-📊 **This Week I Spent My Time On** 
-
-```text
-🕑︎ Time Zone: Europe/Berlin
-
-💬 Programming Languages: 
-TypeScript               1 hr                ████████████████░░░░░░░░░   65.01 % 
-JSON                     11 mins             ███░░░░░░░░░░░░░░░░░░░░░░   12.59 % 
-Other                    9 mins              ███░░░░░░░░░░░░░░░░░░░░░░   10.09 % 
-gitrebase                6 mins              ██░░░░░░░░░░░░░░░░░░░░░░░   06.66 % 
-confini                  4 mins              █░░░░░░░░░░░░░░░░░░░░░░░░   04.68 % 
-
-🔥 Editors: 
-VS Code                  1 hr 16 mins        ████████████████████░░░░░   81.25 % 
-Vim                      17 mins             █████░░░░░░░░░░░░░░░░░░░░   18.75 % 
-
-💻 Operating System: 
-Mac                      1 hr 33 mins        █████████████████████████   100.00 % 
-```
-
-**I Mostly Code in Python** 
-
-```text
-Python                   76 repos            ████████░░░░░░░░░░░░░░░░░   33.78 % 
-TypeScript               34 repos            ████░░░░░░░░░░░░░░░░░░░░░   15.11 % 
-Shell                    11 repos            █░░░░░░░░░░░░░░░░░░░░░░░░   04.89 % 
-Dockerfile               9 repos             █░░░░░░░░░░░░░░░░░░░░░░░░   04.00 % 
-Go                       3 repos             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.33 % 
-```
-
-
-
-
- Last Updated on 20/03/2024 00:52:58 UTC
 <!--END_SECTION:waka-->
