@@ -50,5 +50,32 @@ These contributions are distributed amongst 206 repos.
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
+![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue)
 
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-1.4%20million%20lines%20of%20code-blue)
+
+**🐱 My GitHub Data** 
+
+> 📦 382.1 kB Used in GitHub's Storage 
+ > 
+> 🚫 Not Opted to Hire
+ > 
+> 📜 17 Public Repositories 
+ > 
+> 🔑 27 Private Repositories 
+ > 
+**I Mostly Code in Python** 
+
+```text
+Python                   77 repos            █████████░░░░░░░░░░░░░░░░   34.07 % 
+TypeScript               34 repos            ████░░░░░░░░░░░░░░░░░░░░░   15.04 % 
+Shell                    12 repos            █░░░░░░░░░░░░░░░░░░░░░░░░   05.31 % 
+Dockerfile               8 repos             █░░░░░░░░░░░░░░░░░░░░░░░░   03.54 % 
+Go                       3 repos             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.33 % 
+```
+
+
+
+
+ Last Updated on 11/04/2024 00:36:26 UTC
 <!--END_SECTION:waka-->
