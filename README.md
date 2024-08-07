@@ -41,85 +41,14 @@ And since 2019, I'm also the CTO and software ninja for EmbedX (former Perk.cl),
 
 I've opened 4 issues throughout this time.
 
-Also, I've contributed with 454 pull requests.
+Also, I've contributed with 459 pull requests.
 
-I've made 1247 commits.
+I've made 1251 commits.
 
 These contributions are distributed amongst 205 repos.
 
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-806%20hrs%2041%20mins-blue)
 
-![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-1.1%20million%20lines%20of%20code-blue)
-
-**🐱 My GitHub Data** 
-
-> 📦 382.2 kB Used in GitHub's Storage 
- > 
-> 🏆 775 Contributions in the Year 2024
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 16 Public Repositories 
- > 
-> 🔑 27 Private Repositories 
- > 
-**I'm an Early 🐤** 
-
-```text
-🌞 Morning                575 commits         ██████░░░░░░░░░░░░░░░░░░░   23.35 % 
-🌆 Daytime                1706 commits        █████████████████░░░░░░░░   69.29 % 
-🌃 Evening                43 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   01.75 % 
-🌙 Night                  138 commits         █░░░░░░░░░░░░░░░░░░░░░░░░   05.61 % 
-```
-📅 **I'm Most Productive on Tuesday** 
-
-```text
-Monday                   554 commits         ██████░░░░░░░░░░░░░░░░░░░   22.50 % 
-Tuesday                  594 commits         ██████░░░░░░░░░░░░░░░░░░░   24.13 % 
-Wednesday                375 commits         ████░░░░░░░░░░░░░░░░░░░░░   15.23 % 
-Thursday                 344 commits         ███░░░░░░░░░░░░░░░░░░░░░░   13.97 % 
-Friday                   510 commits         █████░░░░░░░░░░░░░░░░░░░░   20.71 % 
-Saturday                 42 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   01.71 % 
-Sunday                   43 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   01.75 % 
-```
-
-
-📊 **This Week I Spent My Time On** 
-
-```text
-🕑︎ Time Zone: Europe/Berlin
-
-💬 Programming Languages: 
-TypeScript               1 hr 4 mins         ██████████████████░░░░░░░   70.90 % 
-JavaScript               22 mins             ██████░░░░░░░░░░░░░░░░░░░   24.94 % 
-SCSS                     3 mins              █░░░░░░░░░░░░░░░░░░░░░░░░   03.82 % 
-YAML                     0 secs              ░░░░░░░░░░░░░░░░░░░░░░░░░   00.32 % 
-Python                   0 secs              ░░░░░░░░░░░░░░░░░░░░░░░░░   00.01 % 
-
-🔥 Editors: 
-VS Code                  1 hr 30 mins        █████████████████████████   100.00 % 
-
-💻 Operating System: 
-Mac                      1 hr 30 mins        █████████████████████████   100.00 % 
-```
-
-**I Mostly Code in Python** 
-
-```text
-Python                   78 repos            █████████░░░░░░░░░░░░░░░░   34.67 % 
-TypeScript               35 repos            ████░░░░░░░░░░░░░░░░░░░░░   15.56 % 
-Shell                    12 repos            █░░░░░░░░░░░░░░░░░░░░░░░░   05.33 % 
-Dockerfile               8 repos             █░░░░░░░░░░░░░░░░░░░░░░░░   03.56 % 
-Go                       3 repos             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.33 % 
-```
-
-
-
-
- Last Updated on 06/08/2024 03:15:54 UTC
 <!--END_SECTION:waka-->
