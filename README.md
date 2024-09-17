@@ -41,9 +41,9 @@ And since 2019, I'm also the CTO and software ninja for EmbedX (former Perk.cl),
 
 I've opened 5 issues throughout this time.
 
-Also, I've contributed with 516 pull requests.
+Also, I've contributed with 517 pull requests.
 
-I've made 1365 commits.
+I've made 1366 commits.
 
 These contributions are distributed amongst 206 repos.
 
