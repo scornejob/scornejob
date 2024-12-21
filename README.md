@@ -50,5 +50,74 @@ These contributions are distributed amongst 29 repos.
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
+![Code Time](http://img.shields.io/badge/Code%20Time-986%20hrs%2013%20mins-blue)
 
+![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue)
+
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-3.4%20million%20lines%20of%20code-blue)
+
+**🐱 My GitHub Data** 
+
+> 📦 387.2 kB Used in GitHub's Storage 
+ > 
+> 🚫 Not Opted to Hire
+ > 
+> 📜 17 Public Repositories 
+ > 
+> 🔑 30 Private Repositories 
+ > 
+**I'm an Early 🐤** 
+
+```text
+🌞 Morning                2320 commits        ███████░░░░░░░░░░░░░░░░░░   26.69 % 
+🌆 Daytime                6131 commits        ██████████████████░░░░░░░   70.54 % 
+🌃 Evening                103 commits         ░░░░░░░░░░░░░░░░░░░░░░░░░   01.18 % 
+🌙 Night                  138 commits         ░░░░░░░░░░░░░░░░░░░░░░░░░   01.59 % 
+```
+📅 **I'm Most Productive on Tuesday** 
+
+```text
+Monday                   1463 commits        ████░░░░░░░░░░░░░░░░░░░░░   16.83 % 
+Tuesday                  2157 commits        ██████░░░░░░░░░░░░░░░░░░░   24.82 % 
+Wednesday                2074 commits        ██████░░░░░░░░░░░░░░░░░░░   23.86 % 
+Thursday                 1415 commits        ████░░░░░░░░░░░░░░░░░░░░░   16.28 % 
+Friday                   1490 commits        ████░░░░░░░░░░░░░░░░░░░░░   17.14 % 
+Saturday                 42 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.48 % 
+Sunday                   51 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.59 % 
+```
+
+
+📊 **This Week I Spent My Time On** 
+
+```text
+🕑︎ Time Zone: Europe/Berlin
+
+💬 Programming Languages: 
+No Activity Tracked This Week
+
+🔥 Editors: 
+No Activity Tracked This Week
+
+💻 Operating System: 
+No Activity Tracked This Week
+```
+
+**I Mostly Code in TypeScript** 
+
+```text
+TypeScript               17 repos            ███████░░░░░░░░░░░░░░░░░░   28.33 % 
+Python                   12 repos            █████░░░░░░░░░░░░░░░░░░░░   20.00 % 
+Shell                    7 repos             ███░░░░░░░░░░░░░░░░░░░░░░   11.67 % 
+Dockerfile               2 repos             █░░░░░░░░░░░░░░░░░░░░░░░░   03.33 % 
+Jupyter Notebook         1 repo              ░░░░░░░░░░░░░░░░░░░░░░░░░   01.67 % 
+```
+
+
+
+**Timeline**
+
+![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
+
+
+ Last Updated on 21/12/2024 15:46:18 UTC
 <!--END_SECTION:waka-->
