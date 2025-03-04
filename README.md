@@ -43,9 +43,9 @@ I've opened 5 issues throughout this time.
 
 Also, I've contributed with 667 pull requests.
 
-I've made 1675 commits.
+I've made 1674 commits.
 
-These contributions are distributed amongst 28 repos.
+These contributions are distributed amongst 27 repos.
 
 <h2>... and some detailed dev stats<h2>
 
