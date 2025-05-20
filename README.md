@@ -43,9 +43,16 @@ I've opened 6 issues throughout this time.
 
 Also, I've contributed with 728 pull requests.
 
-I've made 1883 commits.
+I've made 1884 commits.
 
 These contributions are distributed amongst 31 repos.
+
+<a href="https://github.com/scornejob/scornejob">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/scornejob/scornejob/master/profile-3d-contrib/profile-night-green.svg">
+    <img alt="Seba Cornejo GitHub Contrib map" src="https://raw.githubusercontent.com/scornejob/scornejob/master/profile-3d-contrib/profile-gitblock.svg">
+  </picture>
+</a>
 
 <h2>... and some detailed dev stats<h2>
 
