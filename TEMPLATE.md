@@ -47,6 +47,13 @@ I've made {{ COMMITS }} commits.
 
 These contributions are distributed amongst {{ REPOSITORIES_CONTRIBUTED_TO }} repos.
 
+<a href="https://github.com/scornejob/scornejob">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/scornejob/scornejob/master/profile-3d-contrib/profile-night-green.svg">
+    <img alt="Seba Cornejo GitHub Contrib map" src="https://raw.githubusercontent.com/scornejob/scornejob/master/profile-3d-contrib/profile-gitblock.svg">
+  </picture>
+</a>
+
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
