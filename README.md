@@ -22,7 +22,7 @@ I was also lead of another great team, pushing to adopt the DevOps culture inter
 
 Then, I moved to the Data Observatory, where we intended to democratize access to computing power
 and data for Chile. We ported the ALMA regional center to the cloud, but most importantly, we designed, implemented
-and maintained the Covid 19 date repository for the Chilean Ministry of Science, Technology and Knowledge, Recognized by the OMS as one of the most open
+and maintained the Covid 19 date repository for the Chilean Ministry of Science, Technology and Knowledge, Recognized by the WHO as one of the most open
 data repositories worldwide.
 
 Later, I moved to Comscore, where I worked with an amazing team and grew as DevOps Engineer, helping migrating workloads to the cloud.
@@ -41,9 +41,9 @@ And since 2019, I'm also the CTO and software ninja for EmbedX (former Perk.cl),
 
 I've opened 6 issues throughout this time.
 
-Also, I've contributed with 727 pull requests.
+Also, I've contributed with 728 pull requests.
 
-I've made 1879 commits.
+I've made 1880 commits.
 
 These contributions are distributed amongst 31 repos.
 
