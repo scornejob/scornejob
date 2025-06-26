@@ -41,9 +41,9 @@ And since 2019, I'm also the CTO and software ninja for EmbedX (former Perk.cl),
 
 I've opened 6 issues throughout this time.
 
-Also, I've contributed with 783 pull requests.
+Also, I've contributed with 785 pull requests.
 
-I've made 1979 commits.
+I've made 1983 commits.
 
 These contributions are distributed amongst 36 repos.
 
@@ -57,40 +57,5 @@ These contributions are distributed amongst 36 repos.
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-1%2C192%20hrs%206%20mins-blue)
 
-![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-9.1%20million%20lines%20of%20code-blue)
-
-**🐱 My GitHub Data** 
-
-> 📦 71.8 kB Used in GitHub's Storage 
- > 
-> 🏆 574 Contributions in the Year 2025
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 23 Public Repositories 
- > 
-> 🔑 27 Private Repositories 
- > 
-**I Mostly Code in TypeScript** 
-
-```text
-TypeScript               15 repos            ██████░░░░░░░░░░░░░░░░░░░   23.44 % 
-Python                   14 repos            █████░░░░░░░░░░░░░░░░░░░░   21.88 % 
-JavaScript               5 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   07.81 % 
-Shell                    5 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   07.81 % 
-Jupyter Notebook         1 repo              ░░░░░░░░░░░░░░░░░░░░░░░░░   01.56 % 
-```
-
-
-
-**Timeline**
-
-![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
-
-
- Last Updated on 25/06/2025 02:53:44 UTC
 <!--END_SECTION:waka-->
