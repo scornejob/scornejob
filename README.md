@@ -41,9 +41,9 @@ And since 2019, I'm also the CTO and software ninja for EmbedX (former Perk.cl),
 
 I've opened 6 issues throughout this time.
 
-Also, I've contributed with 798 pull requests.
+Also, I've contributed with 799 pull requests.
 
-I've made 2013 commits.
+I've made 2016 commits.
 
 These contributions are distributed amongst 33 repos.
 
@@ -57,81 +57,5 @@ These contributions are distributed amongst 33 repos.
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-1%2C205%20hrs%2040%20mins-blue)
 
-![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-9.7%20million%20lines%20of%20code-blue)
-
-**🐱 My GitHub Data** 
-
-> 📦 72.0 kB Used in GitHub's Storage 
- > 
-> 🏆 631 Contributions in the Year 2025
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 23 Public Repositories 
- > 
-> 🔑 27 Private Repositories 
- > 
-**I'm an Early 🐤** 
-
-```text
-🌞 Morning                5535 commits        ███████░░░░░░░░░░░░░░░░░░   27.37 % 
-🌆 Daytime                14165 commits       ██████████████████░░░░░░░   70.05 % 
-🌃 Evening                376 commits         ░░░░░░░░░░░░░░░░░░░░░░░░░   01.86 % 
-🌙 Night                  144 commits         ░░░░░░░░░░░░░░░░░░░░░░░░░   00.71 % 
-```
-📅 **I'm Most Productive on Wednesday** 
-
-```text
-Monday                   2988 commits        ████░░░░░░░░░░░░░░░░░░░░░   14.78 % 
-Tuesday                  4753 commits        ██████░░░░░░░░░░░░░░░░░░░   23.51 % 
-Wednesday                5483 commits        ███████░░░░░░░░░░░░░░░░░░   27.12 % 
-Thursday                 3640 commits        ████░░░░░░░░░░░░░░░░░░░░░   18.00 % 
-Friday                   3248 commits        ████░░░░░░░░░░░░░░░░░░░░░   16.06 % 
-Saturday                 54 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.27 % 
-Sunday                   54 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.27 % 
-```
-
-
-📊 **This Week I Spent My Time On** 
-
-```text
-🕑︎ Time Zone: Europe/Berlin
-
-💬 Programming Languages: 
-TypeScript               9 hrs 26 mins       ████████████████████░░░░░   79.22 % 
-JSON                     53 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   07.47 % 
-JavaScript               32 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   04.51 % 
-gitrebase                21 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   03.07 % 
-Other                    17 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   02.51 % 
-
-🔥 Editors: 
-VS Code                  11 hrs 28 mins      ████████████████████████░   96.24 % 
-Vim                      26 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   03.76 % 
-
-💻 Operating System: 
-Mac                      11 hrs 55 mins      █████████████████████████   100.00 % 
-```
-
-**I Mostly Code in TypeScript** 
-
-```text
-TypeScript               15 repos            ██████░░░░░░░░░░░░░░░░░░░   24.59 % 
-Python                   14 repos            ██████░░░░░░░░░░░░░░░░░░░   22.95 % 
-Shell                    5 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   08.20 % 
-JavaScript               4 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   06.56 % 
-Jupyter Notebook         1 repo              ░░░░░░░░░░░░░░░░░░░░░░░░░   01.64 % 
-```
-
-
-
-**Timeline**
-
-![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
-
-
- Last Updated on 04/07/2025 02:52:28 UTC
 <!--END_SECTION:waka-->
