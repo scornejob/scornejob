@@ -45,7 +45,7 @@ Also, I've contributed with 955 pull requests.
 
 I've made 2397 commits.
 
-These contributions are distributed amongst 64 repos.
+These contributions are distributed amongst 65 repos.
 
 <a href="https://github.com/scornejob/scornejob">
   <picture>
@@ -57,76 +57,5 @@ These contributions are distributed amongst 64 repos.
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-1%2C391%20hrs%2045%20mins-blue)
 
-![Profile Views](http://img.shields.io/badge/Profile%20Views-1-blue)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-13.3%20million%20lines%20of%20code-blue)
-
-**🐱 My GitHub Data** 
-
-> 📦 676.0 kB Used in GitHub's Storage 
- > 
-> 🏆 1,244 Contributions in the Year 2025
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 24 Public Repositories 
- > 
-> 🔑 27 Private Repositories 
- > 
-**I'm an Early 🐤** 
-
-```text
-🌞 Morning                7220 commits        ███████░░░░░░░░░░░░░░░░░░   27.89 % 
-🌆 Daytime                18121 commits       ██████████████████░░░░░░░   70.00 % 
-🌃 Evening                407 commits         ░░░░░░░░░░░░░░░░░░░░░░░░░   01.57 % 
-🌙 Night                  139 commits         ░░░░░░░░░░░░░░░░░░░░░░░░░   00.54 % 
-```
-📅 **I'm Most Productive on Wednesday** 
-
-```text
-Monday                   4222 commits        ████░░░░░░░░░░░░░░░░░░░░░   16.31 % 
-Tuesday                  6225 commits        ██████░░░░░░░░░░░░░░░░░░░   24.05 % 
-Wednesday                6888 commits        ███████░░░░░░░░░░░░░░░░░░   26.61 % 
-Thursday                 4464 commits        ████░░░░░░░░░░░░░░░░░░░░░   17.24 % 
-Friday                   3982 commits        ████░░░░░░░░░░░░░░░░░░░░░   15.38 % 
-Saturday                 56 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.22 % 
-Sunday                   50 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.19 % 
-```
-
-
-📊 **This Week I Spent My Time On** 
-
-```text
-🕑︎ Time Zone: Europe/Berlin
-
-💬 Programming Languages: 
-No Activity Tracked This Week
-
-🔥 Editors: 
-No Activity Tracked This Week
-
-💻 Operating System: 
-No Activity Tracked This Week
-```
-
-**I Mostly Code in TypeScript** 
-
-```text
-TypeScript               28 repos            ███████░░░░░░░░░░░░░░░░░░   29.79 % 
-Python                   26 repos            ███████░░░░░░░░░░░░░░░░░░   27.66 % 
-JavaScript               11 repos            ███░░░░░░░░░░░░░░░░░░░░░░   11.70 % 
-Shell                    5 repos             █░░░░░░░░░░░░░░░░░░░░░░░░   05.32 % 
-Jupyter Notebook         2 repos             █░░░░░░░░░░░░░░░░░░░░░░░░   02.13 % 
-```
-
-
-
-**Timeline**
-
-![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
-
-
- Last Updated on 27/10/2025 03:11:42 UTC
 <!--END_SECTION:waka-->
