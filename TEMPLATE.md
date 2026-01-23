@@ -33,7 +33,7 @@ also pushing kubernetes and cloud adoption.
 Then, I was a DevOps engineer at Zerofox, a company with the greatest culture I've experienced. I played the role of a Scrum master for the DevSecOps team,
 implementing features aiming to tackle security concerns.
 
-And now, I'm an Infrastructure Engineer at Shiftmove, where culture is as good as it can get :). But the biggest change was weather and language!
+And now, I'm an Infrastructure Engineer at Shiftmove, where I've been challenged in ways I never imagined :). But the biggest chalenge was weather and language!
  
 And since 2019, I'm also the CTO and software ninja for EmbedX (former Perk.cl), a chilean startup, working to simplify and democratize access to insurance.
 
