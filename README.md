@@ -57,7 +57,7 @@ These contributions are distributed amongst 68 repos.
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-1%2C478%20hrs%2014%20mins-blue?style=flat)
+![Code Time](http://img.shields.io/badge/Code%20Time-1%2C479%20hrs%2012%20mins-blue?style=flat)
 
 ![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue?style=flat)
 
@@ -65,9 +65,9 @@ These contributions are distributed amongst 68 repos.
 
 **🐱 My GitHub Data** 
 
-> 📦 679.2 kB Used in GitHub's Storage 
+> 📦 679.3 kB Used in GitHub's Storage 
  > 
-> 🏆 64 Contributions in the Year 2026
+> 🏆 66 Contributions in the Year 2026
  > 
 > 🚫 Not Opted to Hire
  > 
@@ -75,6 +75,47 @@ These contributions are distributed amongst 68 repos.
  > 
 > 🔑 28 Private Repositories 
  > 
+**I'm an Early 🐤** 
+
+```text
+🌞 Morning                8897 commits        ███████░░░░░░░░░░░░░░░░░░   28.82 % 
+🌆 Daytime                21368 commits       █████████████████░░░░░░░░   69.22 % 
+🌃 Evening                466 commits         ░░░░░░░░░░░░░░░░░░░░░░░░░   01.51 % 
+🌙 Night                  139 commits         ░░░░░░░░░░░░░░░░░░░░░░░░░   00.45 % 
+```
+📅 **I'm Most Productive on Wednesday** 
+
+```text
+Monday                   5284 commits        ████░░░░░░░░░░░░░░░░░░░░░   17.12 % 
+Tuesday                  7435 commits        ██████░░░░░░░░░░░░░░░░░░░   24.08 % 
+Wednesday                8023 commits        ██████░░░░░░░░░░░░░░░░░░░   25.99 % 
+Thursday                 5055 commits        ████░░░░░░░░░░░░░░░░░░░░░   16.38 % 
+Friday                   4966 commits        ████░░░░░░░░░░░░░░░░░░░░░   16.09 % 
+Saturday                 57 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.18 % 
+Sunday                   50 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.16 % 
+```
+
+
+📊 **This Week I Spent My Time On** 
+
+```text
+🕑︎ Time Zone: Europe/Berlin
+
+💬 Programming Languages: 
+Other                    1 hr 53 mins        ███████░░░░░░░░░░░░░░░░░░   29.53 % 
+Bash                     1 hr 43 mins        ███████░░░░░░░░░░░░░░░░░░   26.80 % 
+TypeScript               1 hr 11 mins        █████░░░░░░░░░░░░░░░░░░░░   18.57 % 
+Docker                   53 mins             ███░░░░░░░░░░░░░░░░░░░░░░   13.80 % 
+JSON                     28 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   07.45 % 
+
+🔥 Editors: 
+VS Code                  4 hrs 25 mins       █████████████████░░░░░░░░   69.01 % 
+Vim                      1 hr 59 mins        ████████░░░░░░░░░░░░░░░░░   30.99 % 
+
+💻 Operating System: 
+Mac                      6 hrs 24 mins       █████████████████████████   100.00 % 
+```
+
 **I Mostly Code in TypeScript** 
 
 ```text
@@ -92,5 +133,5 @@ Jupyter Notebook         2 repos             █░░░░░░░░░░�
 ![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
 
 
- Last Updated on 23/01/2026 03:20:02 UTC
+ Last Updated on 23/01/2026 15:37:43 UTC
 <!--END_SECTION:waka-->
