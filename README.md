@@ -33,7 +33,7 @@ also pushing kubernetes and cloud adoption.
 Then, I was a DevOps engineer at Zerofox, a company with the greatest culture I've experienced. I played the role of a Scrum master for the DevSecOps team,
 implementing features aiming to tackle security concerns.
 
-And now, I'm an Infrastructure Engineer at Shiftmove, where culture is as good as it can get :). But the biggest change was weather and language!
+And now, I'm an Infrastructure Engineer at Shiftmove, where I've been challenged in ways I never imagined :). But the biggest challenge was weather and language!
  
 And since 2019, I'm also the CTO and software ninja for EmbedX (former Perk.cl), a chilean startup, working to simplify and democratize access to insurance.
 
@@ -43,7 +43,7 @@ I've opened 6 issues throughout this time.
 
 Also, I've contributed with 1011 pull requests.
 
-I've made 2534 commits.
+I've made 2536 commits.
 
 These contributions are distributed amongst 68 repos.
 
@@ -57,81 +57,5 @@ These contributions are distributed amongst 68 repos.
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-1%2C479%20hrs%2012%20mins-blue?style=flat)
 
-![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue?style=flat)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-17.92%20million%20lines%20of%20code-blue?style=flat)
-
-**🐱 My GitHub Data** 
-
-> 📦 679.3 kB Used in GitHub's Storage 
- > 
-> 🏆 66 Contributions in the Year 2026
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 24 Public Repositories 
- > 
-> 🔑 28 Private Repositories 
- > 
-**I'm an Early 🐤** 
-
-```text
-🌞 Morning                8897 commits        ███████░░░░░░░░░░░░░░░░░░   28.82 % 
-🌆 Daytime                21368 commits       █████████████████░░░░░░░░   69.22 % 
-🌃 Evening                466 commits         ░░░░░░░░░░░░░░░░░░░░░░░░░   01.51 % 
-🌙 Night                  139 commits         ░░░░░░░░░░░░░░░░░░░░░░░░░   00.45 % 
-```
-📅 **I'm Most Productive on Wednesday** 
-
-```text
-Monday                   5284 commits        ████░░░░░░░░░░░░░░░░░░░░░   17.12 % 
-Tuesday                  7435 commits        ██████░░░░░░░░░░░░░░░░░░░   24.08 % 
-Wednesday                8023 commits        ██████░░░░░░░░░░░░░░░░░░░   25.99 % 
-Thursday                 5055 commits        ████░░░░░░░░░░░░░░░░░░░░░   16.38 % 
-Friday                   4966 commits        ████░░░░░░░░░░░░░░░░░░░░░   16.09 % 
-Saturday                 57 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.18 % 
-Sunday                   50 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.16 % 
-```
-
-
-📊 **This Week I Spent My Time On** 
-
-```text
-🕑︎ Time Zone: Europe/Berlin
-
-💬 Programming Languages: 
-Other                    1 hr 53 mins        ███████░░░░░░░░░░░░░░░░░░   29.53 % 
-Bash                     1 hr 43 mins        ███████░░░░░░░░░░░░░░░░░░   26.80 % 
-TypeScript               1 hr 11 mins        █████░░░░░░░░░░░░░░░░░░░░   18.57 % 
-Docker                   53 mins             ███░░░░░░░░░░░░░░░░░░░░░░   13.80 % 
-JSON                     28 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   07.45 % 
-
-🔥 Editors: 
-VS Code                  4 hrs 25 mins       █████████████████░░░░░░░░   69.01 % 
-Vim                      1 hr 59 mins        ████████░░░░░░░░░░░░░░░░░   30.99 % 
-
-💻 Operating System: 
-Mac                      6 hrs 24 mins       █████████████████████████   100.00 % 
-```
-
-**I Mostly Code in TypeScript** 
-
-```text
-TypeScript               28 repos            ███████░░░░░░░░░░░░░░░░░░   28.28 % 
-Python                   28 repos            ███████░░░░░░░░░░░░░░░░░░   28.28 % 
-JavaScript               12 repos            ███░░░░░░░░░░░░░░░░░░░░░░   12.12 % 
-Shell                    6 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   06.06 % 
-Jupyter Notebook         2 repos             █░░░░░░░░░░░░░░░░░░░░░░░░   02.02 % 
-```
-
-
-
-**Timeline**
-
-![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
-
-
- Last Updated on 23/01/2026 15:37:43 UTC
 <!--END_SECTION:waka-->
