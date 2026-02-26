@@ -57,5 +57,40 @@ These contributions are distributed amongst 72 repos.
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
+![Code Time](http://img.shields.io/badge/Code%20Time-1%2C519%20hrs%2016%20mins-blue?style=flat)
 
+![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue?style=flat)
+
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-20.40%20million%20lines%20of%20code-blue?style=flat)
+
+**🐱 My GitHub Data** 
+
+> 📦 680.5 kB Used in GitHub's Storage 
+ > 
+> 🏆 234 Contributions in the Year 2026
+ > 
+> 🚫 Not Opted to Hire
+ > 
+> 📜 26 Public Repositories 
+ > 
+> 🔑 29 Private Repositories 
+ > 
+**I Mostly Code in TypeScript** 
+
+```text
+TypeScript               31 repos            ███████░░░░░░░░░░░░░░░░░░   29.25 % 
+JavaScript               11 repos            ███░░░░░░░░░░░░░░░░░░░░░░   10.38 % 
+Shell                    7 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   06.60 % 
+Jupyter Notebook         2 repos             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.89 % 
+C                        1 repo              ░░░░░░░░░░░░░░░░░░░░░░░░░   00.94 % 
+```
+
+
+
+**Timeline**
+
+![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
+
+
+ Last Updated on 26/02/2026 03:44:50 UTC
 <!--END_SECTION:waka-->
