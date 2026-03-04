@@ -66,7 +66,7 @@ Following that, I joined Comscore, where I grew considerably as a DevOps Enginee
 
 At ZeroFox — a company with an engineering culture I genuinely admired — I served as both DevOps Engineer and Scrum Master for the DevSecOps team, with a focus on embedding security practices meaningfully into the delivery pipeline.
 
-I currently work as an Infrastructure Engineer at Shiftmove, where I've encountered technical and personal challenges I didn't fully anticipate — including building a new life in a new country and working in a new language, which has been as rewarding as it has been demanding.
+I currently work as an Infrastructure Engineer at Shiftmove, where I've encountered technical and personal challenges I didn't fully anticipate — including building a new life in a new country and living in a new language, which has been as rewarding as it has been demanding.
 
 Since 2019, I have also served as CTO and Software Ninja at EmbedX (formerly Perk.cl), a Chilean insurtech startup dedicated to simplifying and democratizing access to insurance.
 
