@@ -1,7 +1,56 @@
-<h2> Hi there.  I'm Sebas Cornejo Baeza.</h2>
-<h4> Not your average software engineer</h4>
-<h3> 👨🏻‍💻 About Me </h3>
+# Hi there.  I'm Sebas Cornejo Baeza.
+## Not your average software engineer
+### Infrastructure & DevOps Engineer · Sound Engineer turned Computer Engineer · MEng Industrial Engineering · Helped image a black hole once 🔭
+
+#### 👨🏻‍💻 About Me 
+
+I'm a multidisciplinary engineer with a Master of Engineering in Industrial Engineering and a background spanning audio systems, scientific computing, cloud infrastructure, and DevOps. I've led software teams at one of the world's most powerful telescopes, built a WHO-recognized open data platform, and have been shipping production systems across Latin America and Europe for over 15 years.
+
+Currently an **Infrastructure Engineer at Shiftmove** · **CTO at [EmbedX](https://embedx.io)** — a Chilean insurtech making insurance more accessible.
+
 <a href="http://linkedin.com/in/sebastian-cornejo-baeza/"><img alt="LinkedIn" src="https://img.shields.io/badge/Sebas%20Cornejo%20-informational?style=appveyor&logo=linkedin"></a>
+
+---
+## 🛠️ Core Stack
+
+<table>
+<tr>
+<td valign="top" width="50%">
+
+**Infrastructure & Cloud**
+
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
+![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=flat-square&logo=terraform&logoColor=white)
+
+</td>
+<td valign="top" width="50%">
+
+**Development & Observability**
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white)
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🚀 Career highlights
+
+- 🔭 Delivered the software that coupled **ALMA to the Event Horizon Telescope** — contributing to the first-ever image of a black hole
+- 🌍 Built the **COVID-19 data repository** for the Chilean Ministry of Science, recognized by the **WHO** as one of the most open data repositories worldwide
+- 📡 Led the geographic migration of ALMA's control framework from Europe to Chile
+- ☁️ Ported the ALMA regional center to the cloud at the Data Observatory
+- 🛡️ Drove DevSecOps adoption and Kubernetes-native delivery at ZeroFox and Sovos
+
+---
 
 I define myself as a curious and eclectic engineer — someone who has consistently followed technical depth wherever it led, even when that meant reinventing my path.
 
