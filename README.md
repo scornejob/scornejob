@@ -89,11 +89,11 @@ I've played electric guitar since I was 14. At 20, I started building my own sto
 
 I've opened 6 issues throughout this time.
 
-Also, I've contributed with 1059 pull requests.
+Also, I've contributed with 1061 pull requests.
 
-I've made 2695 commits.
+I've made 2697 commits.
 
-These contributions are distributed amongst 74 repos.
+These contributions are distributed amongst 75 repos.
 
 <a href="https://github.com/scornejob/scornejob">
   <picture>
@@ -105,40 +105,5 @@ These contributions are distributed amongst 74 repos.
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-1%2C534%20hrs%2016%20mins-blue?style=flat)
 
-![Profile Views](http://img.shields.io/badge/Profile%20Views-1-blue?style=flat)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-20.66%20million%20lines%20of%20code-blue?style=flat)
-
-**🐱 My GitHub Data** 
-
-> 📦 681.1 kB Used in GitHub's Storage 
- > 
-> 🏆 277 Contributions in the Year 2026
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 26 Public Repositories 
- > 
-> 🔑 29 Private Repositories 
- > 
-**I Mostly Code in TypeScript** 
-
-```text
-TypeScript               31 repos            ███████░░░░░░░░░░░░░░░░░░   28.70 % 
-JavaScript               11 repos            ███░░░░░░░░░░░░░░░░░░░░░░   10.19 % 
-Shell                    7 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   06.48 % 
-Jupyter Notebook         2 repos             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.85 % 
-C                        1 repo              ░░░░░░░░░░░░░░░░░░░░░░░░░   00.93 % 
-```
-
-
-
-**Timeline**
-
-![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
-
-
- Last Updated on 05/03/2026 03:41:07 UTC
 <!--END_SECTION:waka-->
