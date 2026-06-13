@@ -83,9 +83,9 @@ first learning to play the songs I loved, then modifying electronics until they 
 
 I've opened 6 issues throughout this time.
 
-Also, I've contributed with 1186 pull requests.
+Also, I've contributed with 1188 pull requests.
 
-I've made 3108 commits.
+I've made 3116 commits.
 
 These contributions are distributed amongst 81 repos.
 
@@ -99,40 +99,5 @@ These contributions are distributed amongst 81 repos.
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-1%2C678%20hrs%2054%20mins-blue?style=flat)
 
-![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue?style=flat)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-26.47%20million%20lines%20of%20code-blue?style=flat)
-
-**🐱 My GitHub Data** 
-
-> 📦 685.3 kB Used in GitHub's Storage 
- > 
-> 🏆 876 Contributions in the Year 2026
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 30 Public Repositories 
- > 
-> 🔑 33 Private Repositories 
- > 
-**I Mostly Code in Python** 
-
-```text
-Python                   41 repos            ████████░░░░░░░░░░░░░░░░░   33.61 % 
-TypeScript               32 repos            ███████░░░░░░░░░░░░░░░░░░   26.23 % 
-JavaScript               12 repos            ██░░░░░░░░░░░░░░░░░░░░░░░   09.84 % 
-Shell                    10 repos            ██░░░░░░░░░░░░░░░░░░░░░░░   08.20 % 
-C                        1 repo              ░░░░░░░░░░░░░░░░░░░░░░░░░   00.82 % 
-```
-
-
-
-**Timeline**
-
-![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
-
-
- Last Updated on 12/06/2026 04:01:45 UTC
 <!--END_SECTION:waka-->
