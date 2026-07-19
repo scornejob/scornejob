@@ -4,18 +4,24 @@ on:
   push:
     paths:
       - README.md
+      - TEMPLATE.md
+      - scripts/generate_readme_from_template.py
       - scripts/sync_waka_section.py
       - .github/workflows/sync-readme-test.yml
   workflow_dispatch:
     inputs:
-      source_file:
-        description: Source README file
+      template_file:
+        description: Source template file
         required: false
-        default: README.md
+        default: TEMPLATE.md
       target_file:
         description: Target README test file
         required: false
         default: README-TEST.md
+      waka_source_file:
+        description: Source README used for waka section
+        required: false
+        default: README.md
 
 permissions:
   contents: write
@@ -34,10 +40,15 @@ jobs:
           GIT_CONFIG_VALUE_1: "false"
 
       - name: Run sync script
+        env:
+          STATS_TOKEN: ${{ secrets.USER_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
-          SOURCE="${{ github.event.inputs.source_file || 'README.md' }}"
+          TEMPLATE="${{ github.event.inputs.template_file || 'TEMPLATE.md' }}"
           TARGET="${{ github.event.inputs.target_file || 'README-TEST.md' }}"
-          python scripts/sync_waka_section.py --source "$SOURCE" --target "$TARGET"
+          WAKA_SOURCE="${{ github.event.inputs.waka_source_file || 'README.md' }}"
+
+          python scripts/generate_readme_from_template.py --template "$TEMPLATE" --output "$TARGET"
+          python scripts/sync_waka_section.py --source "$WAKA_SOURCE" --target "$TARGET"
 
       - name: Commit target file
         run: |
