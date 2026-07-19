@@ -35,6 +35,25 @@ def _github_headers(gh_token: str | None) -> dict[str, str]:
     return headers
 
 
+def _graphql_request(query: str, variables: dict[str, Any], gh_token: str) -> Any:
+    payload = json.dumps({"query": query, "variables": variables}).encode("utf-8")
+    req = urllib.request.Request(
+        "https://api.github.com/graphql",
+        data=payload,
+        headers={
+            "Authorization": f"Bearer {gh_token}",
+            "Content-Type": "application/json",
+            "Accept": "application/vnd.github+json",
+        },
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=30) as response:
+        data = json.loads(response.read().decode("utf-8"))
+    if data.get("errors"):
+        raise ValueError(f"GraphQL error: {data['errors'][0].get('message', 'unknown')}" )
+    return data.get("data", {})
+
+
 def _wakatime_all_time(api_key: str) -> Any:
     url = "https://wakatime.com/api/v1/users/current/all_time_since_today"
     url = f"{url}?api_key={urllib.parse.quote(api_key)}"
@@ -56,6 +75,41 @@ def _wakatime_today(api_key: str) -> Any:
 def _github_user(username: str, gh_token: str | None) -> Any:
     url = f"https://api.github.com/users/{urllib.parse.quote(username)}"
     return _request_json(url, _github_headers(gh_token))
+
+
+def _github_user_events(username: str, gh_token: str | None) -> list[dict[str, Any]]:
+    headers = _github_headers(gh_token)
+    events: list[dict[str, Any]] = []
+    for page in range(1, 4):
+        url = (
+            f"https://api.github.com/users/{urllib.parse.quote(username)}/events"
+            f"?per_page=100&page={page}"
+        )
+        batch = _request_json(url, headers)
+        if not batch:
+            break
+        events.extend(batch)
+        if len(batch) < 100:
+            break
+    return events
+
+
+def _github_commit_search_count(username: str, gh_token: str | None) -> int:
+    query = urllib.parse.quote(f"author:{username}")
+    headers = _github_headers(gh_token)
+    headers["Accept"] = "application/vnd.github.cloak-preview+json"
+    url = f"https://api.github.com/search/commits?q={query}&per_page=1"
+    data = _request_json(url, headers)
+    return int(data.get("total_count", 0))
+
+
+def _github_issue_pr_counts(username: str, gh_token: str | None) -> tuple[int, int]:
+    headers = _github_headers(gh_token)
+    issue_q = urllib.parse.quote(f"author:{username} is:issue")
+    pr_q = urllib.parse.quote(f"author:{username} is:pr")
+    issues = _request_json(f"https://api.github.com/search/issues?q={issue_q}&per_page=1", headers)
+    prs = _request_json(f"https://api.github.com/search/issues?q={pr_q}&per_page=1", headers)
+    return int(issues.get("total_count", 0)), int(prs.get("total_count", 0))
 
 
 def _github_repos(username: str, gh_token: str | None, visibility: str = "public") -> list[dict[str, Any]]:
@@ -99,6 +153,103 @@ def _language_counts(repos: list[dict[str, Any]]) -> list[tuple[str, int]]:
     return sorted(counts.items(), key=lambda item: item[1], reverse=True)
 
 
+def _format_int(value: int) -> str:
+    return f"{value:,}"
+
+
+def _percent(value: float, total: float) -> float:
+    if total <= 0:
+        return 0.0
+    return (value / total) * 100
+
+
+def _bar(percent: float, width: int = 25) -> str:
+    filled = max(0, min(width, int(round((percent / 100.0) * width))))
+    return "█" * filled + "░" * (width - filled)
+
+
+def _code_block_lines(items: list[tuple[str, int]]) -> str:
+    total = sum(v for _, v in items)
+    lines: list[str] = []
+    for label, count in items:
+        pct = _percent(count, total)
+        lines.append(
+            f"{label:<24} {_format_int(count):>10} commits       {_bar(pct)}   {pct:05.2f} % "
+        )
+    return "\n".join(lines)
+
+
+def _graph_year_contrib(username: str, gh_token: str | None) -> int:
+    if not gh_token:
+        return 0
+    query = """
+    query($login: String!) {
+      user(login: $login) {
+        contributionsCollection {
+          contributionCalendar {
+            totalContributions
+          }
+        }
+      }
+    }
+    """
+    data = _graphql_request(query, {"login": username}, gh_token)
+    return int(
+        data.get("user", {})
+        .get("contributionsCollection", {})
+        .get("contributionCalendar", {})
+        .get("totalContributions", 0)
+    )
+
+
+def _events_time_buckets(events: list[dict[str, Any]]) -> list[tuple[str, int]]:
+    buckets = {
+        "🌞 Morning": 0,
+        "🌆 Daytime": 0,
+        "🌃 Evening": 0,
+        "🌙 Night": 0,
+    }
+    for event in events:
+        ts = event.get("created_at")
+        if not ts:
+            continue
+        hour = datetime.fromisoformat(ts.replace("Z", "+00:00")).hour
+        if 6 <= hour < 12:
+            buckets["🌞 Morning"] += 1
+        elif 12 <= hour < 18:
+            buckets["🌆 Daytime"] += 1
+        elif 18 <= hour < 24:
+            buckets["🌃 Evening"] += 1
+        else:
+            buckets["🌙 Night"] += 1
+    return list(buckets.items())
+
+
+def _events_weekday_buckets(events: list[dict[str, Any]]) -> list[tuple[str, int]]:
+    days = {
+        "Monday": 0,
+        "Tuesday": 0,
+        "Wednesday": 0,
+        "Thursday": 0,
+        "Friday": 0,
+        "Saturday": 0,
+        "Sunday": 0,
+    }
+    for event in events:
+        ts = event.get("created_at")
+        if not ts:
+            continue
+        dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+        days[dt.strftime("%A")] += 1
+    return list(days.items())
+
+
+def _choose_most_productive(weekday_counts: list[tuple[str, int]]) -> str:
+    if not weekday_counts:
+        return "Monday"
+    return max(weekday_counts, key=lambda t: t[1])[0]
+
+
 def replace_waka_block(text: str, block: str) -> str:
     start = text.find(START)
     end = text.find(END)
@@ -114,8 +265,10 @@ def _format_languages_section(languages: list[dict[str, Any]]) -> str:
     for item in languages[:8]:
         name = item.get("name", "Unknown")
         text = item.get("text", "0 secs")
-        percent = item.get("percent", 0)
-        lines.append(f"- {name}: {text} ({percent}%)")
+        percent = float(item.get("percent", 0))
+        lines.append(
+            f"{name:<24} {text:<18} {_bar(percent)}   {percent:05.2f} % "
+        )
     return "\n".join(lines)
 
 
@@ -123,10 +276,15 @@ def _format_top_repos(repos: list[dict[str, Any]]) -> str:
     if not repos:
         return "No repositories found."
     lines: list[str] = []
-    for repo in repos[:5]:
-        name = repo.get("name", "unknown")
-        stars = repo.get("stargazers_count", 0)
-        lines.append(f"- {name} ({stars}★)")
+    top = sorted(repos, key=lambda r: r.get("stargazers_count", 0), reverse=True)[:5]
+    total = sum(r.get("stargazers_count", 0) for r in top) or len(top)
+    for repo in top:
+        name = repo.get("language") or "Other"
+        stars = int(repo.get("stargazers_count", 0))
+        pct = _percent(stars if stars > 0 else 1, total)
+        lines.append(
+            f"{name:<24} {stars:>10} repos         {_bar(pct)}   {pct:05.2f} % "
+        )
     return "\n".join(lines)
 
 
@@ -139,6 +297,10 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
             "github_user": executor.submit(_github_user, username, gh_token),
             "public_repos": executor.submit(_github_repos, username, gh_token, "public"),
             "private_repos": executor.submit(_github_repos, username, gh_token, "private"),
+            "events": executor.submit(_github_user_events, username, gh_token),
+            "commits": executor.submit(_github_commit_search_count, username, gh_token),
+            "issues_prs": executor.submit(_github_issue_pr_counts, username, gh_token),
+            "year_contrib": executor.submit(_graph_year_contrib, username, gh_token),
         }
 
         all_time = futures["all_time"].result()
@@ -147,47 +309,103 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
         github_user = futures["github_user"].result()
         public_repos = futures["public_repos"].result()
         private_repos = futures["private_repos"].result()
+        events = futures["events"].result()
+        total_commits = futures["commits"].result()
+        total_issues, total_prs = futures["issues_prs"].result()
+        total_contrib_year = futures["year_contrib"].result()
 
     all_repos = public_repos + private_repos
     primary_languages = _language_counts(all_repos)[:5]
     week = last_7.get("data", {})
     week_languages = week.get("languages", [])
+    week_editors = week.get("editors", [])
+    week_os = week.get("operating_systems", [])
 
     code_time_human = all_time.get("data", {}).get("text", "0 hrs 0 mins")
-    today_text = today.get("data", {}).get("grand_total", {}).get("text", "0 hrs 0 mins")
+    today_text = today.get("data", {}).get("grand_total", {}).get("text") or "0 secs"
     profile_views = github_user.get("followers", 0)
     total_public = github_user.get("public_repos", 0)
     total_private = len(private_repos)
+    hireable = github_user.get("hireable")
+    hireable_text = "Opted to Hire" if hireable else "Not Opted to Hire"
+    used_storage_kb = sum(int(repo.get("size", 0)) for repo in all_repos)
     updated = datetime.now(timezone.utc).strftime("%d/%m/%Y %H:%M:%S UTC")
+    current_year = datetime.now(timezone.utc).year
 
-    primary_lang_lines = "\n".join(
-        f"- {lang}: {count} repos" for lang, count in primary_languages
-    ) or "No repository language data available."
+    time_of_day = _events_time_buckets(events)
+    weekday_counts = _events_weekday_buckets(events)
+    productive_day = _choose_most_productive(weekday_counts)
+
+    primary_lang_lines = _format_top_repos(
+        [{"language": lang, "stargazers_count": count} for lang, count in primary_languages]
+    )
+    editors_block = _format_languages_section(week_editors)
+    os_block = _format_languages_section(week_os)
+    week_lang_block = _format_languages_section(week_languages)
+    time_of_day_block = _code_block_lines(time_of_day)
+    weekday_block = _code_block_lines(weekday_counts)
 
     block = f"""
 ![Code Time](http://img.shields.io/badge/Code%20Time-{urllib.parse.quote(code_time_human)}-blue?style=flat)
 
 ![Profile Views](http://img.shields.io/badge/Profile%20Views-{profile_views}-blue?style=flat)
 
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-{urllib.parse.quote(_format_int(total_commits))}%20commits-blue?style=flat)
+
 **🐱 My GitHub Data**
 
+> 📦 {_format_int(used_storage_kb)} kB Used in GitHub's Storage
+ >
+> 🏆 {_format_int(total_contrib_year)} Contributions in the Year {current_year}
+ >
+> 🚫 {hireable_text}
+ >
 > 📜 {total_public} Public Repositories
 >
 > 🔑 {total_private} Private Repositories
->
-> 🕒 Today I coded for {today_text}
+
+**I'm an Early 🐤**
+
+```text
+{time_of_day_block}
+```
+
+📅 **I'm Most Productive on {productive_day}**
+
+```text
+{weekday_block}
+```
 
 📊 **This Week I Spent My Time On**
 
-{_format_languages_section(week_languages)}
+```text
+🕑︎ Time Zone: Europe/Berlin
 
-**I Mostly Code In**
+💬 Programming Languages:
+{week_lang_block}
 
+🔥 Editors:
+{editors_block}
+
+💻 Operating System:
+{os_block}
+```
+
+**I Mostly Code in Python**
+
+```text
 {primary_lang_lines}
+```
 
-**Recently Updated Repos**
+**Timeline**
 
-{_format_top_repos(all_repos)}
+![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
+
+I've opened {_format_int(total_issues)} issues throughout this time.
+
+Also, I've contributed with {_format_int(total_prs)} pull requests.
+
+I've made {_format_int(total_commits)} commits.
 
  Last Updated on {updated}
 """
