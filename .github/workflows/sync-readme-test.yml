@@ -3,7 +3,6 @@ name: Sync README Test Copy
 on:
   push:
     paths:
-      - README.md
       - TEMPLATE.md
       - scripts/sync_waka_section.py
       - .github/workflows/sync-readme-test.yml
@@ -13,10 +12,6 @@ on:
         description: Target README test file
         required: false
         default: README-TEST.md
-      waka_source_file:
-        description: Source README used for waka section
-        required: false
-        default: README.md
 
 permissions:
   contents: write
@@ -166,10 +161,13 @@ jobs:
           GIT_CONFIG_VALUE_1: "false"
 
       - name: Run waka sync script
+        env:
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          GH_TOKEN: ${{ secrets.WAKA_GH_TOKEN }}
+          GITHUB_USERNAME: ${{ github.repository_owner }}
         run: |
           TARGET="${{ github.event.inputs.target_file || 'README-TEST.md' }}"
-          WAKA_SOURCE="${{ github.event.inputs.waka_source_file || 'README.md' }}"
-          python scripts/sync_waka_section.py --source "$WAKA_SOURCE" --target "$TARGET"
+          python scripts/sync_waka_section.py --target "$TARGET"
 
       - name: Commit waka-populated file
         run: |
