@@ -1,5 +1,7 @@
 # Hi there.  I'm Sebas Cornejo Baeza.
- ## Not your average software engineer
+
+## Not your average software engineer
+
 ## Infrastructure & DevOps Engineer · Sound Engineer turned Computer Engineer · MEng Industrial Engineering · Helped image a black hole once 🔭
 
 #### 👨🏻‍💻 About Me 
@@ -81,11 +83,11 @@ first learning to play the songs I loved, then modifying electronics until they 
 
 <h2> My life in Github </h2>
 
-I've opened 38 issues throughout this time.
+I've opened 14 issues throughout this time.
 
-Also, I've contributed with 1294 pull requests.
+Also, I've contributed with 12 pull requests.
 
-I've made 3486 commits.
+I've made 1804 commits.
 
 These contributions are distributed amongst 88 repos.
 
@@ -99,83 +101,5 @@ These contributions are distributed amongst 88 repos.
 <h2>... and some detailed dev stats<h2>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-1%2C790%20hrs%2048%20mins-blue?style=flat)
 
-![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue?style=flat)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-28.15%20million%20lines%20of%20code-blue?style=flat)
-
-**🐱 My GitHub Data** 
-
-> 📦 686.9 kB Used in GitHub's Storage 
- > 
-> 🏆 1,464 Contributions in the Year 2026
- > 
-> 🚫 Not Opted to Hire
- > 
-> 📜 29 Public Repositories 
- > 
-> 🔑 35 Private Repositories 
- > 
-**I'm an Early 🐤** 
-
-```text
-🌞 Morning                14182 commits       ███████░░░░░░░░░░░░░░░░░░   29.96 % 
-🌆 Daytime                32267 commits       █████████████████░░░░░░░░   68.17 % 
-🌃 Evening                721 commits         ░░░░░░░░░░░░░░░░░░░░░░░░░   01.52 % 
-🌙 Night                  160 commits         ░░░░░░░░░░░░░░░░░░░░░░░░░   00.34 % 
-```
-📅 **I'm Most Productive on Wednesday** 
-
-```text
-Monday                   7932 commits        ████░░░░░░░░░░░░░░░░░░░░░   16.76 % 
-Tuesday                  10933 commits       ██████░░░░░░░░░░░░░░░░░░░   23.10 % 
-Wednesday                13102 commits       ███████░░░░░░░░░░░░░░░░░░   27.68 % 
-Thursday                 7778 commits        ████░░░░░░░░░░░░░░░░░░░░░   16.43 % 
-Friday                   7332 commits        ████░░░░░░░░░░░░░░░░░░░░░   15.49 % 
-Saturday                 51 commits          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.11 % 
-Sunday                   202 commits         ░░░░░░░░░░░░░░░░░░░░░░░░░   00.43 % 
-```
-
-
-📊 **This Week I Spent My Time On** 
-
-```text
-🕑︎ Time Zone: Europe/Berlin
-
-💬 Programming Languages: 
-Markdown                 9 hrs 35 mins       ██████████░░░░░░░░░░░░░░░   40.43 % 
-Bash                     7 hrs 28 mins       ████████░░░░░░░░░░░░░░░░░   31.50 % 
-TypeScript               4 hrs 47 mins       █████░░░░░░░░░░░░░░░░░░░░   20.18 % 
-Other                    33 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   02.38 % 
-YAML                     24 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.74 % 
-
-🔥 Editors: 
-Claude Code              19 hrs 26 mins      █████████████████████░░░░   82.07 % 
-VS Code                  3 hrs 53 mins       ████░░░░░░░░░░░░░░░░░░░░░   16.40 % 
-Vim                      21 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.53 % 
-
-💻 Operating System: 
-Mac                      21 hrs 53 mins      ███████████████████████░░   92.38 % 
-Linux                    1 hr 48 mins        ██░░░░░░░░░░░░░░░░░░░░░░░   07.62 % 
-```
-
-**I Mostly Code in Python** 
-
-```text
-Python                   42 repos            ████████░░░░░░░░░░░░░░░░░   32.81 % 
-TypeScript               35 repos            ███████░░░░░░░░░░░░░░░░░░   27.34 % 
-JavaScript               13 repos            ███░░░░░░░░░░░░░░░░░░░░░░   10.16 % 
-Shell                    9 repos             ██░░░░░░░░░░░░░░░░░░░░░░░   07.03 % 
-HTML                     4 repos             █░░░░░░░░░░░░░░░░░░░░░░░░   03.12 % 
-```
-
-
-
-**Timeline**
-
-![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
-
-
- Last Updated on 19/07/2026 06:07:52 UTC
 <!--END_SECTION:waka-->
