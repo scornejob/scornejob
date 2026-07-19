@@ -1,0 +1,107 @@
+name: Publish GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - README.md
+      - assets/**
+      - profile-3d-contrib/**
+      - .github/workflows/publish-pages.yml
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Build static site
+        run: |
+          mkdir -p _site
+          python - <<'PY'
+          from pathlib import Path
+          from html import escape
+
+          readme = Path("README.md").read_text(encoding="utf-8")
+          content = escape(readme)
+
+          html = f"""<!doctype html>
+          <html lang=\"en\">
+          <head>
+            <meta charset=\"utf-8\" />
+            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
+            <title>scornejob profile content</title>
+            <style>
+              :root {{
+                color-scheme: light dark;
+              }}
+              body {{
+                margin: 0;
+                font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;
+                line-height: 1.5;
+                background: #101418;
+                color: #e6edf3;
+              }}
+              main {{
+                max-width: 1000px;
+                margin: 0 auto;
+                padding: 2rem 1rem 3rem;
+              }}
+              h1 {{
+                margin-top: 0;
+                font-size: 1.6rem;
+              }}
+              p {{
+                color: #9fb0c0;
+              }}
+              pre {{
+                overflow-x: auto;
+                padding: 1rem;
+                border-radius: 10px;
+                border: 1px solid #24303c;
+                background: #0b0f13;
+                white-space: pre-wrap;
+                word-break: break-word;
+              }}
+            </style>
+          </head>
+          <body>
+            <main>
+              <h1>README content</h1>
+              <p>Published automatically from the repository README.</p>
+              <pre>{content}</pre>
+            </main>
+          </body>
+          </html>
+          """
+
+          Path("_site/index.html").write_text(html, encoding="utf-8")
+          PY
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
