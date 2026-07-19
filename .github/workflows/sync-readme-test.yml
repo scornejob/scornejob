@@ -1,0 +1,45 @@
+name: Sync README Test Copy
+
+on:
+  push:
+    paths:
+      - README.md
+      - scripts/sync_waka_section.py
+      - .github/workflows/sync-readme-test.yml
+  workflow_dispatch:
+    inputs:
+      source_file:
+        description: Source README file
+        required: false
+        default: README.md
+      target_file:
+        description: Target README test file
+        required: false
+        default: README-TEST.md
+
+permissions:
+  contents: write
+
+jobs:
+  sync_readme_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Run sync script
+        run: |
+          SOURCE="${{ github.event.inputs.source_file || 'README.md' }}"
+          TARGET="${{ github.event.inputs.target_file || 'README-TEST.md' }}"
+          python scripts/sync_waka_section.py --source "$SOURCE" --target "$TARGET"
+
+      - name: Commit target file
+        run: |
+          TARGET="${{ github.event.inputs.target_file || 'README-TEST.md' }}"
+          if [[ "$(git status --porcelain)" != "" ]]; then
+            git config user.name "Seba Cornejo"
+            git config user.email scornejo[bot]@users.noreply.github.com
+            git add "$TARGET"
+            git commit -m "Sync README-TEST from README"
+            git push
+          fi
