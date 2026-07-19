@@ -1,5 +1,7 @@
 # Hi there.  I'm Sebas Cornejo Baeza.
- ## Not your average software engineer
+
+## Not your average software engineer
+
 ## Infrastructure & DevOps Engineer · Sound Engineer turned Computer Engineer · MEng Industrial Engineering · Helped image a black hole once 🔭
 
 #### 👨🏻‍💻 About Me 
