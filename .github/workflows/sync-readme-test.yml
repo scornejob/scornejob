@@ -144,6 +144,7 @@ jobs:
             git config user.email scornejo[bot]@users.noreply.github.com
             git add .
             git commit -m "Generate README-TEST"
+            git pull --rebase origin "${{ github.ref_name }}"
             git push
           fi
 
@@ -177,5 +178,6 @@ jobs:
             git config user.email scornejo[bot]@users.noreply.github.com
             git add "$TARGET"
             git commit -m "Populate waka section in README-TEST"
+            git pull --rebase origin "${{ github.ref_name }}"
             git push
           fi
