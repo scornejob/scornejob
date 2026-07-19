@@ -5,15 +5,10 @@ on:
     paths:
       - README.md
       - TEMPLATE.md
-      - scripts/generate_readme_from_template.py
       - scripts/sync_waka_section.py
       - .github/workflows/sync-readme-test.yml
   workflow_dispatch:
     inputs:
-      template_file:
-        description: Source template file
-        required: false
-        default: TEMPLATE.md
       target_file:
         description: Target README test file
         required: false
@@ -27,7 +22,10 @@ permissions:
   contents: write
 
 jobs:
-  sync_readme_test:
+  generate_readme_test:
+    concurrency:
+      group: update-readme-test
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -39,24 +37,147 @@ jobs:
           GIT_CONFIG_KEY_1: advice.defaultBranchName
           GIT_CONFIG_VALUE_1: "false"
 
-      - name: Run sync script
+      - uses: yoshi389111/github-profile-3d-contrib@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+
+      - name: Generate README-TEST.md
+        uses: actions/github-script@v8
         env:
           STATS_TOKEN: ${{ secrets.USER_TOKEN || secrets.GITHUB_TOKEN }}
+          TARGET_FILE: ${{ github.event.inputs.target_file || 'README-TEST.md' }}
+        with:
+          script: |
+            const fs = require('fs')
+
+            const token = process.env.STATS_TOKEN
+            if (!token) {
+              core.setFailed('Missing token: define USER_TOKEN or allow GITHUB_TOKEN fallback')
+              return
+            }
+
+            const headers = { authorization: `token ${token}` }
+
+            const readmePath = `./${process.env.TARGET_FILE || 'README-TEST.md'}`
+            const templatePath = './TEMPLATE.md'
+            const readmeText = fs.existsSync(readmePath) ? fs.readFileSync(readmePath, 'utf8') : ''
+
+            function extractCurrent(regex, fallback = 0) {
+              const m = readmeText.match(regex)
+              return m ? Number(m[1]) : fallback
+            }
+
+            const current = {
+              ISSUES: extractCurrent(/I've opened\s+(\d+)\s+issues/i),
+              PULL_REQUESTS: extractCurrent(/I've contributed with\s+(\d+)\s+pull requests/i),
+              COMMITS: extractCurrent(/I've made\s+(\d+)\s+commits/i),
+              REPOSITORIES_CONTRIBUTED_TO: extractCurrent(/distributed amongst\s+(\d+)\s+repos/i),
+            }
+
+            const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+            async function runRequest(route, params, { attempts = 3, fallback = null } = {}) {
+              let lastError
+
+              for (let i = 1; i <= attempts; i++) {
+                try {
+                  return await github.request(route, {
+                    ...params,
+                    headers: {
+                      ...headers,
+                      ...(params?.headers || {}),
+                    },
+                  })
+                } catch (error) {
+                  lastError = error
+                  core.warning(`Request attempt ${i}/${attempts} failed for ${route}: ${error.message}`)
+                  if (i < attempts) {
+                    await sleep(1000 * i)
+                  }
+                }
+              }
+
+              if (fallback !== null) {
+                core.warning(`Falling back for ${route} due to failure: ${lastError?.message || 'unknown error'}`)
+                return fallback
+              }
+
+              throw lastError
+            }
+
+            const owner = context.repo.owner
+
+            const issuesRes = await runRequest(
+              'GET /search/issues',
+              { q: `author:${owner} is:issue`, per_page: 1 },
+              { fallback: { data: { total_count: current.ISSUES } } }
+            )
+
+            const prsRes = await runRequest(
+              'GET /search/issues',
+              { q: `author:${owner} is:pr`, per_page: 1 },
+              { fallback: { data: { total_count: current.PULL_REQUESTS } } }
+            )
+
+            const commitsRes = await runRequest(
+              'GET /search/commits',
+              {
+                q: `author:${owner}`,
+                per_page: 1,
+                headers: { accept: 'application/vnd.github.cloak-preview+json' },
+              },
+              { fallback: { data: { total_count: current.COMMITS } } }
+            )
+
+            const replacements = {
+              ISSUES: Number(issuesRes?.data?.total_count ?? current.ISSUES),
+              PULL_REQUESTS: Number(prsRes?.data?.total_count ?? current.PULL_REQUESTS),
+              COMMITS: Number(commitsRes?.data?.total_count ?? current.COMMITS),
+              REPOSITORIES_CONTRIBUTED_TO: Number(current.REPOSITORIES_CONTRIBUTED_TO),
+            }
+
+            let template = fs.readFileSync(templatePath, 'utf8')
+            template = template.replace(/\{\{\s*(ISSUES|PULL_REQUESTS|COMMITS|REPOSITORIES_CONTRIBUTED_TO)\s*\}\}/g, (_, key) => String(replacements[key]))
+            fs.writeFileSync(readmePath, template)
+
+      - name: Commit generated file
         run: |
-          TEMPLATE="${{ github.event.inputs.template_file || 'TEMPLATE.md' }}"
+          TARGET="${{ github.event.inputs.target_file || 'README-TEST.md' }}"
+          if [[ "$(git status --porcelain)" != "" ]]; then
+            git config user.name "Seba Cornejo"
+            git config user.email scornejo[bot]@users.noreply.github.com
+            git add .
+            git commit -m "Generate README-TEST"
+            git push
+          fi
+
+  populate_waka_test:
+    needs: generate_readme_test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        env:
+          GIT_CONFIG_COUNT: "2"
+          GIT_CONFIG_KEY_0: init.defaultBranch
+          GIT_CONFIG_VALUE_0: master
+          GIT_CONFIG_KEY_1: advice.defaultBranchName
+          GIT_CONFIG_VALUE_1: "false"
+
+      - name: Run waka sync script
+        run: |
           TARGET="${{ github.event.inputs.target_file || 'README-TEST.md' }}"
           WAKA_SOURCE="${{ github.event.inputs.waka_source_file || 'README.md' }}"
-
-          python scripts/generate_readme_from_template.py --template "$TEMPLATE" --output "$TARGET"
           python scripts/sync_waka_section.py --source "$WAKA_SOURCE" --target "$TARGET"
 
-      - name: Commit target file
+      - name: Commit waka-populated file
         run: |
           TARGET="${{ github.event.inputs.target_file || 'README-TEST.md' }}"
           if [[ "$(git status --porcelain)" != "" ]]; then
             git config user.name "Seba Cornejo"
             git config user.email scornejo[bot]@users.noreply.github.com
             git add "$TARGET"
-            git commit -m "Sync README-TEST from README"
+            git commit -m "Populate waka section in README-TEST"
             git push
           fi
