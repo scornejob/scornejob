@@ -102,45 +102,4 @@ These contributions are distributed amongst 88 repos.
 
 <!--START_SECTION:waka-->
 
-![Code Time](http://img.shields.io/badge/Code%20Time-1%2C792%20hrs%204%20mins-blue?style=flat)
-
-![Profile Views](http://img.shields.io/badge/Profile%20Views-18-blue?style=flat)
-
-**🐱 My GitHub Data**
-
-> 📜 29 Public Repositories
->
-> 🔑 35 Private Repositories
->
-> 🕒 Today I coded for 
-
-📊 **This Week I Spent My Time On**
-
-- Markdown: 9 hrs 35 mins (40.43%)
-- Bash: 7 hrs 28 mins (31.5%)
-- TypeScript: 4 hrs 47 mins (20.18%)
-- Other: 33 mins (2.38%)
-- YAML: 24 mins (1.74%)
-- CSV: 20 mins (1.44%)
-- JSON: 8 mins (0.61%)
-- Text: 6 mins (0.49%)
-
-**I Mostly Code In**
-
-- Python: 10 repos
-- Shell: 9 repos
-- HCL: 8 repos
-- TypeScript: 7 repos
-- JavaScript: 3 repos
-
-**Recently Updated Repos**
-
-- scornejob (1★)
-- pipedal (0★)
-- agentic_pipeline (0★)
-- gh-ai-usage (0★)
-- project_u (0★)
-
- Last Updated on 19/07/2026 20:30:03 UTC
-
 <!--END_SECTION:waka-->
