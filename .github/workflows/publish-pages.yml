@@ -29,13 +29,17 @@ jobs:
 
       - name: Build static site
         run: |
+          python -m pip install --quiet markdown
           mkdir -p _site
           python - <<'PY'
           from pathlib import Path
-          from html import escape
+          import markdown
 
           readme = Path("README.md").read_text(encoding="utf-8")
-          content = escape(readme)
+          rendered = markdown.markdown(
+              readme,
+              extensions=["extra", "sane_lists", "toc"],
+          )
 
           html = f"""<!doctype html>
           <html lang=\"en\">
@@ -43,46 +47,46 @@ jobs:
             <meta charset=\"utf-8\" />
             <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
             <title>scornejob profile content</title>
+            <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown.min.css\" />
             <style>
-              :root {{
-                color-scheme: light dark;
-              }}
               body {{
                 margin: 0;
-                font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;
-                line-height: 1.5;
-                background: #101418;
-                color: #e6edf3;
+                background: linear-gradient(180deg, #f6f8fa 0%, #eef2f7 100%);
               }}
-              main {{
-                max-width: 1000px;
-                margin: 0 auto;
-                padding: 2rem 1rem 3rem;
+              .markdown-body {{
+                box-sizing: border-box;
+                max-width: 980px;
+                margin: 40px auto;
+                padding: 45px;
+                border: 1px solid #d0d7de;
+                border-radius: 14px;
+                background: #ffffff;
+                box-shadow: 0 20px 60px rgba(31, 35, 40, 0.08);
               }}
-              h1 {{
-                margin-top: 0;
-                font-size: 1.6rem;
+              @media (max-width: 767px) {{
+                .markdown-body {{
+                  margin: 0;
+                  padding: 22px;
+                  border: 0;
+                  border-radius: 0;
+                  box-shadow: none;
+                }}
               }}
-              p {{
-                color: #9fb0c0;
-              }}
-              pre {{
-                overflow-x: auto;
-                padding: 1rem;
-                border-radius: 10px;
-                border: 1px solid #24303c;
-                background: #0b0f13;
-                white-space: pre-wrap;
-                word-break: break-word;
+              @media (prefers-color-scheme: dark) {{
+                body {{
+                  background: #0d1117;
+                }}
+                .markdown-body {{
+                  background: #0d1117;
+                  color: #c9d1d9;
+                  border-color: #30363d;
+                  box-shadow: none;
+                }}
               }}
             </style>
           </head>
           <body>
-            <main>
-              <h1>README content</h1>
-              <p>Published automatically from the repository README.</p>
-              <pre>{content}</pre>
-            </main>
+            <article class=\"markdown-body\">{rendered}</article>
           </body>
           </html>
           """
