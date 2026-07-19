@@ -13,7 +13,6 @@ concurrency:
 
 jobs:
   update_readme:
-    if: ${{ github.event_name != 'workflow_dispatch' || github.ref_name == 'feature/test-actions-manual' }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v5
