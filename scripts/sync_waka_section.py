@@ -103,15 +103,6 @@ def _github_commit_search_count(username: str, gh_token: str | None) -> int:
     return int(data.get("total_count", 0))
 
 
-def _github_issue_pr_counts(username: str, gh_token: str | None) -> tuple[int, int]:
-    headers = _github_headers(gh_token)
-    issue_q = urllib.parse.quote(f"author:{username} is:issue")
-    pr_q = urllib.parse.quote(f"author:{username} is:pr")
-    issues = _request_json(f"https://api.github.com/search/issues?q={issue_q}&per_page=1", headers)
-    prs = _request_json(f"https://api.github.com/search/issues?q={pr_q}&per_page=1", headers)
-    return int(issues.get("total_count", 0)), int(prs.get("total_count", 0))
-
-
 def _github_repos(username: str, gh_token: str | None, visibility: str = "public") -> list[dict[str, Any]]:
     headers = _github_headers(gh_token)
     repos: list[dict[str, Any]] = []
@@ -299,7 +290,6 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
             "private_repos": executor.submit(_github_repos, username, gh_token, "private"),
             "events": executor.submit(_github_user_events, username, gh_token),
             "commits": executor.submit(_github_commit_search_count, username, gh_token),
-            "issues_prs": executor.submit(_github_issue_pr_counts, username, gh_token),
             "year_contrib": executor.submit(_graph_year_contrib, username, gh_token),
         }
 
@@ -311,7 +301,6 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
         private_repos = futures["private_repos"].result()
         events = futures["events"].result()
         total_commits = futures["commits"].result()
-        total_issues, total_prs = futures["issues_prs"].result()
         total_contrib_year = futures["year_contrib"].result()
 
     all_repos = public_repos + private_repos
@@ -400,12 +389,6 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
 **Timeline**
 
 ![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
-
-I've opened {_format_int(total_issues)} issues throughout this time.
-
-Also, I've contributed with {_format_int(total_prs)} pull requests.
-
-I've made {_format_int(total_commits)} commits.
 
  Last Updated on {updated}
 """
