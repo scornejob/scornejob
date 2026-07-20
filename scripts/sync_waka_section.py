@@ -110,7 +110,7 @@ def _graphql_user_id(username: str, gh_token: str | None) -> str | None:
         return data.get("user", {}).get("id")
 
 
-def _graphql_repositories_contributed(username: str, gh_token: str | None, max_repos: int = 80) -> list[dict[str, Any]]:
+def _graphql_repositories_contributed(username: str, gh_token: str | None, max_repos: int = 20) -> list[dict[str, Any]]:
     if not gh_token:
         return []
 
@@ -176,7 +176,7 @@ def _graphql_branch_commits(
     branch_name: str,
     author_id: str,
     gh_token: str | None,
-    max_commits: int = 60,
+    max_commits: int = 20,
 ) -> list[dict[str, Any]]:
     if not gh_token:
         return []
