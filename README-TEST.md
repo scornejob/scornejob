@@ -106,11 +106,11 @@ These contributions are distributed amongst 88 repos.
 
 ![Profile Views](http://img.shields.io/badge/Profile%20Views-18-blue?style=flat)
 
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-2.83%20million%20lines%20of%20code%20in%205%2C029%20commits-blue?style=flat)
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-28.16%20million%20lines%20of%20code%20in%205%2C029%20commits-blue?style=flat)
 
 **🐱 My GitHub Data**
 
-> 📦 2,342,231 kB Used in GitHub's Storage
+> 📦 2,342,244 kB Used in GitHub's Storage
  >
 > 🏆 2,229 Contributions in the Year 2026
  >
@@ -120,7 +120,7 @@ These contributions are distributed amongst 88 repos.
 >
 > 🔑 35 Private Repositories
  >
-> 🧮 Repo Scan Mode: Incremental
+> 🧮 Repo Scan Mode: Full
  >
 > 🗓️ Repo Stats Last Full Refresh: 2026-07-20T08:59:18Z
  >
@@ -175,17 +175,17 @@ Linux                    2 hrs 23 mins      ██░░░░░░░░░░
 **I Mostly Code in Python**
 
 ```text
-Python                           37 repos         █████████░░░░░░░░░░░░░░░░   37.00 % 
-TypeScript                       30 repos         ████████░░░░░░░░░░░░░░░░░   30.00 % 
-JavaScript                       13 repos         ███░░░░░░░░░░░░░░░░░░░░░░   13.00 % 
-Shell                             5 repos         █░░░░░░░░░░░░░░░░░░░░░░░░   05.00 % 
-HTML                              4 repos         █░░░░░░░░░░░░░░░░░░░░░░░░   04.00 % 
+Python                           44 repos         ████████░░░░░░░░░░░░░░░░░   33.59 % 
+TypeScript                       35 repos         ███████░░░░░░░░░░░░░░░░░░   26.72 % 
+JavaScript                       13 repos         ██░░░░░░░░░░░░░░░░░░░░░░░   09.92 % 
+Shell                            10 repos         ██░░░░░░░░░░░░░░░░░░░░░░░   07.63 % 
+HCL                               8 repos         ██░░░░░░░░░░░░░░░░░░░░░░░   06.11 % 
 ```
 
 **Timeline**
 
 ![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
 
- Last Updated on 20/07/2026 09:29:09 UTC
+ Last Updated on 20/07/2026 09:52:06 UTC
 
 <!--END_SECTION:waka-->
