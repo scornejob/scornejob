@@ -267,6 +267,78 @@ def _graphql_repositories_contributed(
     return filtered_repos
 
 
+def _graphql_owned_and_collaborator_repositories(
+    username: str,
+    gh_token: str | None,
+    max_repos: int | None = None,
+) -> list[dict[str, Any]]:
+    """Fetch repos the user owns or is a collaborator on (all-time, not limited by contribution window)."""
+    if not gh_token:
+        return []
+
+    query = """
+    query($login: String!, $after: String) {
+      user(login: $login) {
+        repositories(
+          orderBy: {field: CREATED_AT, direction: DESC}
+          first: 100
+          after: $after
+          affiliations: [OWNER, COLLABORATOR]
+          isFork: false
+        ) {
+          nodes {
+            name
+            isFork
+            isPrivate
+            owner { login }
+            primaryLanguage { name }
+          }
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+        }
+      }
+    }
+    """
+
+    all_repos = _graphql_paginated_nodes(query, {"login": username}, gh_token, limit=max_repos)
+
+    filtered_repos: list[dict[str, Any]] = []
+    seen: set[tuple[str, str]] = set()
+    for repo in all_repos:
+        if not repo or repo.get("isFork"):
+            continue
+        owner = repo.get("owner", {}).get("login")
+        name = repo.get("name")
+        if not owner or not name:
+            continue
+        key = (owner, name)
+        if key in seen:
+            continue
+        seen.add(key)
+        filtered_repos.append(repo)
+    return filtered_repos
+
+
+def _merge_repo_lists(*lists: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Merge multiple repo lists, deduplicating by (owner, name)."""
+    seen: set[tuple[str, str]] = set()
+    merged: list[dict[str, Any]] = []
+    for repo_list in lists:
+        for repo in repo_list:
+            owner = (repo.get("owner") or {}).get("login")
+            name = repo.get("name")
+            if not owner or not name:
+                continue
+            key = (owner, name)
+            if key in seen:
+                continue
+            seen.add(key)
+            merged.append(repo)
+    return merged
+
+
 def _graphql_recently_touched_repositories(
         username: str,
         gh_token: str | None,
@@ -662,7 +734,9 @@ def _collect_repo_commit_stats(
 
     committed_dates: list[str] = []
     total_loc = 0
-    seen_oids: set[str] = set()
+    # Track seen oids per branch to avoid double-counting paginated duplicates
+    # within a single branch, but allow the same oid on different branches
+    # (matching anmol's counting method: per branch-occurrence, not globally unique).
     for branch in branches:
         branch_name = branch.get("name")
         if not branch_name:
@@ -679,12 +753,8 @@ def _collect_repo_commit_stats(
         except Exception:
             continue
 
+        # commits from _graphql_branch_commits are already deduped within a branch
         for commit in commits:
-            oid = commit.get("oid")
-            if oid and oid in seen_oids:
-                continue
-            if oid:
-                seen_oids.add(oid)
             committed_date = commit.get("committedDate")
             if committed_date:
                 committed_dates.append(committed_date)
@@ -779,9 +849,14 @@ def build_waka_block(
         repos_to_scan: list[dict[str, Any]] = []
         if effective_mode == "full":
             try:
-                repos_to_scan = _graphql_repositories_contributed(username, gh_token, max_repos=max_repos)
+                owned_repos = _graphql_owned_and_collaborator_repositories(username, gh_token, max_repos=max_repos)
             except Exception:
-                repos_to_scan = []
+                owned_repos = []
+            try:
+                contributed_repos = _graphql_repositories_contributed(username, gh_token, max_repos=max_repos)
+            except Exception:
+                contributed_repos = []
+            repos_to_scan = _merge_repo_lists(owned_repos, contributed_repos)
         else:
             try:
                 repos_to_scan = _graphql_recently_touched_repositories(
