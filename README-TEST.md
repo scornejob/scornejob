@@ -85,9 +85,9 @@ first learning to play the songs I loved, then modifying electronics until they 
 
 I've opened 14 issues throughout this time.
 
-Also, I've contributed with 14 pull requests.
+Also, I've contributed with 15 pull requests.
 
-I've made 1824 commits.
+I've made 1826 commits.
 
 These contributions are distributed amongst 88 repos.
 
@@ -106,13 +106,13 @@ These contributions are distributed amongst 88 repos.
 
 ![Profile Views](http://img.shields.io/badge/Profile%20Views-18-blue?style=flat)
 
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-125%2C691%20lines%20of%20code%20in%205%2C027%20commits-blue?style=flat)
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-3.86%20million%20lines%20of%20code%20in%205%2C029%20commits-blue?style=flat)
 
 **🐱 My GitHub Data**
 
 > 📦 2,342,231 kB Used in GitHub's Storage
  >
-> 🏆 2,225 Contributions in the Year 2026
+> 🏆 2,229 Contributions in the Year 2026
  >
 > 🚫 Not Opted to Hire
  >
@@ -120,31 +120,31 @@ These contributions are distributed amongst 88 repos.
 >
 > 🔑 35 Private Repositories
  >
-> 🧮 Repo Scan Mode: Incremental
+> 🧮 Repo Scan Mode: Full
  >
-> 🗓️ Repo Stats Last Full Refresh: 2026-07-20T08:48:19Z
+> 🗓️ Repo Stats Last Full Refresh: 2026-07-20T08:59:18Z
  >
-> 🔄 Repo Stats Cache Updated: 2026-07-20T08:48:19Z
+> 🔄 Repo Stats Cache Updated: 2026-07-20T08:59:18Z
 
 **I'm an Early 🐤**
 
 ```text
-🌞 Morning                        84 commits       ██████░░░░░░░░░░░░░░░░░░░   23.60 % 
-🌆 Daytime                       200 commits       ██████████████░░░░░░░░░░░   56.18 % 
-🌃 Evening                        43 commits       ███░░░░░░░░░░░░░░░░░░░░░░   12.08 % 
-🌙 Night                          29 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   08.15 % 
+🌞 Morning                     1,148 commits       █████████░░░░░░░░░░░░░░░░   35.15 % 
+🌆 Daytime                     1,920 commits       ███████████████░░░░░░░░░░   58.79 % 
+🌃 Evening                       158 commits       █░░░░░░░░░░░░░░░░░░░░░░░░   04.84 % 
+🌙 Night                          40 commits       ░░░░░░░░░░░░░░░░░░░░░░░░░   01.22 % 
 ```
 
-📅 **I'm Most Productive on Tuesday**
+📅 **I'm Most Productive on Wednesday**
 
 ```text
-Monday                           58 commits       ████░░░░░░░░░░░░░░░░░░░░░   16.29 % 
-Tuesday                         105 commits       ███████░░░░░░░░░░░░░░░░░░   29.49 % 
-Wednesday                        70 commits       █████░░░░░░░░░░░░░░░░░░░░   19.66 % 
-Thursday                         41 commits       ███░░░░░░░░░░░░░░░░░░░░░░   11.52 % 
-Friday                           41 commits       ███░░░░░░░░░░░░░░░░░░░░░░   11.52 % 
-Saturday                         19 commits       █░░░░░░░░░░░░░░░░░░░░░░░░   05.34 % 
-Sunday                           22 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   06.18 % 
+Monday                          710 commits       █████░░░░░░░░░░░░░░░░░░░░   21.74 % 
+Tuesday                         659 commits       █████░░░░░░░░░░░░░░░░░░░░   20.18 % 
+Wednesday                       721 commits       ██████░░░░░░░░░░░░░░░░░░░   22.08 % 
+Thursday                        609 commits       █████░░░░░░░░░░░░░░░░░░░░   18.65 % 
+Friday                          495 commits       ████░░░░░░░░░░░░░░░░░░░░░   15.16 % 
+Saturday                         21 commits       ░░░░░░░░░░░░░░░░░░░░░░░░░   00.64 % 
+Sunday                           51 commits       ░░░░░░░░░░░░░░░░░░░░░░░░░   01.56 % 
 ```
 
 📊 **This Week I Spent My Time On**
@@ -175,14 +175,17 @@ Linux                    2 hrs 23 mins      ██░░░░░░░░░░
 **I Mostly Code in Python**
 
 ```text
-Python                            2 repos         █████████████████░░░░░░░░   66.67 % 
-HTML                              1 repos         ████████░░░░░░░░░░░░░░░░░   33.33 % 
+Python                           37 repos         █████████░░░░░░░░░░░░░░░░   37.00 % 
+TypeScript                       30 repos         ████████░░░░░░░░░░░░░░░░░   30.00 % 
+JavaScript                       13 repos         ███░░░░░░░░░░░░░░░░░░░░░░   13.00 % 
+Shell                             5 repos         █░░░░░░░░░░░░░░░░░░░░░░░░   05.00 % 
+HTML                              4 repos         █░░░░░░░░░░░░░░░░░░░░░░░░   04.00 % 
 ```
 
 **Timeline**
 
 ![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
 
- Last Updated on 20/07/2026 08:48:22 UTC
+ Last Updated on 20/07/2026 08:59:21 UTC
 
 <!--END_SECTION:waka-->
