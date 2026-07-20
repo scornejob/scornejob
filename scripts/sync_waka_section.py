@@ -110,7 +110,7 @@ def _graphql_user_id(username: str, gh_token: str | None) -> str | None:
         return data.get("user", {}).get("id")
 
 
-def _graphql_repositories_contributed(username: str, gh_token: str | None, max_repos: int = 200) -> list[dict[str, Any]]:
+def _graphql_repositories_contributed(username: str, gh_token: str | None, max_repos: int = 80) -> list[dict[str, Any]]:
     if not gh_token:
         return []
 
@@ -130,9 +130,6 @@ def _graphql_repositories_contributed(username: str, gh_token: str | None, max_r
             owner { login }
             primaryLanguage { name }
             defaultBranchRef { name }
-            refs(refPrefix: "refs/heads/", first: 20) {
-              nodes { name }
-            }
           }
           pageInfo {
             hasNextPage
@@ -179,7 +176,7 @@ def _graphql_branch_commits(
     branch_name: str,
     author_id: str,
     gh_token: str | None,
-    max_commits: int = 100,
+    max_commits: int = 60,
 ) -> list[dict[str, Any]]:
     if not gh_token:
         return []
@@ -458,14 +455,8 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
             if not owner or not name:
                 continue
 
-            branch_names = [
-                branch.get("name")
-                for branch in repo.get("refs", {}).get("nodes", [])
-                if branch and branch.get("name")
-            ]
             default_branch = repo.get("defaultBranchRef", {}).get("name")
-            if default_branch and default_branch not in branch_names:
-                branch_names.insert(0, default_branch)
+            branch_names = [default_branch] if default_branch else []
             if not branch_names:
                 continue
 
