@@ -762,7 +762,10 @@ def build_waka_block(
     cache = _load_repo_cache(cache_file, username)
     effective_mode = selected_mode
     if effective_mode == "auto":
-        effective_mode = "incremental" if cache.get("repos") else "full"
+        effective_mode = "incremental" if cache.get("full_refreshed_at") else "full"
+    elif effective_mode == "incremental" and not cache.get("full_refreshed_at"):
+        # Never had a full scan; bootstrap with full regardless of requested mode.
+        effective_mode = "full"
 
     author_id: str | None = None
     if gh_token:
@@ -817,8 +820,6 @@ def build_waka_block(
         existing.update(repos_snapshot)
         cache["repos"] = existing
         cache["updated_at"] = _now_utc_iso()
-        if not cache.get("full_refreshed_at"):
-            cache["full_refreshed_at"] = cache["updated_at"]
         _save_repo_cache(cache_file, cache)
 
     cached_repos: dict[str, dict[str, Any]] = cache.get("repos", {})
