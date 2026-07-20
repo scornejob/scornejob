@@ -493,47 +493,77 @@ def _format_repo_language_counts(language_counts: Counter[str], total_repos_with
     return "\n".join(lines)
 
 
+def _collect_repo_commit_stats(
+    repo: dict[str, Any],
+    author_id: str,
+    gh_token: str,
+    max_branches: int | None,
+    max_commits: int | None,
+) -> tuple[list[str], int]:
+    owner = repo.get("owner", {}).get("login")
+    name = repo.get("name")
+    if not owner or not name:
+        return [], 0
+
+    try:
+        branches = _graphql_repo_branches(owner, name, gh_token, max_branches=max_branches)
+    except Exception:
+        return [], 0
+
+    committed_dates: list[str] = []
+    total_loc = 0
+    for branch in branches:
+        branch_name = branch.get("name")
+        if not branch_name:
+            continue
+        try:
+            commits = _graphql_branch_commits(
+                owner,
+                name,
+                branch_name,
+                author_id,
+                gh_token,
+                max_commits=max_commits,
+            )
+        except Exception:
+            continue
+
+        for commit in commits:
+            committed_date = commit.get("committedDate")
+            if committed_date:
+                committed_dates.append(committed_date)
+            total_loc += int(commit.get("additions") or 0)
+
+    return committed_dates, total_loc
+
+
 def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
     author_id = _graphql_user_id(username, gh_token)
     max_repos = int(os.getenv("MAX_CONTRIBUTED_REPOS", "0")) or None
     max_branches = int(os.getenv("MAX_BRANCHES_PER_REPO", "0")) or None
     max_commits = int(os.getenv("MAX_COMMITS_PER_BRANCH", "0")) or None
+    commit_scan_workers = max(1, int(os.getenv("COMMIT_SCAN_WORKERS", "6")))
     contributed_repos = _graphql_repositories_contributed(username, gh_token, max_repos=max_repos)
 
     committed_dates: list[str] = []
     total_loc = 0
     if author_id and gh_token:
-        for repo in contributed_repos:
-            owner = repo.get("owner", {}).get("login")
-            name = repo.get("name")
-            if not owner or not name:
-                continue
-
-            try:
-                branches = _graphql_repo_branches(owner, name, gh_token, max_branches=max_branches)
-            except Exception:
-                continue
-
-            for branch in branches:
-                branch_name = branch.get("name")
-                if not branch_name:
-                    continue
-                try:
-                    commits = _graphql_branch_commits(
-                        owner,
-                        name,
-                        branch_name,
-                        author_id,
-                        gh_token,
-                        max_commits=max_commits,
-                    )
-                except Exception:
-                    continue
-                for commit in commits:
-                    committed_date = commit.get("committedDate")
-                    if committed_date:
-                        committed_dates.append(committed_date)
-                    total_loc += int(commit.get("additions") or 0)
+        with ThreadPoolExecutor(max_workers=commit_scan_workers) as executor:
+            futures = [
+                executor.submit(
+                    _collect_repo_commit_stats,
+                    repo,
+                    author_id,
+                    gh_token,
+                    max_branches,
+                    max_commits,
+                )
+                for repo in contributed_repos
+            ]
+            for future in futures:
+                repo_dates, repo_loc = future.result()
+                committed_dates.extend(repo_dates)
+                total_loc += repo_loc
 
     with ThreadPoolExecutor(max_workers=6) as executor:
         futures = {
