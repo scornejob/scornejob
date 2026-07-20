@@ -1,4 +1,4 @@
-name: Sync README Test Copy
+name: Sync README Metrics
 
 on:
   schedule:
@@ -8,7 +8,7 @@ on:
     paths:
       - TEMPLATE.md
       - scripts/sync_waka_section.py
-      - .github/workflows/sync-readme-test.yml
+      - .github/workflows/sync-readme-metrics.yml
   workflow_dispatch:
     inputs:
       target_file:
@@ -24,9 +24,9 @@ permissions:
   contents: write
 
 jobs:
-  generate_readme_test:
+  generate_readme_metrics:
     concurrency:
-      group: update-readme-test
+      group: update-readme-metrics
       cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
@@ -62,7 +62,7 @@ jobs:
           REPO_STATS_CACHE_PATH: assets/repo_stats_cache.json
         run: |
           TARGET="${{ github.event.inputs.target_file || 'README-TEST.md' }}"
-          SCAN_MODE="incremental"
+          SCAN_MODE="auto"
           if [[ "${{ github.event_name }}" == "workflow_dispatch" && -n "${{ github.event.inputs.scan_mode }}" ]]; then
             SCAN_MODE="${{ github.event.inputs.scan_mode }}"
           elif [[ "${{ github.event_name }}" == "schedule" && "${{ github.event.schedule }}" == "0 3 * * 0" ]]; then

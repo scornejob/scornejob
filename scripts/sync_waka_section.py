@@ -70,6 +70,43 @@ def _save_repo_cache(path: Path, data: dict[str, Any]) -> None:
     path.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
+def _log_debug(message: str) -> None:
+    print(f"[waka-sync] {message}")
+
+
+def _snapshot_commit_total(snapshot: dict[str, dict[str, Any]]) -> int:
+    return sum(len(repo_data.get("committed_dates", [])) for repo_data in snapshot.values())
+
+
+def _snapshot_repos_with_commits(snapshot: dict[str, dict[str, Any]]) -> int:
+    return sum(1 for repo_data in snapshot.values() if repo_data.get("committed_dates"))
+
+
+def _should_accept_full_snapshot(
+    existing_cache: dict[str, Any],
+    new_snapshot: dict[str, dict[str, Any]],
+) -> tuple[bool, str]:
+    existing_repos = existing_cache.get("repos", {})
+    if not existing_repos:
+        return True, "no existing baseline"
+
+    previous_total = _snapshot_commit_total(existing_repos)
+    if previous_total <= 0:
+        return True, "existing baseline is empty"
+
+    new_total = _snapshot_commit_total(new_snapshot)
+    minimum_ratio = float(os.getenv("FULL_SCAN_MIN_COMMIT_RETENTION", "0.9"))
+    actual_ratio = new_total / previous_total
+    if actual_ratio < minimum_ratio:
+        return (
+            False,
+            f"degraded full snapshot rejected: {new_total} commits vs {previous_total} baseline "
+            f"({actual_ratio:.2%} < {minimum_ratio:.0%})",
+        )
+
+    return True, f"full snapshot accepted at {actual_ratio:.2%} of baseline"
+
+
 def _future_result_or_default(future: Any, default: Any) -> Any:
     try:
         return future.result()
@@ -265,6 +302,78 @@ def _graphql_repositories_contributed(
         seen.add(key)
         filtered_repos.append(repo)
     return filtered_repos
+
+
+def _graphql_owned_and_collaborator_repositories(
+    username: str,
+    gh_token: str | None,
+    max_repos: int | None = None,
+) -> list[dict[str, Any]]:
+    """Fetch repos the user owns or is a collaborator on (all-time, not limited by contribution window)."""
+    if not gh_token:
+        return []
+
+    query = """
+    query($login: String!, $after: String) {
+      user(login: $login) {
+        repositories(
+          orderBy: {field: CREATED_AT, direction: DESC}
+          first: 100
+          after: $after
+          affiliations: [OWNER, COLLABORATOR]
+          isFork: false
+        ) {
+          nodes {
+            name
+            isFork
+            isPrivate
+            owner { login }
+            primaryLanguage { name }
+          }
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+        }
+      }
+    }
+    """
+
+    all_repos = _graphql_paginated_nodes(query, {"login": username}, gh_token, limit=max_repos)
+
+    filtered_repos: list[dict[str, Any]] = []
+    seen: set[tuple[str, str]] = set()
+    for repo in all_repos:
+        if not repo or repo.get("isFork"):
+            continue
+        owner = repo.get("owner", {}).get("login")
+        name = repo.get("name")
+        if not owner or not name:
+            continue
+        key = (owner, name)
+        if key in seen:
+            continue
+        seen.add(key)
+        filtered_repos.append(repo)
+    return filtered_repos
+
+
+def _merge_repo_lists(*lists: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Merge multiple repo lists, deduplicating by (owner, name)."""
+    seen: set[tuple[str, str]] = set()
+    merged: list[dict[str, Any]] = []
+    for repo_list in lists:
+        for repo in repo_list:
+            owner = (repo.get("owner") or {}).get("login")
+            name = repo.get("name")
+            if not owner or not name:
+                continue
+            key = (owner, name)
+            if key in seen:
+                continue
+            seen.add(key)
+            merged.append(repo)
+    return merged
 
 
 def _graphql_recently_touched_repositories(
@@ -649,20 +758,35 @@ def _collect_repo_commit_stats(
     gh_token: str,
     max_branches: int | None,
     max_commits: int | None,
-) -> tuple[list[str], int]:
+) -> dict[str, Any]:
     owner = repo.get("owner", {}).get("login")
     name = repo.get("name")
     if not owner or not name:
-        return [], 0
+        return {
+            "committed_dates": [],
+            "total_loc": 0,
+            "branches_seen": 0,
+            "branch_failures": 0,
+            "repo_error": "missing repo identity",
+        }
 
     try:
         branches = _graphql_repo_branches(owner, name, gh_token, max_branches=max_branches)
-    except Exception:
-        return [], 0
+    except Exception as error:
+        return {
+            "committed_dates": [],
+            "total_loc": 0,
+            "branches_seen": 0,
+            "branch_failures": 0,
+            "repo_error": str(error),
+        }
 
     committed_dates: list[str] = []
     total_loc = 0
-    seen_oids: set[str] = set()
+    branch_failures = 0
+    # Track seen oids per branch to avoid double-counting paginated duplicates
+    # within a single branch, but allow the same oid on different branches
+    # (matching anmol's counting method: per branch-occurrence, not globally unique).
     for branch in branches:
         branch_name = branch.get("name")
         if not branch_name:
@@ -677,20 +801,23 @@ def _collect_repo_commit_stats(
                 max_commits=max_commits,
             )
         except Exception:
+            branch_failures += 1
             continue
 
+        # commits from _graphql_branch_commits are already deduped within a branch
         for commit in commits:
-            oid = commit.get("oid")
-            if oid and oid in seen_oids:
-                continue
-            if oid:
-                seen_oids.add(oid)
             committed_date = commit.get("committedDate")
             if committed_date:
                 committed_dates.append(committed_date)
             total_loc += int(commit.get("additions") or 0)
 
-    return committed_dates, total_loc
+    return {
+        "committed_dates": committed_dates,
+        "total_loc": total_loc,
+        "branches_seen": len(branches),
+        "branch_failures": branch_failures,
+        "repo_error": None,
+    }
 
 
 def _collect_repos_snapshot(
@@ -700,11 +827,26 @@ def _collect_repos_snapshot(
     max_branches: int | None,
     max_commits: int | None,
     workers: int,
-) -> dict[str, dict[str, Any]]:
+) -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
     if not repos:
-        return {}
+        return {}, {
+            "repos_discovered": 0,
+            "repos_written": 0,
+            "repos_with_commits": 0,
+            "repo_errors": 0,
+            "branch_failures": 0,
+            "branches_seen": 0,
+        }
 
     snapshot: dict[str, dict[str, Any]] = {}
+    diagnostics = {
+        "repos_discovered": len(repos),
+        "repos_written": 0,
+        "repos_with_commits": 0,
+        "repo_errors": 0,
+        "branch_failures": 0,
+        "branches_seen": 0,
+    }
     with ThreadPoolExecutor(max_workers=workers) as executor:
         futures = {
             executor.submit(
@@ -723,9 +865,20 @@ def _collect_repos_snapshot(
             if not owner or not name:
                 continue
             try:
-                repo_dates, repo_loc = future.result()
-            except Exception:
+                result = future.result()
+            except Exception as error:
+                diagnostics["repo_errors"] += 1
+                _log_debug(f"repo collection crashed for {owner}/{name}: {error}")
                 continue
+
+            diagnostics["branches_seen"] += int(result.get("branches_seen") or 0)
+            diagnostics["branch_failures"] += int(result.get("branch_failures") or 0)
+            if result.get("repo_error"):
+                diagnostics["repo_errors"] += 1
+                _log_debug(f"repo collection failed for {owner}/{name}: {result['repo_error']}")
+
+            repo_dates = result.get("committed_dates", [])
+            repo_loc = int(result.get("total_loc") or 0)
 
             snapshot[_repo_key(owner, name)] = {
                 "owner": owner,
@@ -735,8 +888,11 @@ def _collect_repos_snapshot(
                 "total_loc": repo_loc,
                 "updated_at": _now_utc_iso(),
             }
+            diagnostics["repos_written"] += 1
+            if repo_dates:
+                diagnostics["repos_with_commits"] += 1
 
-    return snapshot
+    return snapshot, diagnostics
 
 
 def build_waka_block(
@@ -762,7 +918,10 @@ def build_waka_block(
     cache = _load_repo_cache(cache_file, username)
     effective_mode = selected_mode
     if effective_mode == "auto":
-        effective_mode = "incremental" if cache.get("repos") else "full"
+        effective_mode = "incremental" if cache.get("full_refreshed_at") else "full"
+    elif effective_mode == "incremental" and not cache.get("full_refreshed_at"):
+        # Never had a full scan; bootstrap with full regardless of requested mode.
+        effective_mode = "full"
 
     author_id: str | None = None
     if gh_token:
@@ -772,13 +931,26 @@ def build_waka_block(
             author_id = None
 
     repos_snapshot: dict[str, dict[str, Any]] = {}
+    snapshot_diagnostics = {
+        "repos_discovered": 0,
+        "repos_written": 0,
+        "repos_with_commits": 0,
+        "repo_errors": 0,
+        "branch_failures": 0,
+        "branches_seen": 0,
+    }
     if author_id and gh_token:
         repos_to_scan: list[dict[str, Any]] = []
         if effective_mode == "full":
             try:
-                repos_to_scan = _graphql_repositories_contributed(username, gh_token, max_repos=max_repos)
+                owned_repos = _graphql_owned_and_collaborator_repositories(username, gh_token, max_repos=max_repos)
             except Exception:
-                repos_to_scan = []
+                owned_repos = []
+            try:
+                contributed_repos = _graphql_repositories_contributed(username, gh_token, max_repos=max_repos)
+            except Exception:
+                contributed_repos = []
+            repos_to_scan = _merge_repo_lists(owned_repos, contributed_repos)
         else:
             try:
                 repos_to_scan = _graphql_recently_touched_repositories(
@@ -798,7 +970,7 @@ def build_waka_block(
                     repos_to_scan = []
 
         if repos_to_scan:
-            repos_snapshot = _collect_repos_snapshot(
+            repos_snapshot, snapshot_diagnostics = _collect_repos_snapshot(
                 repos_to_scan,
                 author_id,
                 gh_token,
@@ -807,18 +979,31 @@ def build_waka_block(
                 commit_scan_workers,
             )
 
+    if repos_snapshot:
+        _log_debug(
+            "scan summary: "
+            f"mode={effective_mode} repos_discovered={snapshot_diagnostics['repos_discovered']} "
+            f"repos_written={snapshot_diagnostics['repos_written']} "
+            f"repos_with_commits={snapshot_diagnostics['repos_with_commits']} "
+            f"branches_seen={snapshot_diagnostics['branches_seen']} "
+            f"branch_failures={snapshot_diagnostics['branch_failures']} "
+            f"repo_errors={snapshot_diagnostics['repo_errors']} "
+            f"total_commits={_snapshot_commit_total(repos_snapshot)}"
+        )
+
     if effective_mode == "full" and repos_snapshot:
-        cache["repos"] = repos_snapshot
-        cache["full_refreshed_at"] = _now_utc_iso()
-        cache["updated_at"] = _now_utc_iso()
-        _save_repo_cache(cache_file, cache)
+        should_accept, reason = _should_accept_full_snapshot(cache, repos_snapshot)
+        _log_debug(reason)
+        if should_accept:
+            cache["repos"] = repos_snapshot
+            cache["full_refreshed_at"] = _now_utc_iso()
+            cache["updated_at"] = _now_utc_iso()
+            _save_repo_cache(cache_file, cache)
     elif effective_mode == "incremental" and repos_snapshot:
         existing = cache.get("repos", {})
         existing.update(repos_snapshot)
         cache["repos"] = existing
         cache["updated_at"] = _now_utc_iso()
-        if not cache.get("full_refreshed_at"):
-            cache["full_refreshed_at"] = cache["updated_at"]
         _save_repo_cache(cache_file, cache)
 
     cached_repos: dict[str, dict[str, Any]] = cache.get("repos", {})
@@ -832,6 +1017,9 @@ def build_waka_block(
         if language:
             repo_languages[language] += 1
 
+    # Total commits from cache (consistent with time-of-day/weekday buckets)
+    total_commits = len(committed_dates)
+
     with ThreadPoolExecutor(max_workers=6) as executor:
         futures = {
             "all_time": executor.submit(_wakatime_all_time, api_key),
@@ -840,7 +1028,6 @@ def build_waka_block(
             "github_user": executor.submit(_github_user, username, gh_token),
             "public_repos": executor.submit(_github_repos, username, gh_token, "public"),
             "private_repos": executor.submit(_github_repos, username, gh_token, "private"),
-            "commits": executor.submit(_github_commit_search_count, username, gh_token),
             "year_contrib": executor.submit(_graph_year_contrib, username, gh_token),
         }
 
@@ -850,7 +1037,6 @@ def build_waka_block(
         github_user = _future_result_or_default(futures["github_user"], {})
         public_repos = _future_result_or_default(futures["public_repos"], [])
         private_repos = _future_result_or_default(futures["private_repos"], [])
-        total_commits = int(_future_result_or_default(futures["commits"], 0) or 0)
         total_contrib_year = int(_future_result_or_default(futures["year_contrib"], 0) or 0)
 
     all_repos = public_repos + private_repos
