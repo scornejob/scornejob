@@ -1,8 +1,6 @@
 name: "Update README.md"
 on:
-  schedule:
-    - cron: '0 2 * * *' # at 2:00
-  workflow_dispatch:
+  workflow_dispatch: # disabled: replaced by sync-readme-metrics.yml
 
 permissions:
   contents: write
