@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import time
 import urllib.parse
 import urllib.request
 from collections import Counter
@@ -448,8 +449,12 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
 
     committed_dates: list[str] = []
     total_loc = 0
+    commit_scan_started = time.monotonic()
+    max_commit_scan_seconds = int(os.getenv("MAX_COMMIT_SCAN_SECONDS", "45"))
     if author_id and gh_token:
         for repo in contributed_repos:
+            if time.monotonic() - commit_scan_started > max_commit_scan_seconds:
+                break
             owner = repo.get("owner", {}).get("login")
             name = repo.get("name")
             if not owner or not name:
@@ -461,6 +466,8 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
                 continue
 
             for branch_name in branch_names:
+                if time.monotonic() - commit_scan_started > max_commit_scan_seconds:
+                    break
                 try:
                     commits = _graphql_branch_commits(owner, name, branch_name, author_id, gh_token)
                 except Exception:
