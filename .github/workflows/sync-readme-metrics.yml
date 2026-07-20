@@ -1,4 +1,4 @@
-name: Sync README Test Copy
+name: Sync README Metrics
 
 on:
   schedule:
@@ -8,7 +8,7 @@ on:
     paths:
       - TEMPLATE.md
       - scripts/sync_waka_section.py
-      - .github/workflows/sync-readme-test.yml
+      - .github/workflows/sync-readme-metrics.yml
   workflow_dispatch:
     inputs:
       target_file:
@@ -24,9 +24,9 @@ permissions:
   contents: write
 
 jobs:
-  generate_readme_test:
+  generate_readme_metrics:
     concurrency:
-      group: update-readme-test
+      group: update-readme-metrics
       cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
