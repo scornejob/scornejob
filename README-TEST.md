@@ -102,7 +102,7 @@ These contributions are distributed amongst 88 repos.
 
 <!--START_SECTION:waka-->
 
-![Code Time](http://img.shields.io/badge/Code%20Time-1%2C794%20hrs%203%20mins-blue?style=flat)
+![Code Time](http://img.shields.io/badge/Code%20Time-1%2C794%20hrs%2024%20mins-blue?style=flat)
 
 ![Profile Views](http://img.shields.io/badge/Profile%20Views-18-blue?style=flat)
 
@@ -120,7 +120,7 @@ These contributions are distributed amongst 88 repos.
 >
 > 🔑 35 Private Repositories
  >
-> 🧮 Repo Scan Mode: Full
+> 🧮 Repo Scan Mode: Incremental
  >
 > 🗓️ Repo Stats Last Full Refresh: 2026-07-20T09:52:04Z
  >
@@ -186,6 +186,6 @@ HCL                               8 repos         ██░░░░░░░░
 
 ![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
 
- Last Updated on 20/07/2026 10:56:30 UTC
+ Last Updated on 20/07/2026 11:45:53 UTC
 
 <!--END_SECTION:waka-->
