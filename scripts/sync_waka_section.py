@@ -908,6 +908,9 @@ def build_waka_block(
         if language:
             repo_languages[language] += 1
 
+    # Total commits from cache (consistent with time-of-day/weekday buckets)
+    total_commits = len(committed_dates)
+
     with ThreadPoolExecutor(max_workers=6) as executor:
         futures = {
             "all_time": executor.submit(_wakatime_all_time, api_key),
@@ -916,7 +919,6 @@ def build_waka_block(
             "github_user": executor.submit(_github_user, username, gh_token),
             "public_repos": executor.submit(_github_repos, username, gh_token, "public"),
             "private_repos": executor.submit(_github_repos, username, gh_token, "private"),
-            "commits": executor.submit(_github_commit_search_count, username, gh_token),
             "year_contrib": executor.submit(_graph_year_contrib, username, gh_token),
         }
 
@@ -926,7 +928,6 @@ def build_waka_block(
         github_user = _future_result_or_default(futures["github_user"], {})
         public_repos = _future_result_or_default(futures["public_repos"], [])
         private_repos = _future_result_or_default(futures["private_repos"], [])
-        total_commits = int(_future_result_or_default(futures["commits"], 0) or 0)
         total_contrib_year = int(_future_result_or_default(futures["year_contrib"], 0) or 0)
 
     all_repos = public_repos + private_repos
