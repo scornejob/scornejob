@@ -12,9 +12,9 @@ on:
   workflow_dispatch:
     inputs:
       target_file:
-        description: Target README test file
+        description: Target README file
         required: false
-        default: README-TEST.md
+        default: README.md
       scan_mode:
         description: Repo scan mode (auto/full/incremental)
         required: false
@@ -44,11 +44,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
 
-      - name: Generate README-TEST.md
+      - name: Generate README.md
         uses: actions/github-script@v8
         env:
           STATS_TOKEN: ${{ secrets.USER_TOKEN || secrets.GITHUB_TOKEN }}
-          TARGET_FILE: ${{ github.event.inputs.target_file || 'README-TEST.md' }}
+          TARGET_FILE: ${{ github.event.inputs.target_file || 'README.md' }}
         with:
           script: |
             const { run } = require('./scripts/generate_readme_from_template')
@@ -61,7 +61,7 @@ jobs:
           GITHUB_USERNAME: ${{ github.repository_owner }}
           REPO_STATS_CACHE_PATH: assets/repo_stats_cache.json
         run: |
-          TARGET="${{ github.event.inputs.target_file || 'README-TEST.md' }}"
+          TARGET="${{ github.event.inputs.target_file || 'README.md' }}"
           SCAN_MODE="auto"
           if [[ "${{ github.event_name }}" == "workflow_dispatch" && -n "${{ github.event.inputs.scan_mode }}" ]]; then
             SCAN_MODE="${{ github.event.inputs.scan_mode }}"
@@ -72,12 +72,12 @@ jobs:
 
       - name: Commit waka-populated file
         run: |
-          TARGET="${{ github.event.inputs.target_file || 'README-TEST.md' }}"
+          TARGET="${{ github.event.inputs.target_file || 'README.md' }}"
           if [[ "$(git status --porcelain)" != "" ]]; then
             git config user.name "Seba Cornejo"
             git config user.email scornejo[bot]@users.noreply.github.com
             git add -A
-            git commit -m "Generate README-TEST with API stats"
+            git commit -m "Update README with API stats"
             git pull --rebase origin "${{ github.ref_name }}"
             git push
           fi

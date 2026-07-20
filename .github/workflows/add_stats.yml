@@ -1,10 +1,6 @@
 name: Add stats to README.md
 on:
-  workflow_dispatch:
-  workflow_run:
-    workflows: ["Update README.md"]
-    types:
-        - completed
+  workflow_dispatch: # disabled: replaced by sync-readme-metrics.yml
 
 permissions:
   contents: write
