@@ -4,7 +4,6 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import time
 import urllib.parse
 import urllib.request
 from collections import Counter
@@ -65,6 +64,50 @@ def _graphql_page_request(query: str, variables: dict[str, Any], gh_token: str) 
     return nodes, page_info
 
 
+def _graphql_find_nodes_and_page_info(response: Any) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    if isinstance(response, dict):
+        if "nodes" in response and "pageInfo" in response:
+            return response.get("nodes", []), response.get("pageInfo", {})
+        for value in response.values():
+            nodes, page_info = _graphql_find_nodes_and_page_info(value)
+            if nodes or page_info:
+                return nodes, page_info
+    elif isinstance(response, list):
+        for value in response:
+            nodes, page_info = _graphql_find_nodes_and_page_info(value)
+            if nodes or page_info:
+                return nodes, page_info
+    return [], {"hasNextPage": False}
+
+
+def _graphql_paginated_nodes(
+    query: str,
+    variables: dict[str, Any],
+    gh_token: str,
+    *,
+    limit: int | None = None,
+) -> list[dict[str, Any]]:
+    all_nodes: list[dict[str, Any]] = []
+    cursor: str | None = None
+
+    while True:
+        page_variables = dict(variables)
+        page_variables["after"] = cursor
+        data = _graphql_request(query, page_variables, gh_token)
+        nodes, page_info = _graphql_find_nodes_and_page_info(data)
+        all_nodes.extend(nodes)
+
+        if limit and len(all_nodes) >= limit:
+            return all_nodes[:limit]
+
+        if not page_info.get("hasNextPage"):
+            return all_nodes
+
+        cursor = page_info.get("endCursor")
+        if not cursor:
+            return all_nodes
+
+
 def _wakatime_all_time(api_key: str) -> Any:
     url = "https://wakatime.com/api/v1/users/current/all_time_since_today"
     url = f"{url}?api_key={urllib.parse.quote(api_key)}"
@@ -98,20 +141,24 @@ def _github_commit_search_count(username: str, gh_token: str | None) -> int:
 
 
 def _graphql_user_id(username: str, gh_token: str | None) -> str | None:
-        if not gh_token:
-                return None
-        query = """
-        query($login: String!) {
-            user(login: $login) {
-                id
-            }
-        }
-        """
-        data = _graphql_request(query, {"login": username}, gh_token)
-        return data.get("user", {}).get("id")
+    if not gh_token:
+        return None
+    query = """
+    query($login: String!) {
+      user(login: $login) {
+        id
+      }
+    }
+    """
+    data = _graphql_request(query, {"login": username}, gh_token)
+    return data.get("user", {}).get("id")
 
 
-def _graphql_repositories_contributed(username: str, gh_token: str | None, max_repos: int = 20) -> list[dict[str, Any]]:
+def _graphql_repositories_contributed(
+    username: str,
+    gh_token: str | None,
+    max_repos: int | None = None,
+) -> list[dict[str, Any]]:
     if not gh_token:
         return []
 
@@ -130,7 +177,6 @@ def _graphql_repositories_contributed(username: str, gh_token: str | None, max_r
             isPrivate
             owner { login }
             primaryLanguage { name }
-            defaultBranchRef { name }
           }
           pageInfo {
             hasNextPage
@@ -141,34 +187,61 @@ def _graphql_repositories_contributed(username: str, gh_token: str | None, max_r
     }
     """
 
-    all_repos: list[dict[str, Any]] = []
+    all_repos = _graphql_paginated_nodes(query, {"login": username}, gh_token, limit=max_repos)
+
+    filtered_repos: list[dict[str, Any]] = []
     seen: set[tuple[str, str]] = set()
-    cursor: str | None = None
+    for repo in all_repos:
+        if not repo or repo.get("isFork"):
+            continue
+        owner = repo.get("owner", {}).get("login")
+        name = repo.get("name")
+        if not owner or not name:
+            continue
+        key = (owner, name)
+        if key in seen:
+            continue
+        seen.add(key)
+        filtered_repos.append(repo)
+    return filtered_repos
 
-    while len(all_repos) < max_repos:
-        nodes, page = _graphql_page_request(query, {"login": username, "after": cursor}, gh_token)
-        for repo in nodes:
-            if not repo or repo.get("isFork"):
-                continue
-            owner = repo.get("owner", {}).get("login")
-            name = repo.get("name")
-            if not owner or not name:
-                continue
-            key = (owner, name)
-            if key in seen:
-                continue
-            seen.add(key)
-            all_repos.append(repo)
-            if len(all_repos) >= max_repos:
-                break
 
-        if not page.get("hasNextPage"):
-            break
-        cursor = page.get("endCursor")
-        if not cursor:
-            break
+def _graphql_repo_branches(
+    repo_owner: str,
+    repo_name: str,
+    gh_token: str | None,
+    max_branches: int | None = None,
+) -> list[dict[str, Any]]:
+    if not gh_token:
+        return []
 
-    return all_repos
+    query = """
+    query($owner: String!, $name: String!, $after: String) {
+      repository(owner: $owner, name: $name) {
+        refs(
+          refPrefix: "refs/heads/"
+          orderBy: {direction: DESC, field: TAG_COMMIT_DATE}
+          first: 100
+          after: $after
+        ) {
+          nodes {
+            name
+          }
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+        }
+      }
+    }
+    """
+
+    return _graphql_paginated_nodes(
+        query,
+        {"owner": repo_owner, "name": repo_name},
+        gh_token,
+        limit=max_branches,
+    )
 
 
 def _graphql_branch_commits(
@@ -177,7 +250,7 @@ def _graphql_branch_commits(
     branch_name: str,
     author_id: str,
     gh_token: str | None,
-    max_commits: int = 20,
+    max_commits: int | None = None,
 ) -> list[dict[str, Any]]:
     if not gh_token:
         return []
@@ -207,49 +280,26 @@ def _graphql_branch_commits(
     }
     """
 
-    commits: list[dict[str, Any]] = []
+    commits = _graphql_paginated_nodes(
+        query,
+        {
+            "owner": repo_owner,
+            "name": repo_name,
+            "qualified": f"refs/heads/{branch_name}",
+            "authorId": author_id,
+        },
+        gh_token,
+        limit=max_commits,
+    )
     seen_oids: set[str] = set()
-    cursor: str | None = None
-
-    while len(commits) < max_commits:
-        data = _graphql_request(
-            query,
-            {
-                "owner": repo_owner,
-                "name": repo_name,
-                "qualified": f"refs/heads/{branch_name}",
-                "authorId": author_id,
-                "after": cursor,
-            },
-            gh_token,
-        )
-        history = (
-            data.get("repository", {})
-            .get("ref", {})
-            .get("target", {})
-            .get("history", {})
-        )
-        nodes = history.get("nodes", [])
-        if not nodes:
-            break
-
-        for node in nodes:
-            oid = node.get("oid")
-            if not oid or oid in seen_oids:
-                continue
-            seen_oids.add(oid)
-            commits.append(node)
-            if len(commits) >= max_commits:
-                break
-
-        page = history.get("pageInfo", {})
-        if not page.get("hasNextPage"):
-            break
-        cursor = page.get("endCursor")
-        if not cursor:
-            break
-
-    return commits
+    unique_commits: list[dict[str, Any]] = []
+    for commit in commits:
+        oid = commit.get("oid")
+        if not oid or oid in seen_oids:
+            continue
+        seen_oids.add(oid)
+        unique_commits.append(commit)
+    return unique_commits
 
 
 def _github_repos(username: str, gh_token: str | None, visibility: str = "public") -> list[dict[str, Any]]:
@@ -445,31 +495,38 @@ def _format_repo_language_counts(language_counts: Counter[str], total_repos_with
 
 def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
     author_id = _graphql_user_id(username, gh_token)
-    contributed_repos = _graphql_repositories_contributed(username, gh_token)
+    max_repos = int(os.getenv("MAX_CONTRIBUTED_REPOS", "0")) or None
+    max_branches = int(os.getenv("MAX_BRANCHES_PER_REPO", "0")) or None
+    max_commits = int(os.getenv("MAX_COMMITS_PER_BRANCH", "0")) or None
+    contributed_repos = _graphql_repositories_contributed(username, gh_token, max_repos=max_repos)
 
     committed_dates: list[str] = []
     total_loc = 0
-    commit_scan_started = time.monotonic()
-    max_commit_scan_seconds = int(os.getenv("MAX_COMMIT_SCAN_SECONDS", "45"))
     if author_id and gh_token:
         for repo in contributed_repos:
-            if time.monotonic() - commit_scan_started > max_commit_scan_seconds:
-                break
             owner = repo.get("owner", {}).get("login")
             name = repo.get("name")
             if not owner or not name:
                 continue
 
-            default_branch = repo.get("defaultBranchRef", {}).get("name")
-            branch_names = [default_branch] if default_branch else []
-            if not branch_names:
+            try:
+                branches = _graphql_repo_branches(owner, name, gh_token, max_branches=max_branches)
+            except Exception:
                 continue
 
-            for branch_name in branch_names:
-                if time.monotonic() - commit_scan_started > max_commit_scan_seconds:
-                    break
+            for branch in branches:
+                branch_name = branch.get("name")
+                if not branch_name:
+                    continue
                 try:
-                    commits = _graphql_branch_commits(owner, name, branch_name, author_id, gh_token)
+                    commits = _graphql_branch_commits(
+                        owner,
+                        name,
+                        branch_name,
+                        author_id,
+                        gh_token,
+                        max_commits=max_commits,
+                    )
                 except Exception:
                     continue
                 for commit in commits:
