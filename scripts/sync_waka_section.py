@@ -6,8 +6,9 @@ import json
 import os
 import urllib.parse
 import urllib.request
+from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime, timezone
+from datetime import UTC, datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -54,6 +55,59 @@ def _graphql_request(query: str, variables: dict[str, Any], gh_token: str) -> An
     return data.get("data", {})
 
 
+def _graphql_page_request(query: str, variables: dict[str, Any], gh_token: str) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    data = _graphql_request(query, variables, gh_token)
+    user = data.get("user", {})
+    repos = user.get("repositoriesContributedTo", {})
+    nodes = repos.get("nodes", [])
+    page_info = repos.get("pageInfo", {})
+    return nodes, page_info
+
+
+def _graphql_find_nodes_and_page_info(response: Any) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    if isinstance(response, dict):
+        if "nodes" in response and "pageInfo" in response:
+            return response.get("nodes", []), response.get("pageInfo", {})
+        for value in response.values():
+            nodes, page_info = _graphql_find_nodes_and_page_info(value)
+            if nodes or page_info:
+                return nodes, page_info
+    elif isinstance(response, list):
+        for value in response:
+            nodes, page_info = _graphql_find_nodes_and_page_info(value)
+            if nodes or page_info:
+                return nodes, page_info
+    return [], {"hasNextPage": False}
+
+
+def _graphql_paginated_nodes(
+    query: str,
+    variables: dict[str, Any],
+    gh_token: str,
+    *,
+    limit: int | None = None,
+) -> list[dict[str, Any]]:
+    all_nodes: list[dict[str, Any]] = []
+    cursor: str | None = None
+
+    while True:
+        page_variables = dict(variables)
+        page_variables["after"] = cursor
+        data = _graphql_request(query, page_variables, gh_token)
+        nodes, page_info = _graphql_find_nodes_and_page_info(data)
+        all_nodes.extend(nodes)
+
+        if limit and len(all_nodes) >= limit:
+            return all_nodes[:limit]
+
+        if not page_info.get("hasNextPage"):
+            return all_nodes
+
+        cursor = page_info.get("endCursor")
+        if not cursor:
+            return all_nodes
+
+
 def _wakatime_all_time(api_key: str) -> Any:
     url = "https://wakatime.com/api/v1/users/current/all_time_since_today"
     url = f"{url}?api_key={urllib.parse.quote(api_key)}"
@@ -77,23 +131,6 @@ def _github_user(username: str, gh_token: str | None) -> Any:
     return _request_json(url, _github_headers(gh_token))
 
 
-def _github_user_events(username: str, gh_token: str | None) -> list[dict[str, Any]]:
-    headers = _github_headers(gh_token)
-    events: list[dict[str, Any]] = []
-    for page in range(1, 4):
-        url = (
-            f"https://api.github.com/users/{urllib.parse.quote(username)}/events"
-            f"?per_page=100&page={page}"
-        )
-        batch = _request_json(url, headers)
-        if not batch:
-            break
-        events.extend(batch)
-        if len(batch) < 100:
-            break
-    return events
-
-
 def _github_commit_search_count(username: str, gh_token: str | None) -> int:
     query = urllib.parse.quote(f"author:{username}")
     headers = _github_headers(gh_token)
@@ -101,6 +138,168 @@ def _github_commit_search_count(username: str, gh_token: str | None) -> int:
     url = f"https://api.github.com/search/commits?q={query}&per_page=1"
     data = _request_json(url, headers)
     return int(data.get("total_count", 0))
+
+
+def _graphql_user_id(username: str, gh_token: str | None) -> str | None:
+    if not gh_token:
+        return None
+    query = """
+    query($login: String!) {
+      user(login: $login) {
+        id
+      }
+    }
+    """
+    data = _graphql_request(query, {"login": username}, gh_token)
+    return data.get("user", {}).get("id")
+
+
+def _graphql_repositories_contributed(
+    username: str,
+    gh_token: str | None,
+    max_repos: int | None = None,
+) -> list[dict[str, Any]]:
+    if not gh_token:
+        return []
+
+    query = """
+    query($login: String!, $after: String) {
+      user(login: $login) {
+        repositoriesContributedTo(
+          orderBy: {field: CREATED_AT, direction: DESC}
+          first: 100
+          after: $after
+          includeUserRepositories: true
+        ) {
+          nodes {
+            name
+            isFork
+            isPrivate
+            owner { login }
+            primaryLanguage { name }
+          }
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+        }
+      }
+    }
+    """
+
+    all_repos = _graphql_paginated_nodes(query, {"login": username}, gh_token, limit=max_repos)
+
+    filtered_repos: list[dict[str, Any]] = []
+    seen: set[tuple[str, str]] = set()
+    for repo in all_repos:
+        if not repo or repo.get("isFork"):
+            continue
+        owner = repo.get("owner", {}).get("login")
+        name = repo.get("name")
+        if not owner or not name:
+            continue
+        key = (owner, name)
+        if key in seen:
+            continue
+        seen.add(key)
+        filtered_repos.append(repo)
+    return filtered_repos
+
+
+def _graphql_repo_branches(
+    repo_owner: str,
+    repo_name: str,
+    gh_token: str | None,
+    max_branches: int | None = None,
+) -> list[dict[str, Any]]:
+    if not gh_token:
+        return []
+
+    query = """
+    query($owner: String!, $name: String!, $after: String) {
+      repository(owner: $owner, name: $name) {
+        refs(
+          refPrefix: "refs/heads/"
+          orderBy: {direction: DESC, field: TAG_COMMIT_DATE}
+          first: 100
+          after: $after
+        ) {
+          nodes {
+            name
+          }
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+        }
+      }
+    }
+    """
+
+    return _graphql_paginated_nodes(
+        query,
+        {"owner": repo_owner, "name": repo_name},
+        gh_token,
+        limit=max_branches,
+    )
+
+
+def _graphql_branch_commits(
+    repo_owner: str,
+    repo_name: str,
+    branch_name: str,
+    author_id: str,
+    gh_token: str | None,
+    max_commits: int | None = None,
+) -> list[dict[str, Any]]:
+    if not gh_token:
+        return []
+
+    query = """
+    query($owner: String!, $name: String!, $qualified: String!, $authorId: ID!, $after: String) {
+      repository(owner: $owner, name: $name) {
+        ref(qualifiedName: $qualified) {
+          target {
+            ... on Commit {
+              history(first: 100, after: $after, author: {id: $authorId}) {
+                nodes {
+                  oid
+                  committedDate
+                  additions
+                  deletions
+                }
+                pageInfo {
+                  hasNextPage
+                  endCursor
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    """
+
+    commits = _graphql_paginated_nodes(
+        query,
+        {
+            "owner": repo_owner,
+            "name": repo_name,
+            "qualified": f"refs/heads/{branch_name}",
+            "authorId": author_id,
+        },
+        gh_token,
+        limit=max_commits,
+    )
+    seen_oids: set[str] = set()
+    unique_commits: list[dict[str, Any]] = []
+    for commit in commits:
+        oid = commit.get("oid")
+        if not oid or oid in seen_oids:
+            continue
+        seen_oids.add(oid)
+        unique_commits.append(commit)
+    return unique_commits
 
 
 def _github_repos(username: str, gh_token: str | None, visibility: str = "public") -> list[dict[str, Any]]:
@@ -148,6 +347,14 @@ def _format_int(value: int) -> str:
     return f"{value:,}"
 
 
+def _format_human_loc(value: int) -> str:
+    if value >= 1_000_000:
+        return f"{value / 1_000_000:.2f} million"
+    if value >= 1_000:
+        return f"{value:,}"
+    return str(value)
+
+
 def _percent(value: float, total: float) -> float:
     if total <= 0:
         return 0.0
@@ -193,18 +400,27 @@ def _graph_year_contrib(username: str, gh_token: str | None) -> int:
     )
 
 
-def _events_time_buckets(events: list[dict[str, Any]]) -> list[tuple[str, int]]:
+def _commit_time_buckets(committed_dates: list[str], timezone_name: str | None) -> list[tuple[str, int]]:
     buckets = {
         "🌞 Morning": 0,
         "🌆 Daytime": 0,
         "🌃 Evening": 0,
         "🌙 Night": 0,
     }
-    for event in events:
-        ts = event.get("created_at")
+    for ts in committed_dates:
         if not ts:
             continue
-        hour = datetime.fromisoformat(ts.replace("Z", "+00:00")).hour
+        dt_utc = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+        if timezone_name:
+            try:
+                from zoneinfo import ZoneInfo
+
+                dt = dt_utc.astimezone(ZoneInfo(timezone_name))
+            except Exception:
+                dt = dt_utc.astimezone(UTC)
+        else:
+            dt = dt_utc.astimezone(UTC)
+        hour = dt.hour
         if 6 <= hour < 12:
             buckets["🌞 Morning"] += 1
         elif 12 <= hour < 18:
@@ -216,23 +432,24 @@ def _events_time_buckets(events: list[dict[str, Any]]) -> list[tuple[str, int]]:
     return list(buckets.items())
 
 
-def _events_weekday_buckets(events: list[dict[str, Any]]) -> list[tuple[str, int]]:
-    days = {
-        "Monday": 0,
-        "Tuesday": 0,
-        "Wednesday": 0,
-        "Thursday": 0,
-        "Friday": 0,
-        "Saturday": 0,
-        "Sunday": 0,
-    }
-    for event in events:
-        ts = event.get("created_at")
+def _commit_weekday_buckets(committed_dates: list[str], timezone_name: str | None) -> list[tuple[str, int]]:
+    day_order = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    days = {day: 0 for day in day_order}
+    for ts in committed_dates:
         if not ts:
             continue
-        dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+        dt_utc = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+        if timezone_name:
+            try:
+                from zoneinfo import ZoneInfo
+
+                dt = dt_utc.astimezone(ZoneInfo(timezone_name))
+            except Exception:
+                dt = dt_utc.astimezone(UTC)
+        else:
+            dt = dt_utc.astimezone(UTC)
         days[dt.strftime("%A")] += 1
-    return list(days.items())
+    return [(day, days[day]) for day in day_order]
 
 
 def _choose_most_productive(weekday_counts: list[tuple[str, int]]) -> str:
@@ -263,23 +480,91 @@ def _format_languages_section(languages: list[dict[str, Any]]) -> str:
     return "\n".join(lines)
 
 
-def _format_top_repos(repos: list[dict[str, Any]]) -> str:
-    if not repos:
+def _format_repo_language_counts(language_counts: Counter[str], total_repos_with_language: int) -> str:
+    if not language_counts or total_repos_with_language <= 0:
         return "No repositories found."
+
     lines: list[str] = []
-    top = sorted(repos, key=lambda r: r.get("stargazers_count", 0), reverse=True)[:5]
-    total = sum(r.get("stargazers_count", 0) for r in top) or len(top)
-    for repo in top:
-        name = repo.get("language") or "Other"
-        stars = int(repo.get("stargazers_count", 0))
-        pct = _percent(stars if stars > 0 else 1, total)
+    for name, count in language_counts.most_common(5):
+        pct = _percent(count, total_repos_with_language)
         lines.append(
-            f"{name:<24} {stars:>10} repos         {_bar(pct)}   {pct:05.2f} % "
+            f"{name:<24} {count:>10} repos         {_bar(pct)}   {pct:05.2f} % "
         )
     return "\n".join(lines)
 
 
+def _collect_repo_commit_stats(
+    repo: dict[str, Any],
+    author_id: str,
+    gh_token: str,
+    max_branches: int | None,
+    max_commits: int | None,
+) -> tuple[list[str], int]:
+    owner = repo.get("owner", {}).get("login")
+    name = repo.get("name")
+    if not owner or not name:
+        return [], 0
+
+    try:
+        branches = _graphql_repo_branches(owner, name, gh_token, max_branches=max_branches)
+    except Exception:
+        return [], 0
+
+    committed_dates: list[str] = []
+    total_loc = 0
+    for branch in branches:
+        branch_name = branch.get("name")
+        if not branch_name:
+            continue
+        try:
+            commits = _graphql_branch_commits(
+                owner,
+                name,
+                branch_name,
+                author_id,
+                gh_token,
+                max_commits=max_commits,
+            )
+        except Exception:
+            continue
+
+        for commit in commits:
+            committed_date = commit.get("committedDate")
+            if committed_date:
+                committed_dates.append(committed_date)
+            total_loc += int(commit.get("additions") or 0)
+
+    return committed_dates, total_loc
+
+
 def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
+    author_id = _graphql_user_id(username, gh_token)
+    max_repos = int(os.getenv("MAX_CONTRIBUTED_REPOS", "0")) or None
+    max_branches = int(os.getenv("MAX_BRANCHES_PER_REPO", "0")) or None
+    max_commits = int(os.getenv("MAX_COMMITS_PER_BRANCH", "0")) or None
+    commit_scan_workers = max(1, int(os.getenv("COMMIT_SCAN_WORKERS", "6")))
+    contributed_repos = _graphql_repositories_contributed(username, gh_token, max_repos=max_repos)
+
+    committed_dates: list[str] = []
+    total_loc = 0
+    if author_id and gh_token:
+        with ThreadPoolExecutor(max_workers=commit_scan_workers) as executor:
+            futures = [
+                executor.submit(
+                    _collect_repo_commit_stats,
+                    repo,
+                    author_id,
+                    gh_token,
+                    max_branches,
+                    max_commits,
+                )
+                for repo in contributed_repos
+            ]
+            for future in futures:
+                repo_dates, repo_loc = future.result()
+                committed_dates.extend(repo_dates)
+                total_loc += repo_loc
+
     with ThreadPoolExecutor(max_workers=6) as executor:
         futures = {
             "all_time": executor.submit(_wakatime_all_time, api_key),
@@ -288,7 +573,6 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
             "github_user": executor.submit(_github_user, username, gh_token),
             "public_repos": executor.submit(_github_repos, username, gh_token, "public"),
             "private_repos": executor.submit(_github_repos, username, gh_token, "private"),
-            "events": executor.submit(_github_user_events, username, gh_token),
             "commits": executor.submit(_github_commit_search_count, username, gh_token),
             "year_contrib": executor.submit(_graph_year_contrib, username, gh_token),
         }
@@ -299,19 +583,22 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
         github_user = futures["github_user"].result()
         public_repos = futures["public_repos"].result()
         private_repos = futures["private_repos"].result()
-        events = futures["events"].result()
         total_commits = futures["commits"].result()
         total_contrib_year = futures["year_contrib"].result()
 
     all_repos = public_repos + private_repos
-    primary_languages = _language_counts(all_repos)[:5]
+    repo_languages = Counter(
+        repo.get("primaryLanguage", {}).get("name")
+        for repo in contributed_repos
+        if repo.get("primaryLanguage") and repo.get("primaryLanguage", {}).get("name")
+    )
+    top_language = repo_languages.most_common(1)[0][0] if repo_languages else "Python"
     week = last_7.get("data", {})
     week_languages = week.get("languages", [])
     week_editors = week.get("editors", [])
     week_os = week.get("operating_systems", [])
 
     code_time_human = all_time.get("data", {}).get("text", "0 hrs 0 mins")
-    today_text = today.get("data", {}).get("grand_total", {}).get("text") or "0 secs"
     profile_views = github_user.get("followers", 0)
     total_public = github_user.get("public_repos", 0)
     total_private = len(private_repos)
@@ -320,14 +607,13 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
     used_storage_kb = sum(int(repo.get("size", 0)) for repo in all_repos)
     updated = datetime.now(timezone.utc).strftime("%d/%m/%Y %H:%M:%S UTC")
     current_year = datetime.now(timezone.utc).year
+    timezone_name = week.get("timezone")
 
-    time_of_day = _events_time_buckets(events)
-    weekday_counts = _events_weekday_buckets(events)
+    time_of_day = _commit_time_buckets(committed_dates, timezone_name)
+    weekday_counts = _commit_weekday_buckets(committed_dates, timezone_name)
     productive_day = _choose_most_productive(weekday_counts)
 
-    primary_lang_lines = _format_top_repos(
-        [{"language": lang, "stargazers_count": count} for lang, count in primary_languages]
-    )
+    primary_lang_lines = _format_repo_language_counts(repo_languages, sum(repo_languages.values()))
     editors_block = _format_languages_section(week_editors)
     os_block = _format_languages_section(week_os)
     week_lang_block = _format_languages_section(week_languages)
@@ -339,7 +625,7 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
 
 ![Profile Views](http://img.shields.io/badge/Profile%20Views-{profile_views}-blue?style=flat)
 
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-{urllib.parse.quote(_format_int(total_commits))}%20commits-blue?style=flat)
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-{urllib.parse.quote(_format_human_loc(total_loc))}%20lines%20of%20code%20in%20{urllib.parse.quote(_format_int(total_commits))}%20commits-blue?style=flat)
 
 **🐱 My GitHub Data**
 
@@ -368,7 +654,7 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
 📊 **This Week I Spent My Time On**
 
 ```text
-🕑︎ Time Zone: Europe/Berlin
+🕑︎ Time Zone: {timezone_name or 'UTC'}
 
 💬 Programming Languages:
 {week_lang_block}
@@ -380,7 +666,7 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
 {os_block}
 ```
 
-**I Mostly Code in Python**
+**I Mostly Code in {top_language}**
 
 ```text
 {primary_lang_lines}
