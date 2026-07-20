@@ -8,12 +8,73 @@ import urllib.parse
 import urllib.request
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
-from datetime import UTC, datetime, timezone
+from datetime import UTC, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
 START = "<!--START_SECTION:waka-->"
 END = "<!--END_SECTION:waka-->"
+CACHE_VERSION = 1
+DEFAULT_CACHE_PATH = Path("assets/repo_stats_cache.json")
+
+
+def _now_utc_iso() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def _repo_key(owner: str, name: str) -> str:
+    return f"{owner}/{name}"
+
+
+def _repo_identity(repo: dict[str, Any]) -> tuple[str | None, str | None]:
+    owner = repo.get("owner", {}).get("login")
+    name = repo.get("name")
+    return owner, name
+
+
+def _empty_repo_cache(username: str) -> dict[str, Any]:
+    return {
+        "version": CACHE_VERSION,
+        "username": username,
+        "full_refreshed_at": None,
+        "updated_at": None,
+        "repos": {},
+    }
+
+
+def _load_repo_cache(path: Path, username: str) -> dict[str, Any]:
+    if not path.exists():
+        return _empty_repo_cache(username)
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return _empty_repo_cache(username)
+
+    if not isinstance(data, dict):
+        return _empty_repo_cache(username)
+    if data.get("version") != CACHE_VERSION:
+        return _empty_repo_cache(username)
+
+    repos = data.get("repos")
+    if not isinstance(repos, dict):
+        return _empty_repo_cache(username)
+
+    data.setdefault("username", username)
+    data.setdefault("full_refreshed_at", None)
+    data.setdefault("updated_at", None)
+    return data
+
+
+def _save_repo_cache(path: Path, data: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def _future_result_or_default(future: Any, default: Any) -> Any:
+    try:
+        return future.result()
+    except Exception:
+        return default
 
 
 def _request_json(url: str, headers: dict[str, str] | None = None) -> Any:
@@ -204,6 +265,95 @@ def _graphql_repositories_contributed(
         seen.add(key)
         filtered_repos.append(repo)
     return filtered_repos
+
+
+def _graphql_recently_touched_repositories(
+        username: str,
+        gh_token: str | None,
+        *,
+        hours: int = 24,
+        max_repos: int = 100,
+) -> list[dict[str, Any]]:
+        if not gh_token:
+                return []
+
+        now = datetime.now(timezone.utc)
+        since = now - timedelta(hours=max(1, hours))
+        query = """
+        query($login: String!, $from: DateTime!, $to: DateTime!) {
+            user(login: $login) {
+                contributionsCollection(from: $from, to: $to) {
+                    commitContributionsByRepository(maxRepositories: 100) {
+                        repository {
+                            name
+                            isFork
+                            owner { login }
+                            primaryLanguage { name }
+                        }
+                    }
+                    issueContributionsByRepository(maxRepositories: 100) {
+                        repository {
+                            name
+                            isFork
+                            owner { login }
+                            primaryLanguage { name }
+                        }
+                    }
+                    pullRequestContributionsByRepository(maxRepositories: 100) {
+                        repository {
+                            name
+                            isFork
+                            owner { login }
+                            primaryLanguage { name }
+                        }
+                    }
+                    pullRequestReviewContributionsByRepository(maxRepositories: 100) {
+                        repository {
+                            name
+                            isFork
+                            owner { login }
+                            primaryLanguage { name }
+                        }
+                    }
+                }
+            }
+        }
+        """
+
+        variables = {
+                "login": username,
+                "from": since.replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+                "to": now.replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        }
+        data = _graphql_request(query, variables, gh_token)
+        contrib = data.get("user", {}).get("contributionsCollection", {})
+
+        groups = [
+                contrib.get("commitContributionsByRepository", []),
+                contrib.get("issueContributionsByRepository", []),
+                contrib.get("pullRequestContributionsByRepository", []),
+                contrib.get("pullRequestReviewContributionsByRepository", []),
+        ]
+
+        seen: set[tuple[str, str]] = set()
+        repos: list[dict[str, Any]] = []
+        for group in groups:
+                for item in group or []:
+                        repo = (item or {}).get("repository", {})
+                        if not repo or repo.get("isFork"):
+                                continue
+                        owner = repo.get("owner", {}).get("login")
+                        name = repo.get("name")
+                        if not owner or not name:
+                                continue
+                        key = (owner, name)
+                        if key in seen:
+                                continue
+                        seen.add(key)
+                        repos.append(repo)
+                        if len(repos) >= max_repos:
+                                return repos
+        return repos
 
 
 def _graphql_repo_branches(
@@ -512,6 +662,7 @@ def _collect_repo_commit_stats(
 
     committed_dates: list[str] = []
     total_loc = 0
+    seen_oids: set[str] = set()
     for branch in branches:
         branch_name = branch.get("name")
         if not branch_name:
@@ -529,6 +680,11 @@ def _collect_repo_commit_stats(
             continue
 
         for commit in commits:
+            oid = commit.get("oid")
+            if oid and oid in seen_oids:
+                continue
+            if oid:
+                seen_oids.add(oid)
             committed_date = commit.get("committedDate")
             if committed_date:
                 committed_dates.append(committed_date)
@@ -537,33 +693,144 @@ def _collect_repo_commit_stats(
     return committed_dates, total_loc
 
 
-def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
-    author_id = _graphql_user_id(username, gh_token)
+def _collect_repos_snapshot(
+    repos: list[dict[str, Any]],
+    author_id: str,
+    gh_token: str,
+    max_branches: int | None,
+    max_commits: int | None,
+    workers: int,
+) -> dict[str, dict[str, Any]]:
+    if not repos:
+        return {}
+
+    snapshot: dict[str, dict[str, Any]] = {}
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        futures = {
+            executor.submit(
+                _collect_repo_commit_stats,
+                repo,
+                author_id,
+                gh_token,
+                max_branches,
+                max_commits,
+            ): repo
+            for repo in repos
+        }
+
+        for future, repo in futures.items():
+            owner, name = _repo_identity(repo)
+            if not owner or not name:
+                continue
+            try:
+                repo_dates, repo_loc = future.result()
+            except Exception:
+                continue
+
+            snapshot[_repo_key(owner, name)] = {
+                "owner": owner,
+                "name": name,
+                "primaryLanguage": (repo.get("primaryLanguage") or {}).get("name"),
+                "committed_dates": repo_dates,
+                "total_loc": repo_loc,
+                "updated_at": _now_utc_iso(),
+            }
+
+    return snapshot
+
+
+def build_waka_block(
+    api_key: str,
+    username: str,
+    gh_token: str | None,
+    *,
+    scan_mode: str = "auto",
+    cache_path: Path | None = None,
+) -> str:
     max_repos = int(os.getenv("MAX_CONTRIBUTED_REPOS", "0")) or None
     max_branches = int(os.getenv("MAX_BRANCHES_PER_REPO", "0")) or None
     max_commits = int(os.getenv("MAX_COMMITS_PER_BRANCH", "0")) or None
+    max_recent_repos = max(1, int(os.getenv("MAX_RECENT_REPOS", "100")))
+    recent_hours = max(1, int(os.getenv("RECENT_REPOS_HOURS", "24")))
     commit_scan_workers = max(1, int(os.getenv("COMMIT_SCAN_WORKERS", "6")))
-    contributed_repos = _graphql_repositories_contributed(username, gh_token, max_repos=max_repos)
 
+    selected_mode = (scan_mode or "auto").strip().lower()
+    if selected_mode not in {"auto", "full", "incremental"}:
+        selected_mode = "auto"
+
+    cache_file = cache_path or Path(os.getenv("REPO_STATS_CACHE_PATH", str(DEFAULT_CACHE_PATH)))
+    cache = _load_repo_cache(cache_file, username)
+    effective_mode = selected_mode
+    if effective_mode == "auto":
+        effective_mode = "incremental" if cache.get("repos") else "full"
+
+    author_id: str | None = None
+    if gh_token:
+        try:
+            author_id = _graphql_user_id(username, gh_token)
+        except Exception:
+            author_id = None
+
+    repos_snapshot: dict[str, dict[str, Any]] = {}
+    if author_id and gh_token:
+        repos_to_scan: list[dict[str, Any]] = []
+        if effective_mode == "full":
+            try:
+                repos_to_scan = _graphql_repositories_contributed(username, gh_token, max_repos=max_repos)
+            except Exception:
+                repos_to_scan = []
+        else:
+            try:
+                repos_to_scan = _graphql_recently_touched_repositories(
+                    username,
+                    gh_token,
+                    hours=recent_hours,
+                    max_repos=max_recent_repos,
+                )
+            except Exception:
+                repos_to_scan = []
+
+            if not repos_to_scan and not cache.get("repos"):
+                effective_mode = "full"
+                try:
+                    repos_to_scan = _graphql_repositories_contributed(username, gh_token, max_repos=max_repos)
+                except Exception:
+                    repos_to_scan = []
+
+        if repos_to_scan:
+            repos_snapshot = _collect_repos_snapshot(
+                repos_to_scan,
+                author_id,
+                gh_token,
+                max_branches,
+                max_commits,
+                commit_scan_workers,
+            )
+
+    if effective_mode == "full" and repos_snapshot:
+        cache["repos"] = repos_snapshot
+        cache["full_refreshed_at"] = _now_utc_iso()
+        cache["updated_at"] = _now_utc_iso()
+        _save_repo_cache(cache_file, cache)
+    elif effective_mode == "incremental" and repos_snapshot:
+        existing = cache.get("repos", {})
+        existing.update(repos_snapshot)
+        cache["repos"] = existing
+        cache["updated_at"] = _now_utc_iso()
+        if not cache.get("full_refreshed_at"):
+            cache["full_refreshed_at"] = cache["updated_at"]
+        _save_repo_cache(cache_file, cache)
+
+    cached_repos: dict[str, dict[str, Any]] = cache.get("repos", {})
     committed_dates: list[str] = []
     total_loc = 0
-    if author_id and gh_token:
-        with ThreadPoolExecutor(max_workers=commit_scan_workers) as executor:
-            futures = [
-                executor.submit(
-                    _collect_repo_commit_stats,
-                    repo,
-                    author_id,
-                    gh_token,
-                    max_branches,
-                    max_commits,
-                )
-                for repo in contributed_repos
-            ]
-            for future in futures:
-                repo_dates, repo_loc = future.result()
-                committed_dates.extend(repo_dates)
-                total_loc += repo_loc
+    repo_languages: Counter[str] = Counter()
+    for repo_data in cached_repos.values():
+        committed_dates.extend(repo_data.get("committed_dates", []))
+        total_loc += int(repo_data.get("total_loc") or 0)
+        language = repo_data.get("primaryLanguage")
+        if language:
+            repo_languages[language] += 1
 
     with ThreadPoolExecutor(max_workers=6) as executor:
         futures = {
@@ -577,21 +844,16 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
             "year_contrib": executor.submit(_graph_year_contrib, username, gh_token),
         }
 
-        all_time = futures["all_time"].result()
-        last_7 = futures["last_7"].result()
-        today = futures["today"].result()
-        github_user = futures["github_user"].result()
-        public_repos = futures["public_repos"].result()
-        private_repos = futures["private_repos"].result()
-        total_commits = futures["commits"].result()
-        total_contrib_year = futures["year_contrib"].result()
+        all_time = _future_result_or_default(futures["all_time"], {})
+        last_7 = _future_result_or_default(futures["last_7"], {})
+        today = _future_result_or_default(futures["today"], {})
+        github_user = _future_result_or_default(futures["github_user"], {})
+        public_repos = _future_result_or_default(futures["public_repos"], [])
+        private_repos = _future_result_or_default(futures["private_repos"], [])
+        total_commits = int(_future_result_or_default(futures["commits"], 0) or 0)
+        total_contrib_year = int(_future_result_or_default(futures["year_contrib"], 0) or 0)
 
     all_repos = public_repos + private_repos
-    repo_languages = Counter(
-        repo.get("primaryLanguage", {}).get("name")
-        for repo in contributed_repos
-        if repo.get("primaryLanguage") and repo.get("primaryLanguage", {}).get("name")
-    )
     top_language = repo_languages.most_common(1)[0][0] if repo_languages else "Python"
     week = last_7.get("data", {})
     week_languages = week.get("languages", [])
@@ -608,6 +870,8 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
     updated = datetime.now(timezone.utc).strftime("%d/%m/%Y %H:%M:%S UTC")
     current_year = datetime.now(timezone.utc).year
     timezone_name = week.get("timezone")
+    full_refreshed_at = cache.get("full_refreshed_at") or "n/a"
+    cache_updated_at = cache.get("updated_at") or "n/a"
 
     time_of_day = _commit_time_buckets(committed_dates, timezone_name)
     weekday_counts = _commit_weekday_buckets(committed_dates, timezone_name)
@@ -638,6 +902,12 @@ def build_waka_block(api_key: str, username: str, gh_token: str | None) -> str:
 > 📜 {total_public} Public Repositories
 >
 > 🔑 {total_private} Private Repositories
+ >
+> 🧮 Repo Scan Mode: {effective_mode.title()}
+ >
+> 🗓️ Repo Stats Last Full Refresh: {full_refreshed_at}
+ >
+> 🔄 Repo Stats Cache Updated: {cache_updated_at}
 
 **I'm an Early 🐤**
 
@@ -687,6 +957,17 @@ def main() -> int:
     )
     parser.add_argument("--target", default="README-TEST.md", help="target README path")
     parser.add_argument(
+        "--scan-mode",
+        default=os.getenv("REPO_SCAN_MODE", "auto"),
+        choices=["auto", "full", "incremental"],
+        help="repository scanning mode",
+    )
+    parser.add_argument(
+        "--cache-path",
+        default=os.getenv("REPO_STATS_CACHE_PATH", str(DEFAULT_CACHE_PATH)),
+        help="path to repo stats cache json",
+    )
+    parser.add_argument(
         "--username",
         default=os.getenv("GITHUB_USERNAME"),
         help="GitHub username (defaults to GITHUB_USERNAME env)",
@@ -704,7 +985,13 @@ def main() -> int:
         raise ValueError("Missing GitHub username. Set --username or GITHUB_USERNAME")
 
     target_text = target_path.read_text(encoding="utf-8")
-    waka_block = build_waka_block(api_key, username, gh_token)
+    waka_block = build_waka_block(
+        api_key,
+        username,
+        gh_token,
+        scan_mode=args.scan_mode,
+        cache_path=Path(args.cache_path),
+    )
     target_text = replace_waka_block(target_text, f"\n{waka_block}\n")
 
     target_path.write_text(target_text, encoding="utf-8")
