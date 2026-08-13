@@ -87,7 +87,7 @@ I've opened 14 issues throughout this time.
 
 Also, I've contributed with 18 pull requests.
 
-I've made 1841 commits.
+I've made 1843 commits.
 
 These contributions are distributed amongst 88 repos.
 
@@ -110,7 +110,7 @@ These contributions are distributed amongst 88 repos.
 
 **🐱 My GitHub Data**
 
-> 📦 2,343,190 kB Used in GitHub's Storage
+> 📦 2,343,281 kB Used in GitHub's Storage
  >
 > 🏆 2,781 Contributions in the Year 2026
  >
@@ -153,23 +153,23 @@ Sunday                          353 commits       ░░░░░░░░░░
 🕑︎ Time Zone: Europe/Berlin
 
 💬 Programming Languages:
-Markdown                 7 hrs 37 mins      █████████████░░░░░░░░░░░░   53.78 % 
-TypeScript               2 hrs 55 mins      █████░░░░░░░░░░░░░░░░░░░░   20.62 % 
-Bash                     1 hr 46 mins       ███░░░░░░░░░░░░░░░░░░░░░░   12.55 % 
-Other                    38 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   04.47 % 
-JSON                     35 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   04.17 % 
-C++                      19 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   02.24 % 
-Python                   5 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.70 % 
-YAML                     4 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.56 % 
+Markdown                 5 hrs 21 mins      █████████████░░░░░░░░░░░░   51.35 % 
+TypeScript               1 hr 47 mins       ████░░░░░░░░░░░░░░░░░░░░░   17.17 % 
+Bash                     1 hr 36 mins       ████░░░░░░░░░░░░░░░░░░░░░   15.46 % 
+JSON                     35 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   05.66 % 
+Other                    27 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   04.37 % 
+C++                      19 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   03.05 % 
+Python                   5 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.95 % 
+YAML                     4 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.76 % 
 
 🔥 Editors:
-Claude Code              12 hrs 1 min       █████████████████████░░░░   84.92 % 
-VS Code                  2 hrs 3 mins       ████░░░░░░░░░░░░░░░░░░░░░   14.58 % 
-Vim                      4 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.50 % 
+Claude Code              8 hrs 56 mins      █████████████████████░░░░   85.71 % 
+VS Code                  1 hr 25 mins       ███░░░░░░░░░░░░░░░░░░░░░░   13.66 % 
+Vim                      3 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.63 % 
 
 💻 Operating System:
-Mac                      13 hrs 50 mins     ████████████████████████░   97.76 % 
-Linux                    19 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   02.24 % 
+Mac                      10 hrs 7 mins      ████████████████████████░   96.95 % 
+Linux                    19 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   03.05 % 
 ```
 
 **I Mostly Code in Python**
@@ -186,6 +186,6 @@ HCL                               8 repos         █░░░░░░░░░
 
 ![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
 
- Last Updated on 12/08/2026 03:54:02 UTC
+ Last Updated on 13/08/2026 03:57:25 UTC
 
 <!--END_SECTION:waka-->
