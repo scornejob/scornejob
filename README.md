@@ -110,7 +110,7 @@ These contributions are distributed amongst 88 repos.
 
 **🐱 My GitHub Data**
 
-> 📦 2,343,281 kB Used in GitHub's Storage
+> 📦 2,343,288 kB Used in GitHub's Storage
  >
 > 🏆 2,781 Contributions in the Year 2026
  >
@@ -153,23 +153,22 @@ Sunday                          353 commits       ░░░░░░░░░░
 🕑︎ Time Zone: Europe/Berlin
 
 💬 Programming Languages:
-Markdown                 5 hrs 21 mins      █████████████░░░░░░░░░░░░   51.35 % 
-TypeScript               1 hr 47 mins       ████░░░░░░░░░░░░░░░░░░░░░   17.17 % 
-Bash                     1 hr 36 mins       ████░░░░░░░░░░░░░░░░░░░░░   15.46 % 
-JSON                     35 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   05.66 % 
-Other                    27 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   04.37 % 
-C++                      19 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   03.05 % 
-Python                   5 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.95 % 
-YAML                     4 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.76 % 
+Markdown                 2 hrs 4 mins       ██████████░░░░░░░░░░░░░░░   39.96 % 
+Bash                     1 hr 29 mins       ███████░░░░░░░░░░░░░░░░░░   28.84 % 
+JSON                     35 mins            ███░░░░░░░░░░░░░░░░░░░░░░   11.37 % 
+Other                    26 mins            ██░░░░░░░░░░░░░░░░░░░░░░░   08.44 % 
+TypeScript               22 mins            ██░░░░░░░░░░░░░░░░░░░░░░░   07.27 % 
+Python                   5 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.90 % 
+HTML                     4 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.28 % 
+Text                     2 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.93 % 
 
 🔥 Editors:
-Claude Code              8 hrs 56 mins      █████████████████████░░░░   85.71 % 
-VS Code                  1 hr 25 mins       ███░░░░░░░░░░░░░░░░░░░░░░   13.66 % 
-Vim                      3 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.63 % 
+Claude Code              4 hrs 30 mins      ██████████████████████░░░   86.76 % 
+VS Code                  37 mins            ███░░░░░░░░░░░░░░░░░░░░░░   11.98 % 
+Vim                      3 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.26 % 
 
 💻 Operating System:
-Mac                      10 hrs 7 mins      ████████████████████████░   96.95 % 
-Linux                    19 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   03.05 % 
+Mac                      5 hrs 11 mins      █████████████████████████   100.00 % 
 ```
 
 **I Mostly Code in Python**
@@ -186,6 +185,6 @@ HCL                               8 repos         █░░░░░░░░░
 
 ![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
 
- Last Updated on 13/08/2026 03:57:25 UTC
+ Last Updated on 14/08/2026 03:53:59 UTC
 
 <!--END_SECTION:waka-->
