@@ -87,7 +87,7 @@ I've opened 14 issues throughout this time.
 
 Also, I've contributed with 18 pull requests.
 
-I've made 1857 commits.
+I've made 1859 commits.
 
 These contributions are distributed amongst 88 repos.
 
@@ -110,9 +110,9 @@ These contributions are distributed amongst 88 repos.
 
 **🐱 My GitHub Data**
 
-> 📦 2,343,573 kB Used in GitHub's Storage
+> 📦 2,343,610 kB Used in GitHub's Storage
  >
-> 🏆 2,900 Contributions in the Year 2026
+> 🏆 2,872 Contributions in the Year 2026
  >
 > 🚫 Not Opted to Hire
  >
@@ -120,7 +120,7 @@ These contributions are distributed amongst 88 repos.
 >
 > 🔑 38 Private Repositories
  >
-> 🧮 Repo Scan Mode: Full
+> 🧮 Repo Scan Mode: Incremental
  >
 > 🗓️ Repo Stats Last Full Refresh: 2026-08-30T08:43:10Z
  >
@@ -153,23 +153,22 @@ Sunday                          358 commits       ░░░░░░░░░░
 🕑︎ Time Zone: Europe/Berlin
 
 💬 Programming Languages:
-Markdown                 4 hrs 48 mins      █████████░░░░░░░░░░░░░░░░   34.58 % 
-Bash                     3 hrs 11 mins      ██████░░░░░░░░░░░░░░░░░░░   22.95 % 
-Other                    2 hrs 5 mins       ████░░░░░░░░░░░░░░░░░░░░░   15.05 % 
-TypeScript               1 hr 45 mins       ███░░░░░░░░░░░░░░░░░░░░░░   12.63 % 
-C++                      57 mins            ██░░░░░░░░░░░░░░░░░░░░░░░   06.91 % 
-Nginx configuration file 26 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   03.21 % 
-YAML                     20 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   02.46 % 
-Git Config               16 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   02.01 % 
+Markdown                 4 hrs 48 mins      █████████░░░░░░░░░░░░░░░░   37.18 % 
+Bash                     3 hrs 11 mins      ██████░░░░░░░░░░░░░░░░░░░   24.68 % 
+Other                    2 hrs 5 mins       ████░░░░░░░░░░░░░░░░░░░░░   16.18 % 
+TypeScript               1 hr 45 mins       ███░░░░░░░░░░░░░░░░░░░░░░   13.58 % 
+Nginx configuration file 26 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   03.45 % 
+YAML                     20 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   02.64 % 
+Git Config               16 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   02.16 % 
+Docker                   0 secs             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.08 % 
 
 🔥 Editors:
-Claude Code              10 hrs 40 mins     ███████████████████░░░░░░   76.84 % 
-VS Code                  3 hrs 6 mins       ██████░░░░░░░░░░░░░░░░░░░   22.32 % 
-Vim                      7 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.84 % 
+Claude Code              10 hrs 40 mins     █████████████████████░░░░   82.62 % 
+VS Code                  2 hrs 7 mins       ████░░░░░░░░░░░░░░░░░░░░░   16.48 % 
+Vim                      7 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.90 % 
 
 💻 Operating System:
-Mac                      12 hrs 55 mins     ███████████████████████░░   93.00 % 
-Linux                    58 mins            ██░░░░░░░░░░░░░░░░░░░░░░░   07.00 % 
+Mac                      12 hrs 55 mins     █████████████████████████   100.00 % 
 ```
 
 **I Mostly Code in Python**
@@ -186,6 +185,6 @@ HCL                               8 repos         ██░░░░░░░░
 
 ![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
 
- Last Updated on 30/08/2026 08:43:11 UTC
+ Last Updated on 31/08/2026 07:48:58 UTC
 
 <!--END_SECTION:waka-->
