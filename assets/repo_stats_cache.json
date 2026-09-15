@@ -66,22 +66,7 @@
     },
     "atlanticventures/aws-user-management": {
       "committed_dates": [
-        "2026-09-11T13:30:45Z",
-        "2026-09-11T13:00:33Z",
-        "2026-09-11T12:52:27Z",
-        "2026-09-11T12:52:27Z",
-        "2026-09-11T12:52:27Z",
-        "2026-09-11T12:52:27Z",
-        "2026-09-11T12:40:35Z",
-        "2026-09-11T12:40:35Z",
-        "2026-09-11T12:32:21Z",
-        "2026-09-11T07:51:47Z",
-        "2026-09-11T07:51:47Z",
-        "2026-09-11T07:51:47Z",
-        "2026-09-11T07:51:47Z",
-        "2026-09-11T07:51:47Z",
-        "2026-09-11T07:51:47Z",
-        "2026-09-10T10:23:01Z",
+        "2026-09-14T13:40:51Z",
         "2026-09-09T11:04:19Z",
         "2026-09-09T10:32:41Z",
         "2026-09-09T08:57:31Z",
@@ -1426,8 +1411,8 @@
       "name": "aws-user-management",
       "owner": "atlanticventures",
       "primaryLanguage": "Python",
-      "total_loc": 158805,
-      "updated_at": "2026-09-13T07:50:41Z"
+      "total_loc": 157977,
+      "updated_at": "2026-09-15T06:54:12Z"
     },
     "atlanticventures/bumerang": {
       "committed_dates": [
@@ -4316,6 +4301,7 @@
         "2023-02-03T11:04:20Z",
         "2023-02-03T11:03:14Z",
         "2023-02-03T10:53:20Z",
+        "2026-08-27T10:23:33Z",
         "2026-08-27T10:23:22Z",
         "2026-08-26T09:00:11Z",
         "2026-08-26T08:25:56Z",
@@ -8514,7 +8500,8 @@
         "2023-02-03T11:04:20Z",
         "2023-02-03T11:03:14Z",
         "2023-02-03T10:53:20Z",
-        "2026-09-11T08:01:20Z",
+        "2026-09-15T06:51:46Z",
+        "2026-09-14T09:19:33Z",
         "2026-08-27T10:23:33Z",
         "2026-08-27T10:23:22Z",
         "2026-08-26T09:00:11Z",
@@ -9195,8 +9182,8 @@
       "name": "infrastructure-2.0",
       "owner": "atlanticventures",
       "primaryLanguage": "TypeScript",
-      "total_loc": 865521,
-      "updated_at": "2026-09-13T07:50:41Z"
+      "total_loc": 865522,
+      "updated_at": "2026-09-15T06:55:06Z"
     },
     "atlanticventures/jenkins": {
       "committed_dates": [
@@ -52674,12 +52661,18 @@
       "updated_at": "2026-09-13T07:45:00Z"
     },
     "ocean-shiftmove/shiftmove-aws-organisation": {
-      "committed_dates": [],
+      "committed_dates": [
+        "2026-09-14T15:39:55Z",
+        "2026-09-14T15:39:55Z",
+        "2026-09-14T13:11:55Z",
+        "2026-09-14T13:11:55Z",
+        "2026-09-14T13:11:55Z"
+      ],
       "name": "shiftmove-aws-organisation",
       "owner": "ocean-shiftmove",
       "primaryLanguage": null,
-      "total_loc": 0,
-      "updated_at": "2026-09-13T07:44:50Z"
+      "total_loc": 808,
+      "updated_at": "2026-09-15T06:53:56Z"
     },
     "rerdavies/pipedal": {
       "committed_dates": [],
@@ -54029,7 +54022,7 @@
       "updated_at": "2026-09-13T07:44:55Z"
     }
   },
-  "updated_at": "2026-09-13T07:50:41Z",
+  "updated_at": "2026-09-15T06:55:06Z",
   "username": "scornejob",
   "version": 1
 }
