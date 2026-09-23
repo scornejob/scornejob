@@ -102,7 +102,7 @@ These contributions are distributed amongst 88 repos.
 
 <!--START_SECTION:waka-->
 
-![Code Time](http://img.shields.io/badge/Code%20Time-1%2C978%20hrs%204%20mins-blue?style=flat)
+![Code Time](http://img.shields.io/badge/Code%20Time-1%2C978%20hrs%2058%20mins-blue?style=flat)
 
 ![Profile Views](http://img.shields.io/badge/Profile%20Views-19-blue?style=flat)
 
@@ -110,9 +110,9 @@ These contributions are distributed amongst 88 repos.
 
 **🐱 My GitHub Data**
 
-> 📦 2,345,466 kB Used in GitHub's Storage
+> 📦 2,345,473 kB Used in GitHub's Storage
  >
-> 🏆 2,913 Contributions in the Year 2026
+> 🏆 2,919 Contributions in the Year 2026
  >
 > 🚫 Not Opted to Hire
  >
@@ -124,7 +124,7 @@ These contributions are distributed amongst 88 repos.
  >
 > 🗓️ Repo Stats Last Full Refresh: 2026-09-20T08:06:44Z
  >
-> 🔄 Repo Stats Cache Updated: 2026-09-22T06:58:54Z
+> 🔄 Repo Stats Cache Updated: 2026-09-23T06:52:51Z
 
 **I'm an Early 🐤**
 
@@ -153,23 +153,23 @@ Sunday                          357 commits       ░░░░░░░░░░
 🕑︎ Time Zone: Europe/Berlin
 
 💬 Programming Languages:
-Markdown                 7 hrs 15 mins      █████████░░░░░░░░░░░░░░░░   35.73 % 
-TypeScript               5 hrs 11 mins      ██████░░░░░░░░░░░░░░░░░░░   25.53 % 
-Other                    2 hrs 37 mins      ███░░░░░░░░░░░░░░░░░░░░░░   12.89 % 
-Bash                     1 hr 50 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   09.04 % 
-YAML                     1 hr 19 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   06.50 % 
-Python                   1 hr 11 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   05.89 % 
-Terraform                24 mins            ░░░░░░░░░░░░░░░░░░░░░░░░░   02.00 % 
-JSON                     19 mins            ░░░░░░░░░░░░░░░░░░░░░░░░░   01.56 % 
+Markdown                 7 hrs 21 mins      █████████░░░░░░░░░░░░░░░░   35.77 % 
+TypeScript               4 hrs 53 mins      ██████░░░░░░░░░░░░░░░░░░░   23.76 % 
+Other                    2 hrs 58 mins      ████░░░░░░░░░░░░░░░░░░░░░   14.49 % 
+Bash                     1 hr 37 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   07.87 % 
+YAML                     1 hr 15 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   06.12 % 
+Python                   1 hr 11 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   05.81 % 
+JSON                     49 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   04.02 % 
+Terraform                16 mins            ░░░░░░░░░░░░░░░░░░░░░░░░░   01.37 % 
 
 🔥 Editors:
-Claude Code              15 hrs 40 mins     ███████████████████░░░░░░   77.16 % 
-VS Code                  4 hrs 38 mins      ██████░░░░░░░░░░░░░░░░░░░   22.82 % 
-Vim                      0 secs             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.02 % 
+Claude Code              16 hrs 7 mins      ████████████████████░░░░░   78.34 % 
+VS Code                  4 hrs 26 mins      █████░░░░░░░░░░░░░░░░░░░░   21.57 % 
+Vim                      1 min              ░░░░░░░░░░░░░░░░░░░░░░░░░   00.09 % 
 
 💻 Operating System:
-Mac                      20 hrs 7 mins      █████████████████████████   99.06 % 
-Linux                    11 mins            ░░░░░░░░░░░░░░░░░░░░░░░░░   00.94 % 
+Mac                      20 hrs 22 mins     █████████████████████████   99.07 % 
+Linux                    11 mins            ░░░░░░░░░░░░░░░░░░░░░░░░░   00.93 % 
 ```
 
 **I Mostly Code in Python**
@@ -186,6 +186,6 @@ HCL                               8 repos         ██░░░░░░░░
 
 ![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
 
- Last Updated on 22/09/2026 06:58:55 UTC
+ Last Updated on 23/09/2026 06:52:54 UTC
 
 <!--END_SECTION:waka-->
