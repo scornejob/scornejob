@@ -102,17 +102,17 @@ These contributions are distributed amongst 88 repos.
 
 <!--START_SECTION:waka-->
 
-![Code Time](http://img.shields.io/badge/Code%20Time-1%2C991%20hrs%2030%20mins-blue?style=flat)
+![Code Time](http://img.shields.io/badge/Code%20Time-1%2C993%20hrs%2029%20mins-blue?style=flat)
 
 ![Profile Views](http://img.shields.io/badge/Profile%20Views-19-blue?style=flat)
 
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-31.69%20million%20lines%20of%20code%20in%2054%2C115%20commits-blue?style=flat)
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-31.73%20million%20lines%20of%20code%20in%2054%2C148%20commits-blue?style=flat)
 
 **🐱 My GitHub Data**
 
-> 📦 2,345,659 kB Used in GitHub's Storage
+> 📦 2,345,666 kB Used in GitHub's Storage
  >
-> 🏆 2,898 Contributions in the Year 2026
+> 🏆 2,908 Contributions in the Year 2026
  >
 > 🚫 Not Opted to Hire
  >
@@ -124,13 +124,13 @@ These contributions are distributed amongst 88 repos.
  >
 > 🗓️ Repo Stats Last Full Refresh: 2026-09-27T08:47:30Z
  >
-> 🔄 Repo Stats Cache Updated: 2026-09-30T07:39:32Z
+> 🔄 Repo Stats Cache Updated: 2026-10-01T07:56:08Z
 
 **I'm an Early 🐤**
 
 ```text
-🌞 Morning                    16,517 commits       ████████░░░░░░░░░░░░░░░░░   30.52 % 
-🌆 Daytime                    35,856 commits       █████████████████░░░░░░░░   66.26 % 
+🌞 Morning                    16,525 commits       ████████░░░░░░░░░░░░░░░░░   30.52 % 
+🌆 Daytime                    35,881 commits       █████████████████░░░░░░░░   66.26 % 
 🌃 Evening                     1,509 commits       █░░░░░░░░░░░░░░░░░░░░░░░░   02.79 % 
 🌙 Night                         233 commits       ░░░░░░░░░░░░░░░░░░░░░░░░░   00.43 % 
 ```
@@ -138,11 +138,11 @@ These contributions are distributed amongst 88 repos.
 📅 **I'm Most Productive on Wednesday**
 
 ```text
-Monday                        8,929 commits       ████░░░░░░░░░░░░░░░░░░░░░   16.50 % 
-Tuesday                      11,728 commits       █████░░░░░░░░░░░░░░░░░░░░   21.67 % 
-Wednesday                    15,265 commits       ███████░░░░░░░░░░░░░░░░░░   28.21 % 
-Thursday                      9,535 commits       ████░░░░░░░░░░░░░░░░░░░░░   17.62 % 
-Friday                        8,219 commits       ████░░░░░░░░░░░░░░░░░░░░░   15.19 % 
+Monday                        8,934 commits       ████░░░░░░░░░░░░░░░░░░░░░   16.50 % 
+Tuesday                      11,732 commits       █████░░░░░░░░░░░░░░░░░░░░   21.67 % 
+Wednesday                    15,283 commits       ███████░░░░░░░░░░░░░░░░░░   28.22 % 
+Thursday                      9,541 commits       ████░░░░░░░░░░░░░░░░░░░░░   17.62 % 
+Friday                        8,219 commits       ████░░░░░░░░░░░░░░░░░░░░░   15.18 % 
 Saturday                         82 commits       ░░░░░░░░░░░░░░░░░░░░░░░░░   00.15 % 
 Sunday                          357 commits       ░░░░░░░░░░░░░░░░░░░░░░░░░   00.66 % 
 ```
@@ -153,23 +153,22 @@ Sunday                          357 commits       ░░░░░░░░░░
 🕑︎ Time Zone: Europe/Berlin
 
 💬 Programming Languages:
-TypeScript               4 hrs 12 mins      ██████████░░░░░░░░░░░░░░░   40.89 % 
-Markdown                 3 hrs 7 mins       ████████░░░░░░░░░░░░░░░░░   30.43 % 
-HTML                     1 hr 5 mins        ███░░░░░░░░░░░░░░░░░░░░░░   10.54 % 
-Bash                     29 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   04.74 % 
-Other                    27 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   04.47 % 
-Text                     27 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   04.39 % 
-YAML                     8 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.41 % 
-Python                   5 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   00.87 % 
+Markdown                 5 hrs 41 mins      █████████░░░░░░░░░░░░░░░░   37.09 % 
+TypeScript               3 hrs 55 mins      ██████░░░░░░░░░░░░░░░░░░░   25.52 % 
+Other                    1 hr 39 mins       ███░░░░░░░░░░░░░░░░░░░░░░   10.74 % 
+Go                       1 hr 9 mins        ██░░░░░░░░░░░░░░░░░░░░░░░   07.49 % 
+HTML                     1 hr 5 mins        ██░░░░░░░░░░░░░░░░░░░░░░░   07.06 % 
+Text                     33 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   03.66 % 
+Bash                     31 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   03.41 % 
+JSON                     22 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   02.39 % 
 
 🔥 Editors:
-Claude Code              6 hrs 17 mins      ███████████████░░░░░░░░░░   61.13 % 
-VS Code                  3 hrs 49 mins      █████████░░░░░░░░░░░░░░░░   37.11 % 
-Vim                      10 mins            ░░░░░░░░░░░░░░░░░░░░░░░░░   01.76 % 
+Claude Code              10 hrs 47 mins     ██████████████████░░░░░░░   70.26 % 
+VS Code                  4 hrs 22 mins      ███████░░░░░░░░░░░░░░░░░░   28.49 % 
+Vim                      11 mins            ░░░░░░░░░░░░░░░░░░░░░░░░░   01.25 % 
 
 💻 Operating System:
-Mac                      9 hrs 57 mins      ████████████████████████░   96.79 % 
-Linux                    19 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   03.21 % 
+Mac                      15 hrs 21 mins     █████████████████████████   100.00 % 
 ```
 
 **I Mostly Code in Python**
@@ -186,6 +185,6 @@ JavaScript                        7 repos         █░░░░░░░░░
 
 ![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
 
- Last Updated on 30/09/2026 07:39:34 UTC
+ Last Updated on 01/10/2026 07:56:10 UTC
 
 <!--END_SECTION:waka-->
