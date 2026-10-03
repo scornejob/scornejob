@@ -87,7 +87,7 @@ I've opened 14 issues throughout this time.
 
 Also, I've contributed with 18 pull requests.
 
-I've made 1863 commits.
+I've made 1879 commits.
 
 These contributions are distributed amongst 88 repos.
 
@@ -102,17 +102,17 @@ These contributions are distributed amongst 88 repos.
 
 <!--START_SECTION:waka-->
 
-![Code Time](http://img.shields.io/badge/Code%20Time-1%2C998%20hrs%2054%20mins-blue?style=flat)
+![Code Time](http://img.shields.io/badge/Code%20Time-2%2C001%20hrs%204%20mins-blue?style=flat)
 
 ![Profile Views](http://img.shields.io/badge/Profile%20Views-19-blue?style=flat)
 
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-31.76%20million%20lines%20of%20code%20in%2054%2C172%20commits-blue?style=flat)
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-31.76%20million%20lines%20of%20code%20in%2054%2C183%20commits-blue?style=flat)
 
 **🐱 My GitHub Data**
 
-> 📦 2,333,914 kB Used in GitHub's Storage
+> 📦 2,200,817 kB Used in GitHub's Storage
  >
-> 🏆 2,915 Contributions in the Year 2026
+> 🏆 2,928 Contributions in the Year 2026
  >
 > 🚫 Not Opted to Hire
  >
@@ -124,13 +124,13 @@ These contributions are distributed amongst 88 repos.
  >
 > 🗓️ Repo Stats Last Full Refresh: 2026-09-27T08:47:30Z
  >
-> 🔄 Repo Stats Cache Updated: 2026-10-02T07:40:52Z
+> 🔄 Repo Stats Cache Updated: 2026-10-03T07:12:45Z
 
 **I'm an Early 🐤**
 
 ```text
-🌞 Morning                    16,536 commits       ████████░░░░░░░░░░░░░░░░░   30.52 % 
-🌆 Daytime                    35,894 commits       █████████████████░░░░░░░░   66.26 % 
+🌞 Morning                    16,540 commits       ████████░░░░░░░░░░░░░░░░░   30.53 % 
+🌆 Daytime                    35,901 commits       █████████████████░░░░░░░░   66.26 % 
 🌃 Evening                     1,509 commits       █░░░░░░░░░░░░░░░░░░░░░░░░   02.79 % 
 🌙 Night                         233 commits       ░░░░░░░░░░░░░░░░░░░░░░░░░   00.43 % 
 ```
@@ -141,8 +141,8 @@ These contributions are distributed amongst 88 repos.
 Monday                        8,939 commits       ████░░░░░░░░░░░░░░░░░░░░░   16.50 % 
 Tuesday                      11,734 commits       █████░░░░░░░░░░░░░░░░░░░░   21.66 % 
 Wednesday                    15,289 commits       ███████░░░░░░░░░░░░░░░░░░   28.22 % 
-Thursday                      9,552 commits       ████░░░░░░░░░░░░░░░░░░░░░   17.63 % 
-Friday                        8,219 commits       ████░░░░░░░░░░░░░░░░░░░░░   15.17 % 
+Thursday                      9,553 commits       ████░░░░░░░░░░░░░░░░░░░░░   17.63 % 
+Friday                        8,229 commits       ████░░░░░░░░░░░░░░░░░░░░░   15.19 % 
 Saturday                         82 commits       ░░░░░░░░░░░░░░░░░░░░░░░░░   00.15 % 
 Sunday                          357 commits       ░░░░░░░░░░░░░░░░░░░░░░░░░   00.66 % 
 ```
@@ -153,38 +153,38 @@ Sunday                          357 commits       ░░░░░░░░░░
 🕑︎ Time Zone: Europe/Berlin
 
 💬 Programming Languages:
-Markdown                 4 hrs 15 mins      ████████░░░░░░░░░░░░░░░░░   30.85 % 
-TypeScript               3 hrs 11 mins      ██████░░░░░░░░░░░░░░░░░░░   23.11 % 
-Go                       2 hrs 9 mins       ████░░░░░░░░░░░░░░░░░░░░░   15.60 % 
-Other                    1 hr 44 mins       ███░░░░░░░░░░░░░░░░░░░░░░   12.57 % 
-JSON                     33 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   03.99 % 
-HTML                     30 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   03.72 % 
-Bash                     27 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   03.35 % 
-Text                     13 mins            ░░░░░░░░░░░░░░░░░░░░░░░░░   01.57 % 
+Markdown                 4 hrs 43 mins      ████████░░░░░░░░░░░░░░░░░   32.92 % 
+Go                       2 hrs 17 mins      ████░░░░░░░░░░░░░░░░░░░░░   15.94 % 
+TypeScript               2 hrs 11 mins      ████░░░░░░░░░░░░░░░░░░░░░   15.23 % 
+Other                    2 hrs 5 mins       ████░░░░░░░░░░░░░░░░░░░░░   14.51 % 
+JSON                     1 hr 23 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   09.70 % 
+Bash                     28 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   03.29 % 
+confini                  24 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   02.82 % 
+Text                     13 mins            ░░░░░░░░░░░░░░░░░░░░░░░░░   01.51 % 
 
 🔥 Editors:
-Claude Code              9 hrs 35 mins      █████████████████░░░░░░░░   69.35 % 
-VS Code                  3 hrs 52 mins      ███████░░░░░░░░░░░░░░░░░░   27.99 % 
-Vim                      22 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   02.66 % 
+Claude Code              10 hrs 44 mins     ███████████████████░░░░░░   74.78 % 
+VS Code                  2 hrs 58 mins      █████░░░░░░░░░░░░░░░░░░░░   20.75 % 
+Vim                      38 mins            █░░░░░░░░░░░░░░░░░░░░░░░░   04.46 % 
 
 💻 Operating System:
-Mac                      13 hrs 49 mins     █████████████████████████   100.00 % 
+Mac                      14 hrs 22 mins     █████████████████████████   100.00 % 
 ```
 
 **I Mostly Code in Python**
 
 ```text
-Python                           43 repos         ████████░░░░░░░░░░░░░░░░░   33.86 % 
-TypeScript                       36 repos         ███████░░░░░░░░░░░░░░░░░░   28.35 % 
-Shell                            11 repos         ██░░░░░░░░░░░░░░░░░░░░░░░   08.66 % 
-HCL                               8 repos         ██░░░░░░░░░░░░░░░░░░░░░░░   06.30 % 
-JavaScript                        7 repos         █░░░░░░░░░░░░░░░░░░░░░░░░   05.51 % 
+Python                           43 repos         ████████░░░░░░░░░░░░░░░░░   33.59 % 
+TypeScript                       36 repos         ███████░░░░░░░░░░░░░░░░░░   28.12 % 
+Shell                            11 repos         ██░░░░░░░░░░░░░░░░░░░░░░░   08.59 % 
+HCL                               8 repos         ██░░░░░░░░░░░░░░░░░░░░░░░   06.25 % 
+JavaScript                        7 repos         █░░░░░░░░░░░░░░░░░░░░░░░░   05.47 % 
 ```
 
 **Timeline**
 
 ![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
 
- Last Updated on 02/10/2026 07:40:54 UTC
+ Last Updated on 03/10/2026 07:12:46 UTC
 
 <!--END_SECTION:waka-->
