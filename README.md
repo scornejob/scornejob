@@ -87,7 +87,7 @@ I've opened 14 issues throughout this time.
 
 Also, I've contributed with 18 pull requests.
 
-I've made 1895 commits.
+I've made 1899 commits.
 
 These contributions are distributed amongst 88 repos.
 
@@ -110,7 +110,7 @@ These contributions are distributed amongst 88 repos.
 
 **🐱 My GitHub Data**
 
-> 📦 2,201,728 kB Used in GitHub's Storage
+> 📦 2,201,732 kB Used in GitHub's Storage
  >
 > 🏆 3,404 Contributions in the Year 2026
  >
@@ -120,7 +120,7 @@ These contributions are distributed amongst 88 repos.
 >
 > 🔑 42 Private Repositories
  >
-> 🧮 Repo Scan Mode: Incremental
+> 🧮 Repo Scan Mode: Full
  >
 > 🗓️ Repo Stats Last Full Refresh: 2026-11-01T09:58:31Z
  >
@@ -176,6 +176,6 @@ JavaScript                        6 repos         █░░░░░░░░░
 
 ![Lines of Code chart](https://raw.githubusercontent.com/scornejob/scornejob/master/assets/bar_graph.png)
 
- Last Updated on 07/11/2026 07:57:35 UTC
+ Last Updated on 08/11/2026 09:46:45 UTC
 
 <!--END_SECTION:waka-->
