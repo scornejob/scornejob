@@ -63397,7 +63397,7 @@
       "owner": "avrios",
       "primaryLanguage": "TypeScript",
       "total_loc": 29808,
-      "updated_at": "2026-11-12T08:56:31Z"
+      "updated_at": "2026-11-13T08:51:50Z"
     },
     "avrios/cdk-utils": {
       "committed_dates": [
@@ -64445,7 +64445,7 @@
       "owner": "avrios",
       "primaryLanguage": "Python",
       "total_loc": 102218,
-      "updated_at": "2026-11-12T08:56:31Z"
+      "updated_at": "2026-11-13T08:51:49Z"
     },
     "avrios/network": {
       "committed_dates": [],
@@ -68376,13 +68376,16 @@
     },
     "scornejob/google-scripts": {
       "committed_dates": [
+        "2026-11-12T12:01:44Z",
+        "2026-11-12T12:00:46Z",
+        "2026-11-12T09:18:04Z",
         "2026-11-12T08:54:42Z"
       ],
       "name": "google-scripts",
       "owner": "scornejob",
-      "primaryLanguage": null,
-      "total_loc": 38,
-      "updated_at": "2026-11-12T08:56:31Z"
+      "primaryLanguage": "JavaScript",
+      "total_loc": 4078,
+      "updated_at": "2026-11-13T08:51:42Z"
     },
     "scornejob/guitar-learn": {
       "committed_dates": [
@@ -69424,7 +69427,7 @@
       "updated_at": "2026-11-01T09:52:40Z"
     }
   },
-  "updated_at": "2026-11-12T08:56:31Z",
+  "updated_at": "2026-11-13T08:51:50Z",
   "username": "scornejob",
   "version": 1
 }
