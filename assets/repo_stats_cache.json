@@ -66,6 +66,10 @@
     },
     "atlanticventures/aws-user-management": {
       "committed_dates": [
+        "2026-11-27T13:21:36Z",
+        "2026-11-27T12:30:44Z",
+        "2026-11-27T11:16:56Z",
+        "2026-11-27T11:16:56Z",
         "2026-11-18T14:45:30Z",
         "2026-11-18T14:45:30Z",
         "2026-11-18T14:45:30Z",
@@ -5362,8 +5366,8 @@
       "name": "aws-user-management",
       "owner": "atlanticventures",
       "primaryLanguage": "Python",
-      "total_loc": 800105,
-      "updated_at": "2026-11-27T10:17:34Z"
+      "total_loc": 800177,
+      "updated_at": "2026-11-28T09:34:14Z"
     },
     "atlanticventures/bumerang": {
       "committed_dates": [
@@ -61365,7 +61369,7 @@
       "owner": "avrios",
       "primaryLanguage": "Java",
       "total_loc": 5616,
-      "updated_at": "2026-11-27T10:15:16Z"
+      "updated_at": "2026-11-28T09:34:14Z"
     },
     "avrios/cdk-utils": {
       "committed_dates": [
@@ -61478,17 +61482,19 @@
         "2026-10-05T12:53:41Z",
         "2026-10-05T12:48:39Z",
         "2026-10-05T12:48:39Z",
+        "2026-11-27T13:31:28Z",
         "2026-11-26T14:37:00Z",
         "2026-11-25T09:49:56Z",
-        "2026-11-27T07:47:19Z",
+        "2026-11-27T14:19:55Z",
+        "2026-11-27T13:31:28Z",
         "2026-11-26T14:37:00Z",
         "2026-11-25T09:49:56Z"
       ],
       "name": "cli",
       "owner": "avrios",
       "primaryLanguage": "Go",
-      "total_loc": 15352,
-      "updated_at": "2026-11-27T10:17:34Z"
+      "total_loc": 15502,
+      "updated_at": "2026-11-28T09:34:14Z"
     },
     "avrios/core-service": {
       "committed_dates": [
@@ -61913,6 +61919,7 @@
         "2023-07-12T07:56:12Z",
         "2023-06-28T09:58:28Z",
         "2023-06-23T14:56:58Z",
+        "2026-11-27T09:57:07Z",
         "2023-08-22T07:16:20Z",
         "2023-07-20T07:11:18Z",
         "2023-07-12T07:56:12Z",
@@ -62178,16 +62185,6 @@
         "2023-07-12T07:56:12Z",
         "2023-06-28T09:58:28Z",
         "2023-06-23T14:56:58Z",
-        "2023-08-22T07:16:20Z",
-        "2023-07-20T07:11:18Z",
-        "2023-07-12T07:56:12Z",
-        "2023-06-28T09:58:28Z",
-        "2023-06-23T14:56:58Z",
-        "2023-08-22T07:16:20Z",
-        "2023-07-20T07:11:18Z",
-        "2023-07-12T07:56:12Z",
-        "2023-06-28T09:58:28Z",
-        "2023-06-23T14:56:58Z",
         "2023-07-20T07:11:18Z",
         "2023-07-12T07:56:12Z",
         "2023-06-28T09:58:28Z",
@@ -62256,13 +62253,12 @@
         "2023-07-12T07:56:12Z",
         "2023-06-28T09:58:28Z",
         "2023-06-23T14:56:58Z",
+        "2026-11-27T09:57:07Z",
         "2023-08-22T07:16:20Z",
         "2023-07-20T07:11:18Z",
         "2023-07-12T07:56:12Z",
         "2023-06-28T09:58:28Z",
         "2023-06-23T14:56:58Z",
-        "2026-11-26T16:06:54Z",
-        "2026-11-26T15:21:44Z",
         "2023-08-22T07:16:20Z",
         "2023-07-20T07:11:18Z",
         "2023-07-12T07:56:12Z",
@@ -62317,8 +62313,8 @@
       "name": "core-service",
       "owner": "avrios",
       "primaryLanguage": "Java",
-      "total_loc": 10595,
-      "updated_at": "2026-11-27T10:17:34Z"
+      "total_loc": 10464,
+      "updated_at": "2026-11-28T09:35:52Z"
     },
     "avrios/fleet-import-service": {
       "committed_dates": [],
@@ -62398,15 +62394,13 @@
     },
     "avrios/fringe-benefit-service": {
       "committed_dates": [
-        "2026-11-27T08:04:32Z",
-        "2026-11-26T16:06:55Z",
-        "2026-11-26T15:21:13Z"
+        "2026-11-27T08:04:32Z"
       ],
       "name": "fringe-benefit-service",
       "owner": "avrios",
       "primaryLanguage": "Java",
-      "total_loc": 15,
-      "updated_at": "2026-11-27T10:15:16Z"
+      "total_loc": 5,
+      "updated_at": "2026-11-28T09:34:14Z"
     },
     "avrios/gh-management": {
       "committed_dates": [
@@ -63031,15 +63025,13 @@
     },
     "avrios/models-service": {
       "committed_dates": [
-        "2026-11-27T08:04:11Z",
-        "2026-11-26T16:06:54Z",
-        "2026-11-26T15:21:07Z"
+        "2026-11-27T08:04:11Z"
       ],
       "name": "models-service",
       "owner": "avrios",
       "primaryLanguage": "Java",
-      "total_loc": 15,
-      "updated_at": "2026-11-27T10:15:16Z"
+      "total_loc": 5,
+      "updated_at": "2026-11-28T09:34:14Z"
     },
     "avrios/network": {
       "committed_dates": [
@@ -66327,6 +66319,7 @@
     },
     "ocean-shiftmove/vimcar-agents": {
       "committed_dates": [
+        "2026-11-27T10:22:31Z",
         "2026-11-19T10:33:51Z",
         "2026-11-16T13:00:55Z",
         "2026-11-16T13:00:55Z",
@@ -66374,13 +66367,14 @@
         "2026-11-25T10:58:13Z",
         "2026-11-25T10:58:13Z",
         "2026-11-25T10:52:51Z",
-        "2026-11-25T08:32:30Z"
+        "2026-11-25T08:32:30Z",
+        "2026-11-27T10:22:31Z"
       ],
       "name": "vimcar-agents",
       "owner": "ocean-shiftmove",
       "primaryLanguage": "Python",
-      "total_loc": 66899,
-      "updated_at": "2026-11-26T10:09:56Z"
+      "total_loc": 93367,
+      "updated_at": "2026-11-28T09:34:14Z"
     },
     "rerdavies/pipedal": {
       "committed_dates": [],
@@ -68171,7 +68165,7 @@
       "updated_at": "2026-11-01T09:52:40Z"
     }
   },
-  "updated_at": "2026-11-27T10:17:34Z",
+  "updated_at": "2026-11-28T09:35:52Z",
   "username": "scornejob",
   "version": 1
 }
